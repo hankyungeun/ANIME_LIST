@@ -18,7 +18,7 @@ public class JDBC {
 
         try {
             prop.load(new FileInputStream(
-                    "/resources/db/driver.properties"));
+                    "app/src/main/resources/db/driver.properties"));
 
             Class.forName(prop.getProperty("driver"));
 
