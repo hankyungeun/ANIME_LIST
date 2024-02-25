@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import anime_list.model.vo.AniList;
+import anime_list.service.AniListService;
 
 public class AniListController {
     public List<AniList> getAniList() {
 
-        List<AniList> aniLists = new ArrayList<>();
+        List<AniList> aniList = new AniListService().selectAllList();
 
-        return 0;
+        if (aniList.isEmpty()) {
+            System.out.println("데이터없음!!!");
+        } else {
+            System.out.println(aniList);
+        }
+        return aniList;
     }
 
 }

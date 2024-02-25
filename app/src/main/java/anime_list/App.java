@@ -3,12 +3,15 @@
  */
 package anime_list;
 
+import anime_list.controller.AniListController;
+
 public class App {
     public String getGreeting() {
         return "Hello World!";
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        AniListController ac = new AniListController();
+        ac.getAniList();
     }
 }
