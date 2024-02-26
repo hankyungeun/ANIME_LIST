@@ -1,6 +1,5 @@
 
 plugins {
-    // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
     id 'java'
     id 'war'
@@ -37,22 +36,29 @@ application {
     // Define the main class for the application.
     mainClass = 'anime_list.App'
 }
-
-tomcat {
-    httpPort = 8080
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java'] // Java 소스 코드 디렉토리
+        resources.srcDirs = ['src/main/resources'] // 리소스 디렉토리
+//        webApp.srcDirs = ['src/main/webapp'] // 웹 애플리케이션 디렉토리
+    }
 }
 
-// Tomcat 실행을 위한 태스크 정의
-task startTomcat(type: JavaExec, dependsOn: 'war') {
-    main = 'anime_list.App' // 애플리케이션의 진입점 클래스로 변경해야 합니다.
-    classpath = configurations.runtimeClasspath
-    args '--port=8080', '--path=/', '--base-dir=build'
-    standardInput = System.in
-}
-
-tasks.named('build') {
-    finalizedBy 'startTomcat'
-}
+//tomcat {
+//    httpPort = 8080
+//}
+//
+//// Tomcat 실행을 위한 태스크 정의
+//task startTomcat(type: JavaExec, dependsOn: 'war') {
+//    main = 'anime_list.App' // 애플리케이션의 진입점 클래스로 변경해야 합니다.
+//    classpath = configurations.runtimeClasspath
+//    args '--port=8080', '--path=/', '--base-dir=build'
+//    standardInput = System.in
+//}
+//
+//tasks.named('build') {
+//    finalizedBy 'startTomcat'
+//}
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
