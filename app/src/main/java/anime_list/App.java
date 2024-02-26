@@ -3,15 +3,17 @@
  */
 package anime_list;
 
-import anime_list.controller.AniListController;
+import java.io.IOException;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-    public static void main(String[] args) {
-        AniListController ac = new AniListController();
-        ac.getAniList();
+public class App extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
     }
 }

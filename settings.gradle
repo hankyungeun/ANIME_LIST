@@ -9,3 +9,6 @@
 
 rootProject.name = 'ANIME_LIST'
 include('app')
+include 'tomcat'
+
+project(':tomcat').projectDir = new File('tomcat')
