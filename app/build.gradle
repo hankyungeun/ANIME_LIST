@@ -27,6 +27,9 @@ dependencies {
 	
 	testCompileOnly 'org.projectlombok:lombok:1.18.30'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    implementation 'com.oracle.database.jdbc:ojdbc8:19.3.0.0' // Oracle 19c
+
 }
 
 application {
