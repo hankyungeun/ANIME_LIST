@@ -1,5 +1,18 @@
 package anime_list.service;
 
-public class AniListService {
+import anime_list.config.JDBC;
+import anime_list.model.dao.AniListDao;
+import anime_list.model.vo.AniList;
 
+import java.sql.Connection;
+import java.util.ArrayList;
+
+public class AniListService {
+    public ArrayList<AniList> selectAllList() {
+        Connection conn = JDBC.getConnection();
+        ArrayList<AniList> list = new AniListDao().selectAllList(conn);
+        JDBC.close(conn);
+
+        return list;
+    }
 }
