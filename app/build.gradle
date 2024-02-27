@@ -25,9 +25,8 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.30'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
 
-    implementation 'com.oracle.database.jdbc:ojdbc8:19.3.0.0' // Oracle 19c
+//    implementation 'com.oracle.database.jdbc:ojdbc8:19.3.0.0'
     
-    implementation 'org.apache.tomcat.embed:tomcat-embed-core:8.0.53'
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.53'
     implementation 'javax.servlet:javax.servlet-api:4.0.1'
 }
@@ -36,13 +35,13 @@ application {
     // Define the main class for the application.
     mainClass = 'anime_list.App'
 }
-sourceSets {
-    main {
-        java.srcDirs = ['src/main/java'] // Java 소스 코드 디렉토리
-        resources.srcDirs = ['src/main/resources'] // 리소스 디렉토리
-//        webApp.srcDirs = ['src/main/webapp'] // 웹 애플리케이션 디렉토리
-    }
-}
+//sourceSets {
+//    main {
+//        java.srcDirs = ['src/main/java'] // Java 소스 코드 디렉토리
+//        resources.srcDirs = ['src/main/resources'] // 리소스 디렉토리
+////        webApp.srcDirs = ['src/main/webapp'] // 웹 애플리케이션 디렉토리
+//    }
+//}
 
 //tomcat {
 //    httpPort = 8080

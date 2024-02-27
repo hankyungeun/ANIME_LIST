@@ -1,26 +1,34 @@
 package anime_list;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.File;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.apache.catalina.Context;
+import org.apache.catalina.WebResourceRoot;
+import org.apache.catalina.startup.Tomcat;
+import org.apache.catalina.webresources.DirResourceSet;
+import org.apache.catalina.webresources.StandardRoot;
 
-@WebServlet("/hello")
-public class App extends HttpServlet {
+public class App {
+    private static final String WEB_APP_DIR_LOCATION = "app/src/main/resources";
+    private static final String CLASS_LOCATION = "app/build/classes";
+    private static final String WEB_APP_VIRTUAL_PATH = "/WEB-INF/classes";
 
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset=UTF-8");
+    public static void main(String[] args) throws Exception {
+        Tomcat tomcat = new Tomcat();
+        tomcat.setPort(8080);
 
-        PrintWriter out = resp.getWriter();
-        out.println("<html>");
-        out.println("<head><title>Hello, World!</title></head>");
-        out.println("<body>");
-        out.println("<h1>Hello, World!</h1>");
-        out.println("</body>");
-        out.println("</html>");
+        Context context = tomcat.addWebapp("", new File(WEB_APP_DIR_LOCATION).getAbsolutePath());
+        File additionWebInfClasses = new File(CLASS_LOCATION);
+        WebResourceRoot resources = new StandardRoot(context);
+        resources.addPreResources(
+                new DirResourceSet(resources, WEB_APP_VIRTUAL_PATH, additionWebInfClasses.getAbsolutePath(),
+                        "/"));
+        context.setResources(resources);
+
+        tomcat.getConnector();
+
+        tomcat.start();
+        tomcat.getServer().await();
     }
+
 }
