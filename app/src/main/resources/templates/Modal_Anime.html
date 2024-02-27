@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모달창연습</title>
     <link rel=stylesheet href="../static/css/part_modal.css">
 </head>
+
 <body>
-    <div id="introIcon" onclick="openModal()">
-        <a href=""></a>애니 소개 아이콘</div>
-        <div class="modal">
-            <div class="modal_body">
+    <div id="introIcon">
+        <a href=""></a>애니 소개 아이콘
+    </div>
+    <div class="modal">
+        <div class="modal_body">
+            <div class="modal_part" id="modal_left">
                 <div class="modal_thumbnail">
                     <a href="">영상링크</a>
                 </div>
@@ -21,8 +25,9 @@
                 <div class="rate">평점</div>
                 <article id="introduction">
                     <h3>줄거리 간략 소개</h3>
-
                 </article>
+            </div>
+            <div class="modal_part" id="modal_right">
                 <article id="comment_body">사용자들의 평론
                     <div class="comment_check" id="comment_day">
                         날짜
@@ -38,18 +43,20 @@
                     </div>
                 </article>
             </div>
+        </div>
+    </div>
     </div>
     <script>
         const modal = document.querySelector('.modal');
-        const divOpenModal=document.querySelector('#introIcon');
-        const divCloseModal=document.querySelector('#closeOutside');
+        const divOpenModal = document.querySelector('#introIcon');
+        const divCloseModal = document.querySelector('#closeOutside');
 
-        divOpenModal.addEventListener("click", ()=>{
-            modal.style.display="flex";
+        divOpenModal.addEventListener("click", () => {
+            modal.style.display = "flex";
         });
     </script>
-    
-    
+
+
     <!-- <div class="newModal" onclick="openModal()"><h2>AnimeConnect</h2>
         <div class="newModal_body">
             <h4>title</h4>
@@ -69,4 +76,5 @@
     </script>
  -->
 </body>
+
 </html>
