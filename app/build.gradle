@@ -29,6 +29,8 @@ dependencies {
     
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:8.0.53'
     implementation 'javax.servlet:javax.servlet-api:4.0.1'
+    implementation 'org.thymeleaf:thymeleaf:3.0.12.RELEASE' // 현재 버전에 맞게 변경
+
 }
 
 application {
