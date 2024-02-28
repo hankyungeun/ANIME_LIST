@@ -17,7 +17,7 @@ public class App {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(8080);
 
-        Context context = tomcat.addWebapp("", new File(WEB_APP_DIR_LOCATION).getAbsolutePath());
+        Context context = tomcat.addWebapp("/", new File(WEB_APP_DIR_LOCATION).getAbsolutePath());
         File additionWebInfClasses = new File(CLASS_LOCATION);
         WebResourceRoot resources = new StandardRoot(context);
         resources.addPreResources(
