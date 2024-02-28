@@ -24,13 +24,13 @@
     top:50%; /*모달을 화면가운데 놓기위함. */
 
 
-    width:70%;  /*모달의 가로크기*/
-    height:70%; /*모달의 세로크기 */
+    width:75%;  /*모달의 가로크기*/
+    height:75%; /*모달의 세로크기 */
 
     padding:20px;  
 
     text-align: center;
-
+    justify-content: space-around;
     background-color: #1f2122; /*모달창 배경색 흰색*/
     border-radius:15px; /*테두리*/
     box-shadow:0 2px 3px 0 rgba(34,36,38,0.15); /*테두리 그림자*/
@@ -39,32 +39,91 @@
 }
 .modal_thumbnail {
     position: static;
-    width: 30vw;
-    height : 30vh;
+    width: 96%;
+    height : 54%;
     background-color: gray;
     border-radius : 10px;
 }
 
-.releaseDate { 
+.infoShort {     
+    display:flex;
+    justify-content: space-between;
+    width:96%;
+}
+.infoShort > div {
+    background-color: gray;
+}
+
+#releaseDate { 
+    width:50px; height:30px;
+}
+
+#rate {
     width:50px; height:30px;
 }
 
 #introduction {
     position:static;
-    background-color:cornsilk; 
-    width: 30vw;
-    height: 30vh;
+    background-color:rgb(46, 45, 41); 
+    color:white;
+    width: 96%;
+    height: 35%;
     border-radius: 10px;
+    /*-ms-overflow-style: none; /* for Internet Explorer, Edge */
+    /*scrollbar-width: none; /* for Firefox */
     overflow-y:scroll;
+    word-wrap: break-word;
+}
+
+#introduction::-webkit-scrollbar {
+    display:none;
 }
 
 #modal_left {
-    width: 20em;
+    width: 45%;
 }
 
 #modal_right {
-    width: 20em;
+    background-color: gray;
+    width: 45%;
 }
+
+#comment {
+    overflow-y:scroll;
+}
+
+#comment::-webkit-scrollbar {
+    display:none;
+}
+
+#comment_table {
+    width:100%
+}
+#comment_table tr {
+    background-color: white;
+}
+
+/* #comment_body {
+    display:flex;
+    flex-direction: row;
+}
+.comment_check {
+
+    background-color:white;
+    height:25px;
+    justify-content: space-evenly;
+} */
+
+#comment_day { border: 1px solid black; width:15%; }
+#comment_id { border: 1px solid black; width:25%; }
+#comment_text { border: 1px solid black; }
+#comment_rate { border: 1px solid black; width:10%; }
+
+
+
+
+
+
 /*
     CSS TO_DO LIST(02.23~25)
     1. Modal창 화면 분할 (영상, 댓글, 평점, 방영일자, 제목 등등 항목 별 div 나누기)

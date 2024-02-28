@@ -18,30 +18,70 @@
                 <div class="modal_thumbnail">
                     <a href="">영상링크</a>
                 </div>
-                <div class="releaseDate">
-                    <h2>방영 일자</h2>
-                    <a href=""></a>
+                <div class="infoShort" >
+                    <div id="releaseDate">
+                        방영 일자
+                        <a href=""></a>
+                    </div>
+                    <div id="rate">
+                        <img src="">평점<a href=""></a>
+                    </div>
                 </div>
-                <div class="rate">평점</div>
                 <article id="introduction">
                     <h3>줄거리 간략 소개</h3>
+                    <link href="">
+                    <p>
+                        ddddddddddddddddddddddddddddsadsadsadasdsadasdddddddddddddddddddddddasddadsadsadasdsadsadddddddddddddddddddddddddddddasdsadasdsadasdddddddddddddddddddddddddddddddddddddddddddsadsadsadasdsadasdddddddddddddddddddddddasddadsadsadasdsadsadddddddddddddddddddddddddddddasdsadasdsadasddddddddddddddd
+                    </p>
                 </article>
             </div>
             <div class="modal_part" id="modal_right">
-                <article id="comment_body">사용자들의 평론
-                    <div class="comment_check" id="comment_day">
-                        날짜
+                <fieldset id="comment">
+                    <legend>사용자들의 평론</legend>
+                    <table id="comment_table">
+                        <tr>
+                            <th id="comment_day">날짜</th>
+                            <th id="comment_id">닉네임</th>
+                            <th id="comment_text">내용</th>
+                            <th id="comment_rate">평점</th>
+                        </tr>
+                        <tr>
+                            <th id="comment_day"><a href=""></a></th>
+                            <th id="comment_id"><a href=""></a></th>
+                            <th id="comment_text"><a href=""></a></th>
+                            <th id="comment_rate"><a href=""></a></th>
+                        </tr>
+                    </table>
+                    <!-- <article id="comment_body">
+                        <div class="comment_check" id="comment_day">
+                            날짜
+                        </div>
+                        <div class="comment_check" id="comment_id">
+                            닉네임
+                        </div>
+                        <div class="comment_check" id="comment_text">
+                            내용
+                        </div>
+                        <div class="comment_check" id="comment_rate">
+                            평점
+                        </div>
+                    </article> -->
+                    <button id="write_cmt" onclick="writeComment()">댓글 쓰기</button>
+                </fieldset>
+                <fieldset id="commentWrite">평가 작성하기
+                    <div>
+                        <div class="write1" id="userId">
+                            <input placeholder="닉네임" />
+                        </div>
+                        <div class="write1" id="rateStar">
+                            <input placeholder="별점" />
+                            <input placeholder="평점"/>
+                        </div>
                     </div>
-                    <div class="comment_check" id="comment_id">
-                        닉네임
-                    </div>
-                    <div class="comment_check" id="comment_text">
-                        내용
-                    </div>
-                    <div class="comment_check" id="comment_rate">
-                        평점
-                    </div>
-                </article>
+                    <section id="comment_context">
+                        <input type="text" placeholder="평가를 남겨주세요" />
+                    </section>
+                </fieldset>
             </div>
         </div>
     </div>
@@ -54,6 +94,10 @@
         divOpenModal.addEventListener("click", () => {
             modal.style.display = "flex";
         });
+
+        function writeComment() {
+
+        }
     </script>
 
 
