@@ -10,7 +10,7 @@ import org.apache.catalina.webresources.StandardRoot;
 
 public class App {
     private static final String WEB_APP_DIR_LOCATION = "app/src/main/resources";
-    private static final String CLASS_LOCATION = "app/build/classes";
+    private static final String CLASS_LOCATION = "app/bin/main";
     private static final String WEB_APP_VIRTUAL_PATH = "/WEB-INF/classes";
 
     public static void main(String[] args) throws Exception {
