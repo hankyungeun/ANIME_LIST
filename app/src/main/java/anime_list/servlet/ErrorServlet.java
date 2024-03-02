@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/error")
+public class ErrorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            InputStream inputStream = getServletContext().getResourceAsStream("/templates/hi.html");
+            InputStream inputStream = getServletContext().getResourceAsStream("/templates/error.html");
             InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
 
             char[] buffer = new char[1024];
@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
             inputStream.close();
             reader.close();
         } catch (NullPointerException e) {
-            response.sendRedirect(request.getContextPath() + "/error");
+            System.out.println("error.html파일을 찾을 수 없응");
         }
     }
 }
