@@ -2,6 +2,7 @@ package anime_list.servlet;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
@@ -15,21 +16,24 @@ public class MainServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        // index.html 파일을 읽어서 출력
-        try (InputStream inputStream = getServletContext().getResourceAsStream("/templates/index.html")) {
-            if (inputStream != null) {
-                int data;
-                while ((data = inputStream.read()) != -1) {
-                    out.write(data);
-                }
-            } else {
-                out.println("<html><head><title>Error</title></head><body>");
-                out.println("<h1>Could not find index.html</h1>");
-                out.println("</body></html>");
+        try {
+            InputStream inputStream = getServletContext().getResourceAsStream("/templates/index.html");
+            InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
+
+            char[] buffer = new char[1024];
+            int bytesRead;
+            while ((bytesRead = reader.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
             }
+
+            inputStream.close();
+            reader.close();
+        } catch (NullPointerException e) {
+            response.sendRedirect(request.getContextPath() + "/error");
         }
     }
 }
