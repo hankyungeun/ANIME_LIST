@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         try {
-            InputStream inputStream = getServletContext().getResourceAsStream("/templates/hi.html");
+            InputStream inputStream = getServletContext().getResourceAsStream("/templates/login.html");
             InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
 
             char[] buffer = new char[1024];
