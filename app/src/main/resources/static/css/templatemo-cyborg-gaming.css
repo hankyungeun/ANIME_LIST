@@ -855,13 +855,13 @@ Most Popular Style
   font-size: 14px;
 }
 
-.most-popular .item ul li:first-child i {
+.most-popular .item ul li i {
   color: yellow;
 }
 
-.most-popular .item ul li:last-child i {
-  color: #ec6090;
-}
+/*.most-popular .item ul li:first-child i {*/
+/*  color: #ec6090;*/
+/*}*/
 
 .most-popular .main-button {
   text-align: center;

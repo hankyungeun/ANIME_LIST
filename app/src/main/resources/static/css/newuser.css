@@ -1,0 +1,96 @@
+#ryubtn:active:focus {
+    box-shadow: none !important;
+
+
+  }
+
+
+
+
+  #main {
+
+    background-color: #27292a;
+    height: auto;
+  }
+
+
+  #login {
+    background-color: #27292a;
+    border-radius: 23px;
+    width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #login-id {
+    height: 45px;
+    width: 450px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #e75e8d;
+
+  }
+
+  #login-pw {
+    height: 45px;
+    width: 450px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #e75e8d;
+
+  }
+
+  #login-pw2 {
+    height: 45px;
+    width: 450px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #e75e8d;
+
+  }
+
+  #login-us {
+    height: 45px;
+    width: 450px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #e75e8d;
+
+  }
+
+  #login-button {
+    height: 100px;
+    width: 300px;
+    background-color: #27292a;
+    border-radius: 23px;
+    font-size: 40px;
+    color: #e75e8d;
+  }
+
+  #newuser-button {
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    color: #e75e8d;
+    font-size: 18px;
+    font-weight: 800;
+    background-color: #27292a;
+  }
+
+  h5 {
+    text-align: left;
+    color: #e75e8d;
+  }
+
+  #login-form {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }

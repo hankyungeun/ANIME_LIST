@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.WebResourceRoot;
+import org.apache.catalina.connector.Connector;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
@@ -16,6 +17,9 @@ public class App {
     public static void main(String[] args) throws Exception {
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(8080);
+
+        Connector connector = tomcat.getConnector();
+        connector.setURIEncoding("UTF-8");
 
         Context context = tomcat.addWebapp("/", new File(WEB_APP_DIR_LOCATION).getAbsolutePath());
         File additionWebInfClasses = new File(CLASS_LOCATION);

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모달창연습</title>
+    <link rel=stylesheet href="../static/css/part_modal.css">
+</head>
+
+<body>
+    <div id="introIcon">
+        <a href=""></a>애니 소개 아이콘
+    </div>
+    <div class="modal">
+        <div class="modal_body">
+            <div class="modal_part" id="modal_left">
+                <div class="modal_thumbnail">
+                    <a href="">영상링크</a>
+                </div>
+                <div class="infoShort" >
+                    <div id="releaseDate">
+                        방영 일자
+                        <a href=""></a>
+                    </div>
+                    <div id="rate">
+                        <img src="">평점<a href=""></a>
+                    </div>
+                </div>
+                <article id="introduction">
+                    <h3>줄거리 간략 소개</h3>
+                    <link href="">
+                    <p>
+                        ddddddddddddddddddddddddddddsadsadsadasdsadasdddddddddddddddddddddddasddadsadsadasdsadsadddddddddddddddddddddddddddddasdsadasdsadasdddddddddddddddddddddddddddddddddddddddddddsadsadsadasdsadasdddddddddddddddddddddddasddadsadsadasdsadsadddddddddddddddddddddddddddddasdsadasdsadasddddddddddddddd
+                    </p>
+                </article>
+            </div>
+            <div class="modal_part" id="modal_right">
+                <fieldset id="comment">
+                    <legend><h3>평론</h3></legend>
+                    <table id="comment_table">
+                        <tr>
+                            <th class="comment_head" id="comment_day">날짜</th>
+                            <th class="comment_head" id="comment_id">닉네임</th>
+                            <th class="comment_head" id="comment_text">내용</th>
+                            <th class="comment_head" id="comment_rate">평점</th>
+                        </tr>
+                        <tr>
+                            <td class="content_comment" id="comment_day"><a href=""></a></td>
+                            <td class="content_comment" id="comment_id"><a href=""></a></td>
+                            <td class="content_comment" id="comment_text"><a href=""></a></td>
+                            <td class="content_comment" id="comment_rate"><a href=""></a></td>
+                        </tr>
+                    </table>
+                    <button id="write_cmt" onclick="writeComment()">댓글 쓰기</button>
+                </fieldset>
+                <fieldset id="commentWrite">평가 작성하기
+                    <div id="comment_info">
+                        <div class="write1" id="userId">
+                            <input placeholder="닉네임" />
+                        </div>
+                        <div class="write1" id="star-rating">
+                            <input type="radio" placeholder="별점" />
+                            <input id="score" placeholder="평점"/>
+                        </div>
+                    </div>
+                    <textarea id="comment_context" placeholder="평가를 남겨주세요"></textarea>
+                    <!-- <section id="comment_context" >
+                        <input type="text" placeholder="평가를 남겨주세요" />
+                    </section> -->
+                    <button onclick="writeCompleteComment()">댓글 등록</button>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        const modal = document.querySelector('.modal');
+        const divModal = document.querySelector('#introIcon');
+        const commentOpen = document.querySelector('#commentWrite');
+
+        divModal.addEventListener("click", () => {
+            modal.style.display = "flex";
+            modal.style.visibility = 'visible';
+        });
+
+        window.addEventListener("click", (e)=> {
+            e.target === modal ? modal.style.visibility = 'hidden' : false;
+            e.target === modal ? commentOpen.style.visibility ='hidden' : false;
+
+        })
+
+        function writeComment() {
+            commentOpen.style.visibility = 'visible';
+        }
+    </script>
+
+
+    <!-- <div class="newModal" onclick="openModal()"><h2>AnimeConnect</h2>
+        <div class="newModal_body">
+            <h4>title</h4>
+            <h5>방영일자</h5>
+        </div>
+    </div>
+    <script>
+        function openModal() {
+            
+            const nModal = document.querySelector('.newModal');
+            const divOpenModal = document.querySelector('.newModal_body');
+
+            divOpenModal.addEventListener("click", ()=>{
+                nModal.style.display="flex";
+            })
+        }
+    </script>
+ -->
+</body>
+
+</html>

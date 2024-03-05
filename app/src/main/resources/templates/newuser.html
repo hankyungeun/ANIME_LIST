@@ -13,77 +13,16 @@ aa
   <title>Cyborg - Awesome HTML5 Template</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 
   <!-- Additional CSS Files -->
-  <link rel="stylesheet" href="../static/css/fontawesome.css">
-  <link rel="stylesheet" href="../static/css/templatemo-cyborg-gaming.css">
-  <link rel="stylesheet" href="../static/css/owl.css">
-  <link rel="stylesheet" href="../static/css/animate.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.css">
+  <link rel="stylesheet" href="./static/css/templatemo-cyborg-gaming.css">
+  <link rel="stylesheet" href="./static/css/owl.css">
+  <link rel="stylesheet" href="./static/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-
-  <style>
-    #ryubtn:active:focus {
-      box-shadow: none !important;
-
-
-    }
-
-
-
-
-    #main {
-
-      background-color: #27292a;
-      height: auto;
-      display: flex;
-    }
-
-
-    #login {
-      background-color: #27292a;
-      border-radius: 23px;
-      width: 1000px;
-      margin: auto;
-
-    }
-
-    #login-id {
-      margin-left: 300px;
-      height: 45px;
-      width: 450px;
-      border-radius: 10px;
-      font-size: 20px;
-      color: #e75e8d;
-
-    }
-
-    #login-button {
-      margin-left: 375px;
-      height: 100px;
-      width: 300px;
-      background-color: #27292a;
-      border-radius: 23px;
-      font-size: 40px;
-      color: #e75e8d;
-    }
-
-    #newuser-button {
-      height: 50px;
-      width: 100px;
-      border-radius: 10px;
-      color: #e75e8d;
-      font-size: 18px;
-      font-weight: 800;
-      background-color: #27292a;
-    }
-
-    h5 {
-      margin-left: 30%;
-      color: #e75e8d;
-    }
-  </style>
+  <link rel="stylesheet" href="./static/css/newuser.css">
   <!--
 
 TemplateMo 579 Cyborg Gaming
@@ -116,7 +55,7 @@ https://templatemo.com/tm-579-cyborg-gaming
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="index.html" class="logo">
-              <img src="../static/images/logo.png" alt="">
+              <img src="./static/images/logo.png" alt="">
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Search End ***** -->
@@ -134,7 +73,7 @@ https://templatemo.com/tm-579-cyborg-gaming
               <li><a href="browse.html" class="active">Browse</a></li>
               <li><a href="details.html">Details</a></li>
               <li><a href="streams.html">Streams</a></li>assets/images/profile-header.jpg
-              <li><a href="profile.html">Profile <img src="../static/images/profile-header.jpg" alt=""></a></li>
+              <li><a href="profile.html">Profile <img src="./static/images/profile-header.jpg" alt=""></a></li>
             </ul>
             <a class='menu-trigger'>
               <span>Menu</span>
@@ -147,74 +86,127 @@ https://templatemo.com/tm-579-cyborg-gaming
   </header>
   <!-- ***** Header Area End ***** -->
 
-  <div class="container">
+  <!-- <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <div class="page-content">
+        <div class="page-content"> -->
 
-          <!-- ***** Featured Games Start ***** -->
-          <div id="main">
-            <div id="login">
-              <div style="height: 30px;"></div>
-              <div>
-                <label style="font-size: 50px; color: #e75e8d; margin-left: 430px;">회원가입</label>
-              </div>
-              <div>
-                <br>
-                <br>
+  <!-- ***** Featured Games Start ***** -->
+  <div style="margin: 8%;"></div>
+  <!-- <div id="main"> -->
+  <div id="login">
+    <div style="height: 30px;"></div>
+    <div>
+      <label style="font-size: 50px; color: #e75e8d; ">회원가입</label>
+    </div>
+    <div id="login-form">
+      <br>
+      <br>
+      <div style="margin-left:  104px;">
+        <input type="text" id="login-id" placeholder="&nbsp;&nbsp;아이디">
 
-                <input type="text" id="login-id" placeholder="&nbsp;&nbsp;아이디">
-                <button id="newuser-button">중복체크</button>
+        <button id="newuser-button" onclick="checkId()" >중복체크</button>
+        <h5>아이디는 5자이상 영어/숫자 만 가능합니다.</h5>
+      
+    
 
-                <h5>아이디는 5자이상 영어/숫자 만 가능합니다.</h5>
+      <input type="password" id="login-pw" onkeyup="checkPw()" placeholder="&nbsp;&nbsp;비밀 번호">
+      <h5>비밀번호는 8자이상 만 가능합니다.</h5>
+    </div>
+      <input type="password" id="login-pw2" onkeyup="checkPw2()" placeholder="&nbsp;&nbsp;비밀 번호 확인">
+      <br><br>
+      <input type="text" id="login-us" placeholder="&nbsp;&nbsp;유저 닉네임">
 
-                <input type="password" id="login-id" placeholder="&nbsp;&nbsp;비밀 번호">
-                <h5>비밀번호는 8자이상 영어/숫자 만 가능합니다.</h5>
+      <div>
+        <ul style=" color: red;">
+          <li id="error"></li>
+          <li id="error2"></li>
+          <li id="error3"></li>
+        </ul>
+      </div>
+      <br>
+      <button id="login-button">회원가입</button>
+      <br><br>
+      <div>
 
-                <input type="password" id="login-id" placeholder="&nbsp;&nbsp;비밀 번호 확인">
-                <br><br>
-                <input type="password" id="login-id" placeholder="&nbsp;&nbsp;유저 닉네임">
+        <a href="" style="color: #e75e8d;">아이디 찾기 |</a>
+        <a href="" style="color: #e75e8d;">비밀번호 찾기</a>
+        <br><br><br><br>
+      </div>
 
-                <div>
-                  <ul style="margin-left: 30%; color: red;">
-                    <li>아이디:필수 정보입니다.</li>
-                    <li>비밀번호:필수 정보입니다.</li>
-                  </ul>
-                </div>
-                <br>
-                <button id="login-button">회원가입</button>
-                <br><br>
+      <script>
+        function checkId() {
+          const ch = /^[a-z0-9]+$/;
+          const id = document.getElementById("login-id").value;
+          document.getElementById("error").innerHTML = "";
 
+          if (ch.test(id)) {
 
-                <div style="margin-left: 42%;">
-
-                  <a href="" style="color: #e75e8d;">아이디 찾기 |</a>
-                  <a href="" style="color: #e75e8d;">비밀번호 찾기</a>
-                  <br><br><br><br>
-                </div>
-
-              </div>
-              <div></div>
-
-            </div>
-
-          </div>
+            if (id.length < 5) {
+              document.getElementById("error").innerHTML = "규정에 맞지 않는 아이디입니다";
+            }
 
 
-          <!-- ***** Featured Games End ***** -->
 
-          <!-- ***** Start Stream Start ***** -->
+          } else {
+            document.getElementById("error").innerHTML = "규정에 맞지 않는 아이디입니다";
+          }
+        }
 
-          <!-- ***** Start Stream End ***** -->
+        function checkPw() {
+          const ch = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
+          const pw = document.getElementById("login-pw").value;
+          console.log(pw);
+          console.log(ch.test(pw));
 
-          <!-- ***** Live Stream Start ***** -->
+          if (ch.test(pw)) {
+            console.log(222);
+            document.getElementById("error2").innerHTML = "규정에 맞지 않는 비밀번호입니다";
+          } else if (pw.length >= 8) {
+            document.getElementById("error2").innerHTML = " ";
+          } else {
+            document.getElementById("error2").innerHTML = "규정에 맞지 않는 비밀번호입니다";
+          }
 
-          <!-- ***** Live Stream End ***** -->
+        }
 
-        </div>
+        function checkPw2() {
+          const pw = document.getElementById("login-pw").value;
+          const pw2 = document.getElementById("login-pw2").value;
+          if (pw == pw2) {
+            document.getElementById("error3").innerHTML = " ";
+          } else {
+            document.getElementById("error3").innerHTML = "비밀번호가 일치하지 않습니다";
+          }
+
+
+        }
+      </script>
+
+
+
+
+    </div>
+
+  </div>
+
+  </div>
+
+
+  <!-- ***** Featured Games End ***** -->
+
+  <!-- ***** Start Stream Start ***** -->
+
+  <!-- ***** Start Stream End ***** -->
+
+  <!-- ***** Live Stream Start ***** -->
+
+  <!-- ***** Live Stream End ***** -->
+
+  <!-- </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <footer>
     <div class="container">
@@ -234,11 +226,11 @@ https://templatemo.com/tm-579-cyborg-gaming
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="../static/js/isotope.min.js"></script>
-  <script src="../static/js/owl-carousel.js"></script>
-  <script src="../static/js/tabs.js"></script>
-  <script src="../static/js/popup.js"></script>
-  <script src="../static/js/custom.js"></script>
+  <script src="./static/js/isotope.min.js"></script>
+  <script src="./static/js/owl-carousel.js"></script>
+  <script src="./static/js/tabs.js"></script>
+  <script src="./static/js/popup.js"></script>
+  <script src="./static/js/custom.js"></script>
 
 
 </body>

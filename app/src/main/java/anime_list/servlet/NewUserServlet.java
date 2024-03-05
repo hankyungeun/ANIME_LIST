@@ -11,17 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/main")
-public class MainServlet extends HttpServlet {
-
+@WebServlet("/newuser")
+public class NewUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        try {
-            InputStream inputStream = getServletContext().getResourceAsStream("/templates/index.html");
+        try{
+            InputStream inputStream = getServletContext().getResourceAsStream("/templates/newuser.html");
             InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
 
             char[] buffer = new char[1024];
