@@ -31,11 +31,12 @@ public class CommentDao {
                 e.printStackTrace();
             } 
     }       
-        
+
     public ArrayList<Comment> selectAllList(Connection conn){
         ArrayList<Comment> list = new ArrayList<>();
 
         PreaparedStatement pstmt = null;
+        s
 
         return list;
     }
