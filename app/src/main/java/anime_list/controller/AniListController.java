@@ -18,27 +18,15 @@ public class AniListController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain; charset=UTF-8");
 
-        List<AniList> aniList = new AniListService().selectAllList();
+        List<AniList> aniList = new AniListService().selectLatestAniList();
 
         if (aniList.isEmpty()) {
             response.getWriter().write("데이터 없음!!!");
         } else {
             PrintWriter out = response.getWriter();
             Gson gson = new Gson();
-                String json = gson.toJson(aniList);
-                out.println(json);
+            String json = gson.toJson(aniList);
+            out.println(json);
         }
-    }
-
-    public List<AniList> getAniList() {
-
-        List<AniList> aniList = new AniListService().selectAllList();
-
-        if (aniList.isEmpty()) {
-            System.out.println("데이터없음!!!");
-        } else {
-            System.out.println(aniList);
-        }
-        return aniList;
     }
 }

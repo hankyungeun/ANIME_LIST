@@ -8,7 +8,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public class AniListService {
-    public ArrayList<AniList> selectAllList() {
+    public ArrayList<AniList> selectLatestAniList() {
         Connection conn = JDBC.getConnection();
         ArrayList<AniList> list = new AniListDao().selectAllList(conn);
         JDBC.close(conn);
