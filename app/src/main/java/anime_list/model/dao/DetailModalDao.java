@@ -35,8 +35,9 @@ public class DetailModalDao {
         }
     }
     
-    public ArrayList<AniList> selectEachList(Connection conn, String key) {
+    public ArrayList<AniList> selectEachListinModal(Connection conn, String key) {
         ArrayList<AniList> list = new ArrayList<>();
+        
         
         PreparedStatement pstmt = null;
         ResultSet rset = null;
@@ -59,6 +60,39 @@ public class DetailModalDao {
                         rset.getString("IMAGE_URL"),
                         rset.getString("VIDEO_URL")                );
                 list.add(each_info_aniList);            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
+        
+        return list;
+    }
+
+    public ArrayList<Comment> selectCommentinModal(Connection conn, String key) {
+        ArrayList<Comment> list = new ArrayList<>();
+        
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        // String sql = "Select sss from anilist by "
+        String sql = prop.getProperty("each_info_comment");
+        try{
+            pstmt = conn.prepareStatement(sql);
+            rset = pstmt.executeQuery(sql);
+            pstmt.setString(1, key);
+
+            while(rset.next()) {
+                Comment each_info_comment = new Comment(
+                        rset.getString("ANI_PK"),
+                        rset.getString("COMMENT_PK"),
+                        rset.getString("USER_PK"),
+                        rset.getString("CONTENT"),
+                        rset.getDate("COMMET_DATE"),
+                        rset.getFloat("INIT_GRADE")        );
+                list.add(each_info_comment);            }
 
         } catch(SQLException e) {
             e.printStackTrace();

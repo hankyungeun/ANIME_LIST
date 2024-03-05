@@ -8,11 +8,12 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public class DetailModalService {
-    public ArrayList<AniList> selectEachList() { 
-        Connection conn = JDBC.getConnection();
-        ArrayList<AniList> list = new DetailModalDao().selectEachList(conn, key);
-        JDBC.close(conn);
+    // public ArrayList<AniList> selectEachListinModal() { 
+    //     String key = ?;
+    //     Connection conn = JDBC.getConnection();
+    //     ArrayList<AniList> list = new DetailModalDao().selectEachListinModal(conn, key);
+    //     JDBC.close(conn);
 
-        return list;
-    }
+    //     return list;
+    // }
 }
