@@ -19,7 +19,7 @@ function latestAniList(){
                 $('#ani-list').append(
                     `<div class=\"col-lg-3 col-sm-6\"><div class=\"item\">`+
                     `<img src="${item.imgUrl}" alt="noImage">`+
-                    `<h4>${item.title}</h4>`+
+                    `<div><div class="ani_title">${item.title}</div></>`+
                     `<ul><li><i class="fa fa-star"></i> ${grade}</li>`
                 )
             })

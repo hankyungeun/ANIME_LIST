@@ -831,10 +831,24 @@ Most Popular Style
 }
 
 .most-popular .item h4 {
+  text-overflow: ellipsis;
   font-size: 15px;
   margin-top: 20px;
   margin-bottom: 0px;
   display: inline-block;
+}
+
+.most-popular .item div .ani_title{
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color : #fff;
+  font-weight: 700;
+  width: 85%;
+  /*display: flex;*/
 }
 
 .most-popular .item span {
@@ -846,7 +860,7 @@ Most Popular Style
 
 .most-popular .item ul {
   float: right;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
 }
 
 .most-popular .item ul li {
