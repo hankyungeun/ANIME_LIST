@@ -37,7 +37,7 @@ public class AniListDao {
         ResultSet rset = null;
 
         //String sql = "SELECT * FROM MEMBER ORDER BY USERNO";
-        String sql = prop.getProperty("aniList");
+        String sql = prop.getProperty("LatestAniList");
         try {
             pstmt = conn.prepareStatement(sql);
             rset = pstmt.executeQuery(sql);
