@@ -5,7 +5,7 @@ $(function(){
 
 function latestAniList(){
     $.ajax({
-        url: 'AniList',
+        url: 'AniList/latest',
         type: 'GET',
         contentType: 'application/json;',
         dataType: 'json',
