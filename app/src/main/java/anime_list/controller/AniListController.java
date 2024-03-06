@@ -12,14 +12,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/AniList")
+@WebServlet("/AniList/*")
 public class AniListController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain; charset=UTF-8");
 
-        List<AniList> aniList = new AniListService().selectLatestAniList();
+        String pathInfo = request.getPathInfo();
 
+        if (pathInfo == null || pathInfo.equals("/")) {
+            response.sendRedirect(request.getContextPath() + "/error");
+            return;
+        }
+
+        if (pathInfo.equals("/latest")) {
+            List<AniList> latestAniList = new AniListService().selectLatestAniList();
+            handleResponse(response, latestAniList);
+        } else {
+            response.sendRedirect(request.getContextPath() + "/error");
+        }
+    }
+
+    private void handleResponse(HttpServletResponse response, List<AniList> aniList) throws IOException {
         if (aniList.isEmpty()) {
             response.getWriter().write("데이터 없음!!!");
         } else {
