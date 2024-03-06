@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>DetailModal Query</comment>
+
+<!--    SYSDATE를 기준으로 해당하는 분기의 애니메이션 목록을 리스팅(메인화면에사용) -->
+    <entry key="each_info_aniList">
+        SELECT * FROM ANI_LIST WHERE ANI_PK = ?;
+    </entry>
+
+    <entry key="each_info_comment">
+        SELECT * FROM COMMENT WHERE ANI_PK = ?;
+    </entry> 
+
+</properties>

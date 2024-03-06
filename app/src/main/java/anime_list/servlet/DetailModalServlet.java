@@ -14,19 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/detailmodal")
 public class DetailModalServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-        throws ServletException, IOException {
+//     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+//         throws ServletException, IOException {
 		
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
-        PrintWriter pw = response.getWriter();
+//         request.setCharacterEncoding("utf-8");
+//         response.setContentType("text/html;charset=utf-8");
+//         PrintWriter pw = response.getWriter();
 
 
-        System.out.println("항목별 개별 조회 요청!");
+//         System.out.println("항목별 개별 조회 요청!");
 
-        System.out.println(request.getParameter("modal"));
+//         System.out.println(request.getParameter("modal"));
 
-    }
+//     }
 }
 
 

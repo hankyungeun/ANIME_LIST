@@ -15,8 +15,4 @@
         SELECT * FROM ANI_LIST
     </entry>
 
-    <entry key="each_info_aniList">
-        SELECT * FROM ANI_LIST WHERE ANI_PK = ?;
-    </entry>
-
 </properties>
