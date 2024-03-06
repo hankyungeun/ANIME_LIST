@@ -51,6 +51,7 @@ public class CommentDao {
                     rset.getDate("COMMENT_DATE"),
                     rset.getFloat("INIT_GRADE")  );
                 list.add(comment);
+                
             }
         } catch (SQLException e) {           
             e.printStackTrace();
@@ -62,33 +63,9 @@ public class CommentDao {
         
 
         return list;
-    }
-
-   
+    } 
+  
         
-        
-
-
-
-
-
-
-
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
