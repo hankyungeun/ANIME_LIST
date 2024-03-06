@@ -30,7 +30,7 @@ public class AniListDao {
         }
     }
 
-    public ArrayList<AniList> selectAllList(Connection conn){
+    public ArrayList<AniList> getLatestAniList(Connection conn){
         ArrayList<AniList> list = new ArrayList<>();
 
         PreparedStatement pstmt = null;

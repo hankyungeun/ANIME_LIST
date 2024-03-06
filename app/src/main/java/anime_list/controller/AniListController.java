@@ -26,14 +26,28 @@ public class AniListController extends HttpServlet {
         }
 
         if (pathInfo.equals("/latest")) {
-            List<AniList> latestAniList = new AniListService().selectLatestAniList();
-            handleResponse(response, latestAniList);
-        } else {
+            List<AniList> latestAniList = new AniListService().getLatestAniList();
+            getLatestAniList(response, latestAniList);
+        } else if(pathInfo.equals("/all")){
+            List<AniList> selectedAniList = new AniListService().getSelectedAniList();
+            getSelectedAniList(request, response, selectedAniList);
+        }else {
             response.sendRedirect(request.getContextPath() + "/error");
         }
     }
 
-    private void handleResponse(HttpServletResponse response, List<AniList> aniList) throws IOException {
+    private void getLatestAniList(HttpServletResponse response, List<AniList> aniList) throws IOException {
+        if (aniList.isEmpty()) {
+            response.getWriter().write("데이터 없음!!!");
+        } else {
+            PrintWriter out = response.getWriter();
+            Gson gson = new Gson();
+            String json = gson.toJson(aniList);
+            out.println(json);
+        }
+    }
+
+    private void getSelectedAniList(HttpServletRequest request, HttpServletResponse response, List<AniList> aniList) throws IOException {
         if (aniList.isEmpty()) {
             response.getWriter().write("데이터 없음!!!");
         } else {
