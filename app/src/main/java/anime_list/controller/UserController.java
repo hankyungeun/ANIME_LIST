@@ -42,6 +42,7 @@ public class UserController extends HttpServlet {
 	}
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
 		/*
 		 * 서블릿은 REST API 구현 전 버전으로 단순히 서블릿 구현인 경우 GET,POST를 내부적으로 동일하게 처리
 		 * GET, POST를 구분해서 처리하는 경우도 별도로 코드 작성은 가능
@@ -49,7 +50,6 @@ public class UserController extends HttpServlet {
 		System.out.println("doPost 메소드 실행!");
 		doGet(request, response);
 	}
-
 }
 
 // @WebServlet("/UserList")
