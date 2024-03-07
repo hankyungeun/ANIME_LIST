@@ -6,10 +6,21 @@
 <!--    SYSDATE를 기준으로 해당하는 분기의 애니메이션 목록을 리스팅(메인화면에사용) -->
     <entry key="LatestAniList">
         SELECT *
-        FROM ANI_LIST
+        FROM
+            ANI_LIST
         WHERE
-        (TO_CHAR(SYSDATE, 'Q') = TO_CHAR(START_DATE, 'Q') AND EXTRACT(YEAR FROM START_DATE) = EXTRACT(YEAR FROM SYSDATE))
+        EXTRACT(YEAR FROM START_DATE) = EXTRACT(YEAR FROM SYSDATE) AND TO_CHAR(SYSDATE, 'Q') = TO_CHAR(START_DATE, 'Q')
     </entry>
+
+<!--    해당 년도 / 분기를 입력받아 애니메이션 목록을 리스팅-->
+    <entry key="selectedAniList">
+        SELECT *
+        FROM
+            ANI_LIST
+        WHERE
+        EXTRACT(YEAR FROM START_DATE) = ? AND TO_CHAR(START_DATE, 'Q') = ?
+    </entry>
+
 
     <entry key="aniList">
         SELECT * FROM ANI_LIST

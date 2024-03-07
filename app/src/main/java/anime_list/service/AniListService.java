@@ -8,9 +8,17 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public class AniListService {
-    public ArrayList<AniList> selectLatestAniList() {
+    public ArrayList<AniList> getLatestAniList() {
         Connection conn = JDBC.getConnection();
-        ArrayList<AniList> list = new AniListDao().selectAllList(conn);
+        ArrayList<AniList> list = new AniListDao().getLatestAniList(conn);
+        JDBC.close(conn);
+
+        return list;
+    }
+
+    public ArrayList<AniList> getSelectedAniList(int year, int quarter){
+        Connection conn = JDBC.getConnection();
+        ArrayList<AniList> list = new AniListDao().getSelectedAniList(conn, year, quarter);
         JDBC.close(conn);
 
         return list;

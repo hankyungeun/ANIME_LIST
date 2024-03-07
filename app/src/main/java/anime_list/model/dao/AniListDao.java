@@ -31,13 +31,12 @@ public class AniListDao {
         }
     }
 
-    public ArrayList<AniList> selectAllList(Connection conn){
+    public ArrayList<AniList> getLatestAniList(Connection conn){
         ArrayList<AniList> list = new ArrayList<>();
 
         PreparedStatement pstmt = null;
         ResultSet rset = null;
 
-        //String sql = "SELECT * FROM MEMBER ORDER BY USERNO";
         String sql = prop.getProperty("LatestAniList");
         try {
             pstmt = conn.prepareStatement(sql);
@@ -65,4 +64,39 @@ public class AniListDao {
         }
         return list;
     }
+    public ArrayList<AniList> getSelectedAniList(Connection conn, int year, int quarter) {
+        ArrayList<AniList> list = new ArrayList<>();
+
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        String sql = prop.getProperty("selectedAniList");
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, year);
+            pstmt.setInt(2, quarter);
+            rset = pstmt.executeQuery();
+
+            while(rset.next()) {			// .next():데이터가 있는지 여부 체크
+                AniList aniList = new AniList(
+                        rset.getString("ANI_PK"),
+                        rset.getString("TITLE"),
+                        rset.getString("GENRE"),
+                        rset.getString("DETAIL"),
+                        rset.getFloat("GRADE"),
+                        rset.getDate("START_DATE"),
+                        rset.getString("IMAGE_URL"),
+                        rset.getString("VIDEO_URL")                );
+                list.add(aniList);
+
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
+        return list;}
+
 }
