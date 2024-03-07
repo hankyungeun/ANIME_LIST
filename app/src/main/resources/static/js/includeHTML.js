@@ -29,7 +29,4 @@ window.onload = function includeHTML(callback) {
             return;
         }
     }
-    setTimeout(function() {
-        callback();
-    }, 0);
 }
