@@ -90,7 +90,7 @@ public class DetailModalDao {
                         rset.getString("COMMENT_PK"),
                         rset.getString("USER_PK"),
                         rset.getString("CONTENT"),
-                        rset.getDate("COMMET_DATE"),
+                        rset.getDate("COMMENT_DATE"),
                         rset.getFloat("INIT_GRADE")        );
                 list.add(each_info_comment);            }
 
