@@ -16,7 +16,11 @@ public class AniListService {
         return list;
     }
 
-    public ArrayList getSelectedAniList(){
-        return null;
+    public ArrayList<AniList> getSelectedAniList(int year, int quarter){
+        Connection conn = JDBC.getConnection();
+        ArrayList<AniList> list = new AniListDao().getSelectedAniList(conn, year, quarter);
+        JDBC.close(conn);
+
+        return list;
     }
 }

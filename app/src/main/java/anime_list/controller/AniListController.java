@@ -28,8 +28,12 @@ public class AniListController extends HttpServlet {
         if (pathInfo.equals("/latest")) {
             List<AniList> latestAniList = new AniListService().getLatestAniList();
             getLatestAniList(response, latestAniList);
-        } else if(pathInfo.equals("/all")){
-            List<AniList> selectedAniList = new AniListService().getSelectedAniList();
+        } else if(pathInfo.equals("/select")){
+            String year = request.getParameter("year");
+            String quarter = request.getParameter("quarter");
+
+            List<AniList> selectedAniList = new AniListService().getSelectedAniList(
+                                                    Integer.parseInt(year), Integer.parseInt(quarter));
             getSelectedAniList(request, response, selectedAniList);
         }else {
             response.sendRedirect(request.getContextPath() + "/error");
