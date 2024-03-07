@@ -35,7 +35,7 @@ public class AniListController extends HttpServlet {
             List<AniList> selectedAniList = new AniListService().getSelectedAniList(
                                                     Integer.parseInt(year), Integer.parseInt(quarter));
             getSelectedAniList(request, response, selectedAniList);
-        }else {
+        } else {
             response.sendRedirect(request.getContextPath() + "/error");
         }
     }
