@@ -24,8 +24,7 @@ public class DetailModalDao {
 
     public DetailModalDao() {
         try {
-            prop.loadFromXML(new FileInputStream("app/src/main/resources/db/anyListQuery.xml"));
-            prop.loadFromXML(new FileInputStream("app/src/main/resources/db/commmentQuery.XML"));
+            prop.loadFromXML(new FileInputStream("app/src/main/resources/db/detailModalQuery.xml"));
         } catch (InvalidPropertiesFormatException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
@@ -35,7 +34,7 @@ public class DetailModalDao {
         }
     }
     
-    public ArrayList<AniList> selectEachListinModal(Connection conn, String key) {
+    public ArrayList<AniList> selectEachListinModal(Connection conn, String aniPk) {
         ArrayList<AniList> list = new ArrayList<>();
         
         
@@ -47,7 +46,7 @@ public class DetailModalDao {
         try{
             pstmt = conn.prepareStatement(sql);
             rset = pstmt.executeQuery(sql);
-            pstmt.setString(1, key);
+            pstmt.setString(1, aniPk);
 
             while(rset.next()) {
                 AniList each_info_aniList = new AniList(
@@ -71,7 +70,7 @@ public class DetailModalDao {
         return list;
     }
 
-    public ArrayList<Comment> selectCommentinModal(Connection conn, String key) {
+    public ArrayList<Comment> selectCommentinModal(Connection conn, String aniPk) {
         ArrayList<Comment> list = new ArrayList<>();
         
         PreparedStatement pstmt = null;
@@ -82,7 +81,7 @@ public class DetailModalDao {
         try{
             pstmt = conn.prepareStatement(sql);
             rset = pstmt.executeQuery(sql);
-            pstmt.setString(1, key);
+            pstmt.setString(1, aniPk);
 
             while(rset.next()) {
                 Comment each_info_comment = new Comment(

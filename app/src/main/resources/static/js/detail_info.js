@@ -5,7 +5,7 @@ $(function () {
 
 function detailModalAniInfo(aniPk) {
     $.ajax({
-        url: 'AniList/latest/modal/'+aniPk,
+        url: 'AniList/latest/modal/'+aniPk+'',
         type: 'GET',
         contentType: 'application/json',
         dataType: 'json',

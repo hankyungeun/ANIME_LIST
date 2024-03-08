@@ -10,17 +10,17 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public class DetailModalService {
-    public ArrayList<AniList> selectEachListinModal(String key) { 
+    public ArrayList<AniList> selectEachListinModal(String aniPk) { 
         Connection conn = JDBC.getConnection();
-        ArrayList<AniList> list = new DetailModalDao().selectEachListinModal(conn, key);
+        ArrayList<AniList> list = new DetailModalDao().selectEachListinModal(conn, aniPk);
         JDBC.close(conn);
 
         return list;
     }
 
-    public ArrayList<Comment> selectCommentinModal(String key) {
+    public ArrayList<Comment> selectCommentinModal(String aniPk) {
         Connection conn = JDBC.getConnection();
-        ArrayList<Comment> list = new DetailModalDao().selectCommentinModal(conn, key);
+        ArrayList<Comment> list = new DetailModalDao().selectCommentinModal(conn, aniPk);
         JDBC.close(conn);
 
         return list;
