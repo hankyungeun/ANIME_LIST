@@ -3,7 +3,7 @@
 <properties>
     <comment>DetailModal Query</comment>
 
-<!--    SYSDATE를 기준으로 해당하는 분기의 애니메이션 목록을 리스팅(메인화면에사용) -->
+<!-- 개별 애니메이션의 정보 불러오기 -->
     <entry key="each_info_aniList">
         SELECT * FROM ANI_LIST WHERE ANI_PK = ?;
     </entry>
