@@ -53,7 +53,6 @@ public class AniListDao {
                         rset.getString("IMAGE_URL"),
                         rset.getString("VIDEO_URL")                );
                 list.add(aniList);
-
             }
 
         } catch(SQLException e) {
