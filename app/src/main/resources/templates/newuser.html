@@ -1,4 +1,3 @@
-aa
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -15,6 +14,7 @@ aa
   <!-- Bootstrap core CSS -->
   <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+  <script src="./static/js/newuser.js"></script>
 
   <!-- Additional CSS Files -->
   <link rel="stylesheet" href="./static/css/fontawesome.css">
@@ -47,50 +47,8 @@ https://templatemo.com/tm-579-cyborg-gaming
   </div>
   <!-- ***** Preloader End ***** -->
 
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <img src="./static/images/logo.png" alt="">
-            </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Search End ***** -->
-            <div class="search-input">
-              <form id="search" action="#">
-                <input type="text" placeholder="Type Something" id='searchText' name="searchKeyword"
-                  onkeypress="handle" />
-                <i class="fa fa-search"></i>
-              </form>
-            </div>
-            <!-- ***** Search End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="browse.html" class="active">Browse</a></li>
-              <li><a href="details.html">Details</a></li>
-              <li><a href="streams.html">Streams</a></li>assets/images/profile-header.jpg
-              <li><a href="profile.html">Profile <img src="./static/images/profile-header.jpg" alt=""></a></li>
-            </ul>
-            <a class='menu-trigger'>
-              <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
 
-  <!-- <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="page-content"> -->
-
+  <header include-html="./templates/header.html"></header>
   <!-- ***** Featured Games Start ***** -->
   <div style="margin: 8%;"></div>
   <!-- <div id="main"> -->
@@ -99,95 +57,50 @@ https://templatemo.com/tm-579-cyborg-gaming
     <div>
       <label style="font-size: 50px; color: #e75e8d; ">회원가입</label>
     </div>
-    <div id="login-form">
-      <br>
-      <br>
-      <div style="margin-left:  104px;">
-        <input type="text" id="login-id" placeholder="&nbsp;&nbsp;아이디">
+    <form action="/insertUesr" method="POST" name="mForm">
+      <div id="login-form">
+        <br>
+        <br>
 
-        <button id="newuser-button" onclick="checkId()" >중복체크</button>
-        <h5>아이디는 5자이상 영어/숫자 만 가능합니다.</h5>
-      
-    
+        <div style="margin-left:  104px;">
+          <input type="text" id="login-id" placeholder="&nbsp;&nbsp;아이디" name="userId" required>
 
-      <input type="password" id="login-pw" onkeyup="checkPw()" placeholder="&nbsp;&nbsp;비밀 번호">
-      <h5>비밀번호는 8자이상 만 가능합니다.</h5>
-    </div>
-      <input type="password" id="login-pw2" onkeyup="checkPw2()" placeholder="&nbsp;&nbsp;비밀 번호 확인">
-      <br><br>
-      <input type="text" id="login-us" placeholder="&nbsp;&nbsp;유저 닉네임">
+          <button id="newuser-button" onclick="checkId()" type="button">체크</button>
+          <h5>아이디는 5자이상 영어/숫자 만 가능합니다.</h5>
 
-      <div>
-        <ul style=" color: red;">
-          <li id="error"></li>
-          <li id="error2"></li>
-          <li id="error3"></li>
-        </ul>
+
+
+          <input type="password" id="login-pw" onkeyup="checkPw()" placeholder="&nbsp;&nbsp;비밀 번호" name="passwd" >
+          <h5>비밀번호는 8자이상 만 가능합니다.</h5>
+        </div>
+        <input type="password" id="login-pw2" onkeyup="checkPw2()" placeholder="&nbsp;&nbsp;비밀 번호 확인" name="passwdch" >
+        <br>
+        <input type="text" id="login-us" placeholder="&nbsp;&nbsp;유저 닉네임" name="name">
+
+        <div>
+          <ul style=" color: red;">
+            <li id="error"></li>
+            <li id="error2"></li>
+            <li id="error3"></li>
+          </ul>
+        </div>
+        <br>
+        <button id="login-button" onclick="newuser(event);" >회원가입</button>
+        <br><br>
+        <div>
+
+          <a href="" style="color: #e75e8d;">아이디 찾기 |</a>
+          <a href="" style="color: #e75e8d;">비밀번호 찾기</a>
+          <br><br><br><br>
+        </div>
+
+
+
+
+
+
       </div>
-      <br>
-      <button id="login-button">회원가입</button>
-      <br><br>
-      <div>
-
-        <a href="" style="color: #e75e8d;">아이디 찾기 |</a>
-        <a href="" style="color: #e75e8d;">비밀번호 찾기</a>
-        <br><br><br><br>
-      </div>
-
-      <script>
-        function checkId() {
-          const ch = /^[a-z0-9]+$/;
-          const id = document.getElementById("login-id").value;
-          document.getElementById("error").innerHTML = "";
-
-          if (ch.test(id)) {
-
-            if (id.length < 5) {
-              document.getElementById("error").innerHTML = "규정에 맞지 않는 아이디입니다";
-            }
-
-
-
-          } else {
-            document.getElementById("error").innerHTML = "규정에 맞지 않는 아이디입니다";
-          }
-        }
-
-        function checkPw() {
-          const ch = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
-          const pw = document.getElementById("login-pw").value;
-          console.log(pw);
-          console.log(ch.test(pw));
-
-          if (ch.test(pw)) {
-            console.log(222);
-            document.getElementById("error2").innerHTML = "규정에 맞지 않는 비밀번호입니다";
-          } else if (pw.length >= 8) {
-            document.getElementById("error2").innerHTML = " ";
-          } else {
-            document.getElementById("error2").innerHTML = "규정에 맞지 않는 비밀번호입니다";
-          }
-
-        }
-
-        function checkPw2() {
-          const pw = document.getElementById("login-pw").value;
-          const pw2 = document.getElementById("login-pw2").value;
-          if (pw == pw2) {
-            document.getElementById("error3").innerHTML = " ";
-          } else {
-            document.getElementById("error3").innerHTML = "비밀번호가 일치하지 않습니다";
-          }
-
-
-        }
-      </script>
-
-
-
-
-    </div>
-
+    </form>
   </div>
 
   </div>
@@ -207,19 +120,8 @@ https://templatemo.com/tm-579-cyborg-gaming
       </div>
     </div>
   </div> -->
+  <footer include-html="./templates/footer.html"></footer>
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>Copyright © 2036 <a href="#">Cyborg Gaming</a> Company. All rights reserved.
-
-            <br>Design: <a href="https://templatemo.com" target="_blank" title="free CSS templates">TemplateMo</a>
-            Distributed By <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
 
   <!-- Scripts -->
@@ -231,6 +133,8 @@ https://templatemo.com/tm-579-cyborg-gaming
   <script src="./static/js/tabs.js"></script>
   <script src="./static/js/popup.js"></script>
   <script src="./static/js/custom.js"></script>
+  <script src="./static/js/includeHTML.js"></script>
+  
 
 
 </body>
