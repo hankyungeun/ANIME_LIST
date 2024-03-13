@@ -34,8 +34,6 @@ public class LoginController extends HttpServlet{
 			session.setAttribute("loginUser", loginUser);
             response.sendRedirect("/main");
 		}
-       
-       
     }
 
      
