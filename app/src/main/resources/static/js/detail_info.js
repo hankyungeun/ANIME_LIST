@@ -3,7 +3,6 @@ $(function () {
     $('#ani-list').on('click', 'div', function(e) {
         console.log(e.target.id);
         detailModalAniInfo(e.target.id);
-        
     });
 });
 

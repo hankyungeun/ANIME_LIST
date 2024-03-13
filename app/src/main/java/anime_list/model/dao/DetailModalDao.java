@@ -1,20 +1,20 @@
 package anime_list.model.dao;
 
 
-import anime_list.config.JDBC;
-import anime_list.model.vo.AniList;
-import anime_list.model.vo.Comment;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.InvalidPropertiesFormatException;
-import java.util.Properties;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.InvalidPropertiesFormatException;
+import java.util.Properties;
+
+import anime_list.config.JDBC;
+import anime_list.model.vo.AniList;
+import anime_list.model.vo.Comment;
 
 
 
@@ -35,18 +35,39 @@ public class DetailModalDao {
     }
 
     public AniList selectAnimation(Connection conn, String aniPk) {
-        AniList list = new AniList();
+        AniList list = null;
 
         PreparedStatement pstmt = null;
         ResultSet rset = null;
 
         String sql = prop.getProperty("each_info_aniList");
 
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, aniPk);
+        
+            rset = pstmt.executeQuery();
 
-
+            while(rset.next()) {
+                list = new AniList(
+                    rset.getString("ANI_PK"),
+                    rset.getString("TITLE"),
+                    rset.getString("GENRE"),
+                    rset.getString("DETAIL"),
+                    rset.getFloat("GRADE"),
+                    rset.getDate("START_DATE"),
+                    rset.getString("IMAGE_URL"),
+                    rset.getString("VIDEO_URL"));
+        }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
         return list;
     }
-    
+
     public ArrayList<AniList> selectEachListinModal(Connection conn, String aniPk) {
         ArrayList<AniList> list = new ArrayList<>();        
         
