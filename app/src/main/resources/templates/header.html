@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+   
 </head>
 <body>
 <header class="header-area header-sticky">
@@ -29,7 +31,18 @@
                         <li><a href="browse.html">Browse</a></li>
                         <li><a href="details.html">Details</a></li>
                         <li><a href="streams.html">Streams</a></li>
-                        <li><a href="profile.html">Profile <img src="./static/images/profile-header.jpg" alt=""></a></li>
+                        
+                     
+                        <li th:if="${loginUser == null}"><a href="/login">Login<img src="./static/images/profile-header.jpg" alt=""></a></li>
+                        <li th:if="${loginUser != null}"><a href="/login">회원정보<img src="./static/images/profile-header.jpg" alt=""></a></li>
+                        <script>
+                            document.getElementById("sampleDiv").style.display ='none';		
+
+                        </script>
+
+                        
+                        <!-- <li><a href="/login">회원정보<img src="./static/images/profile-header.jpg" alt=""></a></li>    -->
+                        
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
