@@ -2,19 +2,21 @@ package anime_list.model.vo;
 
 import org.checkerframework.common.returnsreceiver.qual.This;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.RequiredArgsConstructor;
 
 @This
-@Setter
-@Getter
-@ToString
 @Data
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class User {
     private String userPk;
     private String userId;
     private String passwd;
     private String name;
+
+
+    
 }
+    

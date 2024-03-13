@@ -56,21 +56,23 @@ https://templatemo.com/tm-579-cyborg-gaming
   <!-- <div id="main"> -->
   <div style="margin: 10%;"></div>
   <div id="login">
+    <form action="/loginUser" method="POST" id="login-form">
     <div style="height: 30px;"></div>
     <div>
       <label style="font-size: 50px; color: #e75e8d;">로그인</label>
     </div>
+
     <div id="login-form">
       <br>
       <br>
-
-      <input type="text" id="login-id" placeholder="&nbsp;&nbsp;아이디" name="id">
+      <input type="text" id="login-id" placeholder="&nbsp;&nbsp;아이디" name="userId">
       <br>
-      <input type="password" id="login-pw" placeholder="&nbsp;&nbsp;비밀 번호" name="password">
+      <input type="password" id="login-pw" placeholder="&nbsp;&nbsp;비밀 번호" name="passwd">
 
       <br>
-      <button id="login-button" onclick="login()" type="submit">로그인</button>
+      <button id="login-button" type="submit" >로그인</button>
 
+  
       <div>
         <br>
         <input type="checkbox">
@@ -78,38 +80,19 @@ https://templatemo.com/tm-579-cyborg-gaming
         <label for="" style="color: #e75e8d;">아이디 저장</label>
         <br><br>
 
-        <script>
-          function login() {
-            const id = document.getElementById("login-id").value;
-            const password = document.getElementById("login-pw").vlaue;
 
-            $.ajax({
-              url: 'http://localhost:8080/loginuser',
-              data: {id: id, password: password},
-              success: function(result){
-                    console.log(result);
-                },
-                error: function(err){
-                    console.log(err);
-                }
-
-            });
-
-
-          }
-
-        </script>
       </div>
 
       <div>
         <a href="" style="color: #e75e8d;">아이디 찾기 |</a>
         <a href="" style="color: #e75e8d;">비밀번호 찾기 |</a>
         <a href="./newuser" style="color: #e75e8d;"> 회원가입</a>
-        
+
       </div>
+      
     </div>
 
-
+    </form>
   </div>
 
 
