@@ -1,11 +1,15 @@
 // 이미지를 통한 개별 information을 modal창으로 가져오기
 $(function () {
-    detailModalAniInfo();
+    $('#ani-list').on('click', 'div', function(e) {
+        console.log(e.target.id);
+        detailModalAniInfo(e.target.id);
+        
+    });
 });
 
 function detailModalAniInfo(aniPk) {
     $.ajax({
-        url: 'DetailInfo/select?aniPk='+aniPk,
+        url: 'DetailInfo/ani_detail?aniPk='+aniPk,
         type: 'GET',
         contentType: 'application/json',
         dataType: 'json',

@@ -16,7 +16,7 @@ import anime_list.model.vo.Comment;
 import anime_list.service.DetailModalService;
 
 
-@WebServlet("/DetailInfo/*")
+@WebServlet("/DetailInfo")
 public class DetailModalController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -30,7 +30,7 @@ public class DetailModalController extends HttpServlet {
             return;
         }
 
-        if(pathInfo.equals("/select")) {
+        if(pathInfo.equals("/ani_detail")) {
             String aniPk = request.getParameter("aniPk");
             ArrayList<AniList> detailAniInfo = new DetailModalService().selectEachListinModal(aniPk);
             selectEachListinModal(response, detailAniInfo);

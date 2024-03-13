@@ -33,10 +33,22 @@ public class DetailModalDao {
             e.printStackTrace();
         }
     }
+
+    public AniList selectAnimation(Connection conn, String aniPk) {
+        AniList list = new AniList();
+
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        String sql = prop.getProperty("each_info_aniList");
+
+
+
+        return list;
+    }
     
     public ArrayList<AniList> selectEachListinModal(Connection conn, String aniPk) {
-        ArrayList<AniList> list = new ArrayList<>();
-        
+        ArrayList<AniList> list = new ArrayList<>();        
         
         PreparedStatement pstmt = null;
         ResultSet rset = null;

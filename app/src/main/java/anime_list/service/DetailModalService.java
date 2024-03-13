@@ -10,6 +10,17 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 public class DetailModalService {
+    
+
+    public AniList selectAnimation(String aniPk) {
+        Connection conn = JDBC.getConnection();
+        AniList list = new DetailModalDao().selectAnimation(conn, aniPk);
+        JDBC.close(conn);
+
+        return list;
+
+    }
+
     public ArrayList<AniList> selectEachListinModal(String aniPk) { 
         Connection conn = JDBC.getConnection();
         ArrayList<AniList> list = new DetailModalDao().selectEachListinModal(conn, aniPk);

@@ -10,6 +10,14 @@
 
     <entry key="each_info_comment">
         SELECT * FROM COMMENT WHERE ANI_PK = ?;
-    </entry> 
+    </entry>
+<!-- 로그인 정보에 따라 해당 애니메이션에 댓글 입력 가능한 칸 불러오기 : 내 껀가? (OJ)-->
+    <!-- <entry key="user_comment_ani">
+        UPDATE ( SELECT 
+            
+            
+            SET CONTENT = ?,
+                COMMENT_DATE =?
+    </entry> -->
 
 </properties>
