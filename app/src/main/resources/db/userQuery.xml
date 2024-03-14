@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>User Query</comment>
+
+<!--    SYSDATE를 기준으로 해당하는 분기의 애니메이션 목록을 리스팅(메인화면에사용) -->
+    <entry key="insertUser">
+        INSERT INTO SEMI."MEMBER"
+        (USER_PK, USER_ID, PASSWD, NAME)
+        VALUES(?, ?, ?, ?)
+    </entry>
+
+    <entry key="loginuser">
+        SELECT * FROM member
+        WHERE USER_ID = ? AND PASSWD =?
+    </entry>
+
+    <entry key="getUser">
+        SELECT * FROM member 
+    </entry>
+
+</properties>

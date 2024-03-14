@@ -1,38 +1,78 @@
 package anime_list.servlet;
 
+import anime_list.model.vo.User;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession(false);
+        if (session != null && session.getAttribute("loginUser") != null) {
+            // 로그인 상태일 경우, /main 페이지로 리다이렉트합니다.
+            response.sendRedirect(request.getContextPath() + "/main");
+        } else {
 
-        try {
-            InputStream inputStream = getServletContext().getResourceAsStream("/templates/login.html");
-            InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
+            response.setContentType("text/html;charset=UTF-8");
+            response.setHeader("Pragma", "no-cache");
+            response.setHeader("Cache-Control", "no-cache");
+            response.setDateHeader("Expires", 1000);
 
-            char[] buffer = new char[1024];
-            int bytesRead;
-            while ((bytesRead = reader.read(buffer)) != -1) {
-                out.write(buffer, 0, bytesRead);
-            }
+            request.setCharacterEncoding("UTF-8");
 
-            inputStream.close();
-            reader.close();
-        } catch (NullPointerException e) {
-            response.sendRedirect(request.getContextPath() + "/error");
+            User loginUser = (User) session.getAttribute("loginUser");
+
+            ServletContext context = getServletContext();
+            context.setAttribute("loginUser", loginUser);
+
+            ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(context);
+
+            templateResolver.setTemplateMode("XHTML");
+
+            templateResolver.setPrefix("/templates/");
+            templateResolver.setSuffix(".html");
+            templateResolver.setCacheTTLMs(3600000L);
+            TemplateEngine templateEngine = new TemplateEngine();
+            templateEngine.setTemplateResolver(templateResolver);
+            WebContext ctx = new WebContext(request, response, getServletConfig().getServletContext(), request.getLocale());
+
+            templateEngine.process("login", ctx, response.getWriter());
+
+            ///////////////////////////////////////////////////////////////////
+//            request.setCharacterEncoding("UTF-8");
+//            response.setContentType("text/html; charset=UTF-8");
+//            PrintWriter out = response.getWriter();
+//
+//            try {
+//                InputStream inputStream = getServletContext().getResourceAsStream("/templates/login.html");
+//                InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
+//
+//                char[] buffer = new char[1024];
+//                int bytesRead;
+//                while ((bytesRead = reader.read(buffer)) != -1) {
+//                    out.write(buffer, 0, bytesRead);
+//                }
+//
+//                inputStream.close();
+//                reader.close();
+//            } catch (NullPointerException e) {
+//                response.sendRedirect(request.getContextPath() + "/error");
+//            }
         }
     }
 }

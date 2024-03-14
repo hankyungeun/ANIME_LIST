@@ -812,7 +812,20 @@ Most Popular Style
   border-radius: 23px;
 }
 
+.all-list {
+  padding: 30px;
+  background-color: #1f2122;
+  border-radius: 23px;
+}
+
 .most-popular .item {
+  background-color: #27292a;
+  padding: 30px 15px;
+  border-radius: 23px;
+  margin-bottom: 30px;
+}
+
+.all-list .item {
   background-color: #27292a;
   padding: 30px 15px;
   border-radius: 23px;
@@ -826,11 +839,30 @@ Most Popular Style
   margin-bottom: 0px;
 }
 
+.all-list .item .item {
+  padding: 0px;
+  border-radius: 0px;
+  background-color: transparent;
+  margin-bottom: 0px;
+}
+
 .most-popular .item img {
   border-radius: 23px;
 }
 
+.all-list .item img {
+  border-radius: 23px;
+}
+
 .most-popular .item h4 {
+  text-overflow: ellipsis;
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  display: inline-block;
+}
+
+.all-list .item h4 {
   text-overflow: ellipsis;
   font-size: 15px;
   margin-top: 20px;
@@ -851,7 +883,27 @@ Most Popular Style
   /*display: flex;*/
 }
 
+.all-list .item div .ani_title{
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color : #fff;
+  font-weight: 700;
+  width: 85%;
+  /*display: flex;*/
+}
+
 .most-popular .item span {
+  color: #666;
+  display: block;
+  margin-top: 7px;
+  font-weight: 400;
+}
+
+.all-list .item span {
   color: #666;
   display: block;
   margin-top: 7px;
@@ -863,13 +915,28 @@ Most Popular Style
   /*margin-top: 20px;*/
 }
 
+.all-list .item ul {
+  float: right;
+  /*margin-top: 20px;*/
+}
+
 .most-popular .item ul li {
   text-align: right;
   color: #fff;
   font-size: 14px;
 }
 
+.all-list .item ul li {
+  text-align: right;
+  color: #fff;
+  font-size: 14px;
+}
+
 .most-popular .item ul li i {
+  color: yellow;
+}
+
+.all-list .item ul li i {
   color: yellow;
 }
 
@@ -887,7 +954,20 @@ Most Popular Style
 Gaming Library Style
 --------------------------------------------- 
 */
-
+.select-btn{
+  margin-bottom: 15px;
+}
+.select-list{
+    border: none;
+    background-color: #FFFFFF;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 7px 10px;
+    margin: 5px 7px;
+    box-sizing: border-box;
+}
 .gaming-library {
   margin-top: 60px;
   padding: 30px;

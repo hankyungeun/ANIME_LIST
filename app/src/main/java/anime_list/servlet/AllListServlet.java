@@ -5,11 +5,7 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-
+import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,13 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 
-@WebServlet("/newuser")
-public class NewUserServlet extends HttpServlet {
+@WebServlet("/allAniList")
+public class AllListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-
         response.setContentType("text/html;charset=UTF-8");
         response.setHeader("Pragma", "no-cache");
         response.setHeader("Cache-Control", "no-cache");
@@ -48,15 +46,15 @@ public class NewUserServlet extends HttpServlet {
         templateEngine.setTemplateResolver(templateResolver);
         WebContext ctx = new WebContext(request, response, getServletConfig().getServletContext(), request.getLocale());
 
-        templateEngine.process("newuser", ctx, response.getWriter());
+        templateEngine.process("allAniList", ctx, response.getWriter());
 
-        /////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////
 //        request.setCharacterEncoding("UTF-8");
 //        response.setContentType("text/html; charset=UTF-8");
 //        PrintWriter out = response.getWriter();
 //
-//        try{
-//            InputStream inputStream = getServletContext().getResourceAsStream("/templates/newuser.html");
+//        try {
+//            InputStream inputStream = getServletContext().getResourceAsStream("/templates/allAniList.html");
 //            InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
 //
 //            char[] buffer = new char[1024];
