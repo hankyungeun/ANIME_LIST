@@ -6,17 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모달창연습</title>
     <link rel=stylesheet href="../static/css/part_modal.css">
+
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="../static/css/fontawesome.css">
+    <link rel="stylesheet" href="../static/css/templatemo-cyborg-gaming.css">
+    <link rel="stylesheet" href="../static/css/owl.css">
+    <link rel="styleshee t" href="../static/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <!-- <script src="../lib/bootstrap/js/bootstrap.min.js"></script> -->
 </head>
 
 <body>
     <div id="introIcon">
         <a href=""></a>애니 소개 아이콘
     </div>
-    <div class="modal" name="modal">
+    <div class="modal" name="modal" id="modal_main">
         <div class="modal_body">
             <div class="modal_part" id="modal_left">
                 <div class="modal_thumbnail">
-                    <a href="">영상링크</a>
                 </div>
                 <div class="infoShort">
                     <div id="releaseDate">
@@ -26,7 +38,9 @@
                         <a href="">제목</a>
                     </div>
                     <div id="rate">
-                        <img src="">평점<a href=""></a>
+                        <ul>
+                            <li><i class="fa fa-star"><a href="">평점</a></i></li>
+                        </ul>
                     </div>
                 </div>
                 <article id="introduction">
@@ -78,7 +92,7 @@
         </div>
     </div>
     <script>
-        const modal = document.querySelector('.modal');
+        const modal = document.querySelector('#modal_main');
         const divModal = document.querySelector('#introIcon');
         const commentOpen = document.querySelector('#commentWrite');
 
@@ -97,6 +111,6 @@
             commentOpen.style.visibility = 'visible';
         }
     </script>
-    <script src = "./static/js/detail_info.js"></script>
+    <script src="./static/js/detail_info.js"></script>
 
 </html>

@@ -31,10 +31,10 @@ function latestAniList(){
             $(data).each(function (index, item) {
                 var grade = parseFloat(item.grade);
                 $('#ani-list').append(
-                    `<div class=\"col-lg-3 col-sm-6\"><div id="${item.aniPk}" class=\"item\">`+
+                    `<div id="${item.aniPk}" class=\"col-lg-3 col-sm-6\"><div class=\"item\">`+
                     `<img src="${item.imgUrl}" alt="noImage">`+
-                    `<div><div class="ani_title">${item.title}</div></>`+
-                    `<ul><li><i class="fa fa-star"></i> ${grade}</li>`
+                    `<div><div class="ani_title">${item.title}</div></div>`+
+                    `<ul><li><i class="fa fa-star"></i> ${grade}</li></ul></div>`
                 )
             })
         }

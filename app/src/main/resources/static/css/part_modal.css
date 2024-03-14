@@ -4,9 +4,9 @@
     background-color: beige;
 }
 
-.modal{
+#modal_main {
     position:absolute;
-    display:none;
+    /* display:none; */
     
     justify-content: center;
     top:0;
@@ -19,8 +19,8 @@
 }
 
 .modal_body{
-    position:absolute;
-    display:flex;
+    position:fixed;
+    display:none;
     top:50%; /*모달을 화면가운데 놓기위함. */
 
 

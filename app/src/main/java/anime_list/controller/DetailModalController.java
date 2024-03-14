@@ -31,7 +31,7 @@ public class DetailModalController extends HttpServlet {
         if(pathInfo.equals("/ani_detail")) {
             String aniPk = request.getParameter("aniPk");
             AniList selectAnimation = new DetailModalService().selectAnimation(aniPk);
-            selectAnimatione(response, selectAnimation);
+            selectAni(response, selectAnimation);
             // ArrayList<AniList> detailAniInfo = new DetailModalService().selectEachListinModal(aniPk);
             // selectEachListinModal(response, detailAniInfo);
             // ArrayList<Comment> detailCommInfo = new DetailModalService().selectCommentinModal(aniPk);
@@ -41,7 +41,7 @@ public class DetailModalController extends HttpServlet {
         }
     }
     
-    private void selectAnimatione(HttpServletResponse response, AniList list) throws IOException {
+    private void selectAni(HttpServletResponse response, AniList list) throws IOException {
         if(list == null) {
             response.getWriter().write("[No data]");
         } else {
