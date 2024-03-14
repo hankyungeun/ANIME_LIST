@@ -31,13 +31,11 @@
                         <li><a href="/allAniList">Browse</a></li>
                         <li><a href="details.html">Details</a></li>
                         <li><a href="streams.html">Streams</a></li>
-                        
-                     
-                        <li th:if="${loginUser == null}"><a href="/login">Login<img src="./static/images/profile-header.jpg" alt=""></a></li>
-                        <li th:if="${loginUser != null}"><a href="/login">회원정보<img src="./static/images/profile-header.jpg" alt=""></a></li>
+                        <li th:if="${session.loginUser == null}"><a href="/login">Login<img src="./static/images/profile-header.jpg" alt=""></a></li>
+                        <li th:if="${session.loginUser != null}"><a href="/login">회원정보<img src="./static/images/profile-header.jpg" alt=""></a></li>
+
                         <script>
                             document.getElementById("sampleDiv").style.display ='none';		
-
                         </script>
 
                         
