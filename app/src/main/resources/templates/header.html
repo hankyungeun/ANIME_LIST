@@ -6,6 +6,18 @@
     <title>Title</title>
    
 </head>
+<style>
+    #main-login{
+    /* margin-left: 375px; */
+
+    height: 30px;
+    width: 70px;
+    background-color: #1f2122;
+    border-radius: 10px;
+    
+    color: #e75e8d;
+}
+</style>
 <body>
 <header class="header-area header-sticky">
     <div class="container">
@@ -31,16 +43,10 @@
                         <li><a href="/allAniList">Browse</a></li>
                         <li><a href="details.html">Details</a></li>
                         <li><a href="streams.html">Streams</a></li>
-                        <li th:if="${session.loginUser == null}"><a href="/login">Login<img src="./static/images/profile-header.jpg" alt=""></a></li>
-                        <li th:if="${session.loginUser != null}"><a href="/login">회원정보<img src="./static/images/profile-header.jpg" alt=""></a></li>
+                        <li th:if="${session.loginUser == null}"><a href="/login"><button id="main-login" href="/login">Login</button></a></li>
+                        <li th:if="${session.loginUser != null}"><a href="/login">회원정보</a></li>
+                        <li th:if="${session.loginUser != null}"><a href="/logout">로그아웃</a></li>
 
-                        <script>
-                            document.getElementById("sampleDiv").style.display ='none';		
-                        </script>
-
-                        
-                        <!-- <li><a href="/login">회원정보<img src="./static/images/profile-header.jpg" alt=""></a></li>    -->
-                        
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
