@@ -1,14 +1,6 @@
 package anime_list.servlet;
 
-import anime_list.model.vo.User;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.WebContext;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -17,6 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.WebContext;
+import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+
+import anime_list.model.vo.User;
 
 @WebServlet("/error")
 public class ErrorServlet extends HttpServlet {
@@ -38,7 +36,7 @@ public class ErrorServlet extends HttpServlet {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(context);
 
         templateResolver.setTemplateMode("XHTML");
-
+        templateResolver.setCharacterEncoding("UTF-8");
         templateResolver.setPrefix("/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setCacheTTLMs(3600000L);
@@ -49,24 +47,25 @@ public class ErrorServlet extends HttpServlet {
         templateEngine.process("error", ctx, response.getWriter());
 
         //////////////////////////////////////////////////////////////////////
-//        request.setCharacterEncoding("UTF-8");
-//        response.setContentType("text/html; charset=UTF-8");
-//        PrintWriter out = response.getWriter();
-//
-//        try {
-//            InputStream inputStream = getServletContext().getResourceAsStream("/templates/error.html");
-//            InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
-//
-//            char[] buffer = new char[1024];
-//            int bytesRead;
-//            while ((bytesRead = reader.read(buffer)) != -1) {
-//                out.write(buffer, 0, bytesRead);
-//            }
-//
-//            inputStream.close();
-//            reader.close();
-//        } catch (NullPointerException e) {
-//            System.out.println("error.html파일을 찾을 수 없응");
-//        }
+        // request.setCharacterEncoding("UTF-8");
+        // response.setContentType("text/html; charset=UTF-8");
+        // PrintWriter out = response.getWriter();
+        //
+        // try {
+        // InputStream inputStream =
+        // getServletContext().getResourceAsStream("/templates/error.html");
+        // InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
+        //
+        // char[] buffer = new char[1024];
+        // int bytesRead;
+        // while ((bytesRead = reader.read(buffer)) != -1) {
+        // out.write(buffer, 0, bytesRead);
+        // }
+        //
+        // inputStream.close();
+        // reader.close();
+        // } catch (NullPointerException e) {
+        // System.out.println("error.html파일을 찾을 수 없응");
+        // }
     }
 }
