@@ -12,9 +12,17 @@ public class CommentService {
     public ArrayList<Comment> selectAllList(){
         Connection conn = JDBC.getConnection();
         ArrayList<Comment> list = new CommentDao().selectAllList(conn);
-        JDBC.close(conn);
-        JDBC.close(conn);
 
+        JDBC.close(conn);
+        
+        return list;
+    }
+    public ArrayList<Comment> selectList(String aniPk){
+        Connection conn = JDBC.getConnection();
+        ArrayList<Comment> list = new CommentDao().selectList(conn, aniPk);
+
+        JDBC.close(conn);
+        
         return list;
     }
 }

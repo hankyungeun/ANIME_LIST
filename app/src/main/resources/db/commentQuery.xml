@@ -4,7 +4,10 @@
     <comment>COMMENT Query</comment>
 
     <entry key="commentList">
-        SELECT * FROM COMMENTS where ani_pk = ?
+        SELECT * FROM COMMENTS 
     </entry>
 
+    <entry key="commentList_anipk">
+        SELECT * FROM COMMENTS where ani_pk =?
+    </entry>
 </properties>
