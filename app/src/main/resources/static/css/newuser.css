@@ -62,7 +62,7 @@
 
   }
 
-  #login-button {
+  #newuser-button{
     height: 100px;
     width: 300px;
     background-color: #27292a;
@@ -71,7 +71,7 @@
     color: #e75e8d;
   }
 
-  #newuser-button {
+  #loginch-button{
     height: 50px;
     width: 100px;
     border-radius: 10px;

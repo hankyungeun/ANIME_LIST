@@ -41,24 +41,16 @@ public class AniListController extends HttpServlet {
     }
 
     private void getLatestAniList(HttpServletResponse response, List<AniList> aniList) throws IOException {
-        if (aniList.isEmpty()) {
-            response.getWriter().write("데이터 없음!!!");
-        } else {
-            PrintWriter out = response.getWriter();
-            Gson gson = new Gson();
-            String json = gson.toJson(aniList);
-            out.println(json);
-        }
+        response.setContentType("application/json");
+        Gson gson = new Gson();
+        String json = gson.toJson(aniList);
+        response.getWriter().write(json);
     }
 
     private void getSelectedAniList(HttpServletRequest request, HttpServletResponse response, List<AniList> aniList) throws IOException {
-        if (aniList.isEmpty()) {
-            response.getWriter().write("데이터 없음!!!");
-        } else {
-            PrintWriter out = response.getWriter();
-            Gson gson = new Gson();
-            String json = gson.toJson(aniList);
-            out.println(json);
-        }
+        response.setContentType("application/json");
+        Gson gson = new Gson();
+        String json = gson.toJson(aniList);
+        response.getWriter().write(json);
     }
 }
