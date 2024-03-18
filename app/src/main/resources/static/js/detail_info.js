@@ -23,7 +23,8 @@ function detailModalAniInfo(aniPk) {
         },
         success: function (data) {
             console.log(aniPk);
-            console.log(data);
+            console.log(data); 
+            console.log(data.title);
 
             var grade = parseFloat(data.grade);
 
@@ -33,13 +34,14 @@ function detailModalAniInfo(aniPk) {
             // 모달 내용 채우기
             $('.modal_body').css('display', 'flex').css('visibility', 'visible');
 
+            
             if ($('.modal_thumbnail').length === 0) {
                 $('#modal_left').append(
-                    `<div class="modal_thumbnail"><a href="${data.imgUrl}">` +
-                    `<div class="infoShort"><div id="releaseDate"><a href="${data.startDate}">` +
+                    `<div class="modal_thumbnail"><img src="">` +
+                    `<div class="infoShort"><div id="releaseDate">${data.startDate}"</div>` +
                     `<div id="titleInfo">${data.title}</div>` +
-                    `<div id="rate"><ul><li><i class="fa fa-star"></i>${grade}</li></ul>` +
-                    `<article id="introduction"><p>${data.detail}</p>`
+                    `<div id="rate"><ul><li><i class="fa fa-star"></i>${grade}</li></ul></div></div>` +
+                    `<article id="introduction"><p>${data.detail}</p></article>`
                 );
 
                 $('#modal_right').append(
