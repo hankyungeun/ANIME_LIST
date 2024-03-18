@@ -5,11 +5,11 @@
 
 <!-- 개별 애니메이션의 정보 불러오기 -->
     <entry key="each_info_aniList">
-        SELECT * FROM ANI_LIST WHERE ANI_PK = ?;
+        SELECT * FROM ANI_LIST WHERE ANI_PK = ?
     </entry>
 
     <entry key="each_info_comment">
-        SELECT * FROM COMMENT WHERE ANI_PK = ?;
+        SELECT * FROM COMMENT WHERE ANI_PK = ?
     </entry>
 <!-- 로그인 정보에 따라 해당 애니메이션에 댓글 입력 가능한 칸 불러오기 : 내 껀가? (OJ)-->
     <!-- <entry key="user_comment_ani">

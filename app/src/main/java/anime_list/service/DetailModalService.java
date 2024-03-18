@@ -13,6 +13,7 @@ public class DetailModalService {
     
 
     public AniList selectAnimation(String aniPk) {
+
         Connection conn = JDBC.getConnection();
         AniList list = new DetailModalDao().selectAnimation(conn, aniPk);
         JDBC.close(conn);

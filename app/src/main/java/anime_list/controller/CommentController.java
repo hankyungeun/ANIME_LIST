@@ -19,16 +19,19 @@ import anime_list.service.CommentService;
 public class CommentController extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException{
         request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/plain; charset=UTF-8");
+        String aniPk = request.getParameter("ani_pk");
+        response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
 
-        List<Comment> comment = new CommentService().selectAllList();
+        List<Comment> comment = new CommentService().selectList(aniPk);
+
         if(comment.isEmpty()) {
-            response.getWriter().write("데이터 없음");
+            response.getWriter().println("데이터 없음");
         }else{
             PrintWriter out = response.getWriter();
-             Gson gson = new Gson();
-                String json = gson.toJson(comment);
-                out.println(json);
+            Gson gson = new Gson();
+            String json = gson.toJson(comment);
+            out.println(json);
         }
     }
 

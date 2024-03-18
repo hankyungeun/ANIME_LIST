@@ -17,30 +17,64 @@ import java.util.Properties;
 
 public class CommentDao {
 
-    private Properties prop = new Properties(); 
+    private Properties prop = new Properties();
 
-    public CommentDao(){        
-      
-            try {
-                prop.loadFromXML(new FileInputStream("app/src/main/resources/db/commentQuery.xml"));
-            } catch (InvalidPropertiesFormatException e) {                
-                e.printStackTrace();
-            } catch (FileNotFoundException e) {               
-                e.printStackTrace();
-            } catch (IOException e) {                
-                e.printStackTrace();
-            } 
-    }       
+    public CommentDao() {
 
-    public ArrayList<Comment> selectAllList(Connection conn){
+        try {
+            prop.loadFromXML(new FileInputStream("app/src/main/resources/db/commentQuery.xml"));
+        } catch (InvalidPropertiesFormatException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Comment> selectAllList(Connection conn) {
         ArrayList<Comment> list = new ArrayList<>();
 
         PreparedStatement pstmt = null;
-        ResultSet rset= null;
+        ResultSet rset = null;
 
         String sql = prop.getProperty("commentList");
         try {
             pstmt = conn.prepareStatement(sql);
+            rset = pstmt.executeQuery();
+            while (rset.next()) {
+                Comment comment = new Comment(
+                        rset.getString("COMMENT_PK"),
+                        rset.getString("USER_PK"),
+                        rset.getString("ANI_PK"),
+                        rset.getString("CONTENT"),
+                        rset.getDate("COMMENT_DATE"),
+                        rset.getFloat("INIT_GRADE"));
+                list.add(comment);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
+
+        return list;
+    }
+
+    public ArrayList<Comment> selectList(Connection conn, String aniPk){
+        ArrayList<Comment> list = new ArrayList<>();
+        
+        
+        PreparedStatement pstmt = null;
+        ResultSet rset= null;
+        String sql = prop.getProperty("commentList_anipk");
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, aniPk);
+            
             rset = pstmt.executeQuery();
             while(rset.next()){
                 Comment comment = new Comment(
@@ -62,11 +96,9 @@ public class CommentDao {
         
         
 
-        return list;
-    } 
-  
         
 
+        return list;
+    }
 
 }
-
