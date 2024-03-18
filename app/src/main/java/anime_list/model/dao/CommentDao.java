@@ -73,9 +73,9 @@ public class CommentDao {
 
         try {
             pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, aniPk);
             
             rset = pstmt.executeQuery();
-            pstmt.setString(1, aniPk);
             while(rset.next()){
                 Comment comment = new Comment(
                     rset.getString("COMMENT_PK"),

@@ -17,4 +17,12 @@ public class CommentService {
         
         return list;
     }
+    public ArrayList<Comment> selectList(String aniPk){
+        Connection conn = JDBC.getConnection();
+        ArrayList<Comment> list = new CommentDao().selectList(conn, aniPk);
+
+        JDBC.close(conn);
+        
+        return list;
+    }
 }
