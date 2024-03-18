@@ -53,7 +53,6 @@ function allAniList(year, quarter){
             alert("상태코드 " + status + "에러메시지" + msg);
         },
         success: function (data) {
-            console.log('allAniList호출!!!');
             $(data).each(function (index, item) {
                 var grade = parseFloat(item.grade);
                 $('#selected-list').append(

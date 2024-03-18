@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import anime_list.model.vo.User;
 import anime_list.service.UserService;
@@ -35,7 +35,7 @@ public class UserController extends HttpServlet {
         if (result > 0) {
 
             System.out.println("회원 추가에 성공하셨습니다 SUCCESS!");
-            response.sendRedirect("/main");
+            response.sendRedirect("/login");
 
         } else {
             System.out.println("회원 추가에 실해하셨습니다 Failed!!");
@@ -46,7 +46,7 @@ public class UserController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+                request.setCharacterEncoding("UTF-8");
         /*
          * 서블릿은 REST API 구현 전 버전으로 단순히 서블릿 구현인 경우 GET,POST를 내부적으로 동일하게 처리
          * GET, POST를 구분해서 처리하는 경우도 별도로 코드 작성은 가능
