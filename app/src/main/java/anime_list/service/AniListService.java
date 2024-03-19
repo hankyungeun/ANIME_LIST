@@ -23,4 +23,12 @@ public class AniListService {
 
         return list;
     }
+
+    public ArrayList<AniList> getSearchAniList(String keyword){
+        Connection conn = JDBC.getConnection();
+        ArrayList<AniList> list = new AniListDao().getSearchAniList(conn, keyword);
+        JDBC.close(conn);
+
+        return list;
+    }
 }
