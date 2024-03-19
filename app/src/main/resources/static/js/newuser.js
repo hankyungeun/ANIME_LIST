@@ -9,7 +9,7 @@ function checkId() {
 
       if (id.length < 5) {
         document.getElementById("error").innerHTML = "규정에 맞지 않는 아이디입니다";
-        
+
       }else{
         return true;
       }
@@ -17,6 +17,9 @@ function checkId() {
     } else {
       document.getElementById("error").innerHTML = "규정에 맞지 않는 아이디입니다";
     } 
+
+
+
   }
 
   function checkPw() {
@@ -69,9 +72,7 @@ function checkId() {
        document.mForm.submit();
       console.log("--------")
 
-      // if(){
-      // alert('회원가입에 성공하셨습니다!');
-      // }
+      
     } else{
       
       if(checkId() == null){
@@ -97,11 +98,8 @@ function checkId() {
       
     }
 
-
-    
-
+  } 
   
-  }
 
   
  

@@ -31,10 +31,30 @@ public class UserService {
 			return user;
 		}
 
-    
+        public int updateUser(User user) {
+            
+            Connection conn = JDBC.getConnection();
+
+			int  result = 0;
+			result = new UserDao().updateUser(conn,user);
+
+			
+			if(result>0){
+				JDBC.commit(conn);
+			}else{
+				JDBC.rollback(conn);
+			}
+
+			JDBC.close(conn);
+
+			return result;
+
+        }
 
     
-
 
 	
+
+
+		
 }

@@ -1,6 +1,8 @@
 package anime_list.controller;
 
 import java.io.IOException;
+import java.util.UUID;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,32 +13,37 @@ import javax.servlet.http.HttpSession;
 import anime_list.model.vo.User;
 import anime_list.service.UserService;
 
-@WebServlet("/loginUser")
-public class LoginController extends HttpServlet{
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+@WebServlet("/updateuser")
+public class UpdateUserController extends HttpServlet {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/plain; charset=UTF-8");
-        HttpSession session = request.getSession();
-        // 폼에서 전달된 값 가져오기
+
         String userId = request.getParameter("userId");
         String passwd = request.getParameter("passwd");
-
-        // User 객체 생성
-        User loginUser = new UserService().loginUser(userId, passwd);
+        String name = request.getParameter("name");
         
-        if (loginUser == null) {
-            System.out.println("로그인 실패 !");
+        User user = new User();
+        user.setUserId(userId);
+        user.setPasswd(passwd);
+        user.setName(name);
+
+        int result = new UserService().updateUser(user);
+
+
+        if (result > 0 ) {
+            System.out.println("UPDATE SUCCESS!");
+            HttpSession session = request.getSession();
+
+            session.setAttribute("loginUser", user);
             response.sendRedirect("/main");
-		} else {
-            request.getSession().setAttribute("alrtMsg", "성공적으로 공지사항이 변경되었습니다");
-            System.out.println("로그인 성공 SUCCESS!");
-            
-			session.setAttribute("loginUser", loginUser);
-            response.sendRedirect("/main");
-		}
+        } else{
+            response.sendRedirect(request.getContextPath()+"/error");
+        }
+
     }
 
-     
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -47,6 +54,4 @@ public class LoginController extends HttpServlet{
         System.out.println("doPost 메소드 실행!");
         doGet(request, response);
     }
-
-    
 }

@@ -6,18 +6,7 @@
     <title>Title</title>
    
 </head>
-<style>
-    #main-login{
-    /* margin-left: 375px; */
 
-    height: 30px;
-    width: 70px;
-    background-color: #1f2122;
-    border-radius: 10px;
-    
-    color: #e75e8d;
-}
-</style>
 <body>
 <header class="header-area header-sticky">
     <div class="container">
@@ -35,6 +24,7 @@
                             <input type="text" placeholder="애니메이션 제목을 입력하세요" id='searchText' name="keyword"/>
                             <i class="fa fa-search"></i>
                         </form>
+
                     </div>
                     <!-- ***** Search End ***** -->
                     <!-- ***** Menu Start ***** -->
@@ -43,10 +33,10 @@
                         <li><a href="/allAniList">Browse</a></li>
                         <li><a href="details.html">Details</a></li>
                         <li><a href="streams.html">Streams</a></li>
-                        <li th:if="${session.loginUser == null}"><a href="/login"><button id="main-login" href="/login">Login</button></a></li>
-                        <li th:if="${session.loginUser != null}"><a href="/login">회원정보</a></li>
-                        <li th:if="${session.loginUser != null}"><a href="/logout">로그아웃</a></li>
-
+                        <li th:if="${session.loginUser == null}"><a href="/login" style=" font-size: 20px;">Login &nbsp;</a></li>
+                        <li th:if="${session.loginUser != null}"><a href="/logout" style=" font-size: 15px;">로그아웃</a></li>
+                        <li th:if="${session.loginUser != null}"><a href="/selectuser"  style=" font-size: 20px;">회원정보 &nbsp;</a></li>
+                        
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>

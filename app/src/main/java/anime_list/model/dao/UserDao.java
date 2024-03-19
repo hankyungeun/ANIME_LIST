@@ -10,11 +10,12 @@ import java.sql.SQLException;
 import java.util.InvalidPropertiesFormatException;
 import java.util.Properties;
 
+import anime_list.model.dto.UserDto;
 import anime_list.model.vo.User;
 import anime_list.config.JDBC;
 
 public class UserDao {
-private Properties prop = new Properties();
+    private Properties prop = new Properties();
 
     public UserDao() {
         try {
@@ -29,80 +30,125 @@ private Properties prop = new Properties();
         }
     }
 
-   
-    public int insertUser(Connection conn,User user){
+    public int insertUser(Connection conn, User user) {
         System.out.println(user.getUserPk());
         System.out.println(user.getUserId());
         System.out.println(user.getPasswd());
         System.out.println(user.getName());
         PreparedStatement pstmt = null;
 
-        int result=0;
+        int result = 0;
         String sql = prop.getProperty("insertUser");
-       // String sql = "INSERT INTO USER VALUES(?,?,?,?)";
-       try{
-        pstmt = conn.prepareStatement(sql);
+        // String sql = "INSERT INTO USER VALUES(?,?,?,?)";
+        try {
+            pstmt = conn.prepareStatement(sql);
 
-        
-        
-        pstmt.setString(1,user.getUserPk());
-        pstmt.setString(2,user.getUserId());
-        pstmt.setString(3,user.getPasswd());
-        pstmt.setString(4,user.getName());
+            pstmt.setString(1, user.getUserPk());
+            pstmt.setString(2, user.getUserId());
+            pstmt.setString(3, user.getPasswd());
+            pstmt.setString(4, user.getName());
 
-        result = pstmt.executeUpdate();
-       }catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			JDBC.close(pstmt);
-		}
-		return result; 
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(pstmt);
+        }
+        return result;
     }
 
-    public User loginUser(Connection conn,String userId,String passwd){
+    public User loginUser(Connection conn, String userId, String passwd) {
 
         System.out.println(userId);
         User user = null;
-		
-		PreparedStatement pstmt = null;
-		
-		ResultSet rset = null;
-		
-		String sql = prop.getProperty("loginuser");
-				
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
-			pstmt.setString(2, passwd);
-			rset = pstmt.executeQuery();
-			
-			while(rset.next()) {
+
+        PreparedStatement pstmt = null;
+
+        ResultSet rset = null;
+
+        String sql = prop.getProperty("loginuser");
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userId);
+            pstmt.setString(2, passwd);
+            rset = pstmt.executeQuery();
+
+            while (rset.next()) {
                 System.out.println("==============");
-				user = new User (
+                user = new User(
                         rset.getString("user_Pk"),
-						rset.getString("user_id"),
+                        rset.getString("user_id"),
                         rset.getString("passwd"),
-                        rset.getString("name")
-						);
+                        rset.getString("name"));
                 System.out.println(user.getUserPk());
                 System.out.println(user.getUserId());
                 System.out.println(user.getPasswd());
                 System.out.println(user.getName());
-				
-			}
-			
-			
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}finally {
-			JDBC.close(rset);
-			JDBC.close(pstmt);
-		}
-		return user;
+
+            }
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
+        return user;
     }
 
+    public int updateUser(Connection conn, User user) {
+        int result = 0;
 
-    
+        PreparedStatement pstmt = null;
+
+        String sql = prop.getProperty("updateuser");
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, user.getPasswd());
+            pstmt.setString(2, user.getName());
+            pstmt.setString(3, user.getUserId());
+            result = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally{
+            JDBC.close(pstmt);
+        }
+        return result;
+
+    }
+
+    public User selectuser(Connection conn, String userId) {
+        User u = null;
+
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        String sql = prop.getProperty("conId");
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userId);
+
+            rset = pstmt.executeQuery();
+
+            if (rset.next()) {
+                u = new User(
+                        rset.getString("user_Pk"),
+                        rset.getString("user_id"),
+                        rset.getString("passwd"),
+                        rset.getString("name"));
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
+        return u;
+    }
 
 }
