@@ -773,12 +773,13 @@ Banner Style
 */
 
 .main-banner {
-  background-image: url(../images/banner-bg.jpg);
+  /*background-image: url(../images/banner-bg.jpg);*/
   background-position: center center;
   background-size: cover;
+  height: 394px;
   min-height: 380px;
   border-radius: 23px;
-  padding: 80px 60px;
+  /*padding: 80px 60px;*/
 }
 
 .main-banner h6 {
