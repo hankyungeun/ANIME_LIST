@@ -37,9 +37,9 @@ public class UpdateUserController extends HttpServlet {
             HttpSession session = request.getSession();
 
             session.setAttribute("loginUser", user);
-            response.sendRedirect("/main");
+            response.sendRedirect("/main?update=true");
         } else{
-            response.sendRedirect(request.getContextPath()+"/error");
+            response.sendRedirect("/main?updatefaild=true");
         }
 
     }

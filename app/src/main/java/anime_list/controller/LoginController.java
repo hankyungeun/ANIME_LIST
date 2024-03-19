@@ -16,6 +16,7 @@ public class LoginController extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/plain; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         // 폼에서 전달된 값 가져오기
         String userId = request.getParameter("userId");
@@ -26,9 +27,11 @@ public class LoginController extends HttpServlet{
         
         if (loginUser == null) {
             System.out.println("로그인 실패 !");
-            response.sendRedirect("/main");
+            
+            response.sendRedirect("/main?loginFailed=true");
+            
 		} else {
-            request.getSession().setAttribute("alrtMsg", "성공적으로 공지사항이 변경되었습니다");
+            
             System.out.println("로그인 성공 SUCCESS!");
             
 			session.setAttribute("loginUser", loginUser);
