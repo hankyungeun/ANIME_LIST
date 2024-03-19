@@ -1,6 +1,22 @@
 $(function(){
     login();
+    
+    
 });
+
+function loginched(){
+
+    console.log("======")
+    const urlParams = new URLSearchParams(window.location.search);
+    if( typeof session == 'undefined' ){
+        
+        const loginFailed = urlParams.get('loginFailed');
+
+        if (loginFailed) {
+            alert("로그인에 실패했습니다. 다시 시도해주세요.");
+        }
+    }
+}
 
 function login(){
     document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -36,3 +52,23 @@ function login(){
         }
     }
 }
+
+
+
+
+
+function update(){
+    if(session.loginUser != null){
+        const upurlParams = new URLSearchParams(window.location.search);
+        
+        const update = urlParams.get('update');
+        const updatefaild = urlParams.get('updatefaild');
+
+        if (update) {
+            alert("회원 정보 수정에 성공했습니다");
+        } else if(updatefaild){
+            alert("회원 정보 수정에 실패했습니다");
+        }
+    }
+}
+
