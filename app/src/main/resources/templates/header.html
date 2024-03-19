@@ -4,48 +4,76 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-   
+
 </head>
 
 <body>
-<header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="/main" class="logo">
-                        <img src="./static/images/logo.png" alt="">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Search End ***** -->
-                    <div class="search-input">
-                        <form id="search" action="/search" method="get">
-                            <input type="text" placeholder="애니메이션 제목을 입력하세요" id='searchText' name="keyword"/>
-                            <i class="fa fa-search"></i>
-                        </form>
 
-                    </div>
-                    <!-- ***** Search End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li><a href="/main" class="active">Home</a></li>
-                        <li><a href="/allAniList">Browse</a></li>
-                        <li><a href="details.html">Details</a></li>
-                        <li><a href="streams.html">Streams</a></li>
-                        <li th:if="${session.loginUser == null}"><a href="/login" style=" font-size: 20px;">Login &nbsp;</a></li>
-                        <li th:if="${session.loginUser != null}"><a href="/logout" style=" font-size: 15px;">로그아웃</a></li>
-                        <li th:if="${session.loginUser != null}"><a href="/selectuser"  style=" font-size: 20px;">회원정보 &nbsp;</a></li>
-                        
-                    </ul>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
+    <script th:if="${session.loginUser == null}">
+        const urlParams = new URLSearchParams(window.location.search);
+        const loginFailed = urlParams.get('loginFailed');
+
+        if (loginFailed) {
+            alert("로그인에 실패했습니다. 다시 시도해주세요.");
+        }
+    </script>
+
+    <script th:if="${session.loginUser != null}">
+        
+        const update = urlParams.get('update');
+        const updatefaild = urlParams.get('updatefaild');
+
+        if (update) {
+            alert("회원 정보 수정에 성공했습니다");
+        } else if (updatefaild){
+            alert("회원 정보 수정에 실패했습니다");
+        }
+    </script>
+
+
+
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="/main" class="logo">
+                            <img src="./static/images/logo.png" alt="">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Search End ***** -->
+                        <div class="search-input">
+                            <form id="search" action="/search" method="get">
+                                <input type="text" placeholder="애니메이션 제목을 입력하세요" id='searchText' name="keyword" />
+                                <i class="fa fa-search"></i>
+                            </form>
+
+                        </div>
+                        <!-- ***** Search End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="/main" class="active">Home</a></li>
+                            <li><a href="/allAniList">Browse</a></li>
+                            <li><a href="details.html">Details</a></li>
+                            <li><a href="streams.html">Streams</a></li>
+                            <li th:if="${session.loginUser == null}"><a href="/login" style=" font-size: 20px;">Login
+                                    &nbsp;</a></li>
+                            <li th:if="${session.loginUser != null}"><a href="/logout"
+                                    style=" font-size: 15px;">로그아웃</a></li>
+                            <li th:if="${session.loginUser != null}"><a href="/selectuser"
+                                    style=" font-size: 20px;">회원정보 &nbsp;</a></li>
+
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 </body>
+
 </html>

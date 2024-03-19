@@ -20,18 +20,18 @@ import anime_list.model.vo.User;
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+                response.setContentType("text/html;charset=UTF-8");
+                response.setHeader("Pragma", "no-cache");
+                response.setHeader("Cache-Control", "no-cache");
+                response.setDateHeader("Expires", 1000);
+    
+                request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("loginUser") != null) {
             // 로그인 상태일 경우, /main 페이지로 리다이렉트합니다.
             response.sendRedirect(request.getContextPath() + "/main");
         } else {
-
-            response.setContentType("text/html;charset=UTF-8");
-            response.setHeader("Pragma", "no-cache");
-            response.setHeader("Cache-Control", "no-cache");
-            response.setDateHeader("Expires", 1000);
-
-            request.setCharacterEncoding("UTF-8");
 
             User loginUser = (User) session.getAttribute("loginUser");
 
