@@ -38,8 +38,8 @@ public class AniListController extends HttpServlet {
             getSelectedAniList(request, response, selectedAniList);
         }
         else if(pathInfo.equals("/search")){
+            System.out.println("/search호출됨");
             String keyword = request.getParameter("keyword");
-
             List<AniList> searchAniList = new AniListService().getSearchAniList(keyword);
             getSearchAniList(response, searchAniList);
         }

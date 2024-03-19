@@ -44,20 +44,20 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="page-content">
-        <!-- ***** Most Popular Start ***** -->
+        <!-- ***** Filed Start ***** -->
         <div class="all-list">
-        <select class="select-btn" name="year" onchange="allAniList(this.value, document.querySelector('[name=quarter]').value)">
-          <option class="select-list" value="2024">2024</option>
-          <option class="select-list" value="2023">2023</option>
-          <option class="select-list" value="2022">2022</option>
-          <option class="select-list" value="2021">2021</option>
-        </select>
-        <select class="select-btn" name="quarter" onchange="allAniList(document.querySelector('[name=year]').value, this.value)">
-          <option class="select-list" value="1">1분기</option>
-          <option class="select-list" value="2">2분기</option>
-          <option class="select-list" value="3">3분기</option>
-          <option class="select-list" value="4">4분기</option>
-        </select>
+          <select class="select-btn" name="year" onchange="allAniList(this.value, document.querySelector('[name=quarter]').value)">
+            <option class="select-list" value="2024">2024</option>
+            <option class="select-list" value="2023">2023</option>
+            <option class="select-list" value="2022">2022</option>
+            <option class="select-list" value="2021">2021</option>
+          </select>
+          <select class="select-btn" name="quarter" onchange="allAniList(document.querySelector('[name=year]').value, this.value)">
+            <option class="select-list" value="1">1분기</option>
+            <option class="select-list" value="2">2분기</option>
+            <option class="select-list" value="3">3분기</option>
+            <option class="select-list" value="4">4분기</option>
+          </select>
           <div class="row">
             <div class="col-lg-12">
               <div class="row" id="selected-list">
@@ -65,7 +65,7 @@
             </div>
           </div>
         </div>
-        <!-- ***** Most Popular End ***** -->
+        <!-- ***** Filed End ***** -->
       </div>
     </div>
   </div>

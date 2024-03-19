@@ -10,12 +10,16 @@ $(document).ready(function() {
     var currentDate = new Date();
     var currentYear = currentDate.getFullYear();
     var currentQuarter = Math.floor((currentDate.getMonth() / 3)) + 1; // 분기 계산
-
     // allAniList 함수 초기 호출
     allAniList(currentYear, currentQuarter);
+
+    // 검색어 입력
+    var searchKeyword = new URLSearchParams(window.location.search).get('keyword');
+    if (searchKeyword) {
+        // 검색어가 있으면 해당 검색어로 검색을 실행합니다.
+        searchAniList(searchKeyword);
+    }
 });
-
-
 
 function latestAniList(){
     $.ajax({
@@ -63,5 +67,34 @@ function allAniList(year, quarter){
                 )
             })
         }
+    });
+}
+
+function searchAniList(searchKeyword) {
+    $.ajax({
+        url: 'AniList/search?keyword=' + searchKeyword,
+        type: 'GET',
+        contentType: 'application/json;',
+        dataType: 'json',
+        dataSrc: '',
+        error: function(error, status, msg) {
+            alert("상태코드 " + status + "에러메시지" + msg);
+        },
+        success: function(data) {
+            displayAniList(data);
+        }
+    });
+}
+
+function displayAniList(data) {
+    $('#searched-list').empty();
+    $(data).each(function(index, item) {
+        var grade = parseFloat(item.grade);
+        $('#searched-list').append(
+            `<div class=\"col-lg-3 col-sm-6\"><div class=\"item\">` +
+            `<img src="${item.imgUrl}" alt="noImage">` +
+            `<div><div class="ani_title">${item.title}</div></>` +
+            `<ul><li><i class="fa fa-star"></i> ${grade}</li>`
+        );
     });
 }
