@@ -60,7 +60,7 @@ function allAniList(year, quarter){
             $(data).each(function (index, item) {
                 var grade = parseFloat(item.grade);
                 $('#selected-list').append(
-                    `<div class=\"col-lg-3 col-sm-6\"><div class=\"item\">`+
+                    `<div id="${item.aniPk}" class=\"col-lg-3 col-sm-6\"><div class=\"item\">`+
                     `<img src="${item.imgUrl}" alt="noImage">`+
                     `<div><div class="ani_title">${item.title}</div></>`+
                     `<ul><li><i class="fa fa-star"></i> ${grade}</li>`
@@ -91,7 +91,7 @@ function displayAniList(data) {
     $(data).each(function(index, item) {
         var grade = parseFloat(item.grade);
         $('#searched-list').append(
-            `<div class=\"col-lg-3 col-sm-6\"><div class=\"item\">` +
+            `<div id="${item.aniPk}" class=\"col-lg-3 col-sm-6\"><div class=\"item\">` +
             `<img src="${item.imgUrl}" alt="noImage">` +
             `<div><div class="ani_title">${item.title}</div></>` +
             `<ul><li><i class="fa fa-star"></i> ${grade}</li>`

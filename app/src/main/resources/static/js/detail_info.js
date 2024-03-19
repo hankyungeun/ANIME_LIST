@@ -1,5 +1,5 @@
 // 이미지를 통한 개별 information을 modal창으로 가져오기
-$('#ani-list').on('click', '*', function (e) {
+$('.test').on('click', '*', function (e) {
     let closestElement = e.target.closest('.col-lg-3');
     detailModalAniInfo(closestElement.id);
 });
