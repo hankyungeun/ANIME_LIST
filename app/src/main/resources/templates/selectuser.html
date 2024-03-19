@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <title>Cyborg - Awesome HTML5 Template</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="./static/js/selectuser.js"></script>
+
+  <!-- Additional CSS Files -->
+  <link rel="stylesheet" href="./static/css/fontawesome.css">
+  <link rel="stylesheet" href="./static/css/templatemo-cyborg-gaming.css">
+  <link rel="stylesheet" href="./static/css/owl.css">
+  <link rel="stylesheet" href="./static/css/animate.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./static/css/selectuser.css">
+
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ***** Preloader Start ***** -->
+  <div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+      <span class="dot"></span>
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- ***** Preloader End ***** -->
+
+  <!-- ***** Header Area Start ***** -->
+  <header th:include="header.html"></header>
+  <!-- ***** Header Area End ***** -->
+
+  <!-- ***** Featured Games Start ***** -->
+  <div style="margin: 8%;"></div>
+  <!-- <div id="main"> -->
+  <div id="selectuser">
+    <div style="height: 30px;"></div>
+    <div>
+      <label style="font-size: 50px; color: #e75e8d; ">회원정보</label>
+    </div>
+
+
+    <div id="update-form">
+      <br>
+      <h3>아이디</h3>
+      <input type="text" value="test" th:value="${session.loginUser.userId}" readonly id="select-id">
+
+      <h3>이름</h3>
+      <input type="text" value="test" th:value="${session.loginUser.name}" readonly id="select-us">
+
+      <br>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#update-modal" id="update-button">회원정보 변경</button>
+      <br><br>
+    </div>
+
+
+
+    <div class="modal fade" id="update-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #27292a;">
+          <div class="modal-header">
+
+            <h1 id="modal-h1">회원정보 변경</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="/updateuser" method="POST" name="mForm">
+            <div class="modal-body" id="upuser">
+              <h4>아이디</h4>
+              <input type="text" th:value="${session.loginUser.userId}" readonly id="select-id" name="userId">
+              <h4>변경할 비밀 번호</h4>
+              <input type="password" onkeyup="updatecheckPw()" placeholder="변경할 비밀 번호" id="update-pw" name="passwd">
+
+              <h4>변경할 비밀 번호 확인</h4>
+              <input type="password" onkeyup="updatecheckPw2()" placeholder="변경할 비밀 번호 확인" id="update-pw2">
+
+              <h4>변경할 아이디</h4>
+              <input type="text" th:value="${session.loginUser.name}" id="update-us" name="name">
+            </div>
+            <div>
+              <ul style=" color: red;">
+                <li id="error2"></li>
+                <li id="error3"></li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="ch" data-bs-dismiss="modal">Close</button>
+              <button class="ch" onclick="updateuser(event);">변경</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+  </div>
+
+
+  <!-- ***** Featured Games End ***** -->
+
+  <!-- ***** Start Stream Start ***** -->
+
+  <!-- ***** Start Stream End ***** -->
+
+  <!-- ***** Live Stream Start ***** -->
+
+  <!-- ***** Live Stream End ***** -->
+
+  <!-- </div>
+      </div>
+    </div>
+  </div> -->
+  <footer include-html="./templates/footer.html"></footer>
+
+
+
+  <!-- Scripts -->
+  <!-- Bootstrap core JavaScript -->
+  <script src="./lib/jquery/jquery.min.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="./static/js/isotope.min.js"></script>
+  <script src="./static/js/owl-carousel.js"></script>
+  <script src="./static/js/tabs.js"></script>
+  <script src="./static/js/popup.js"></script>
+  <script src="./static/js/custom.js"></script>
+  <script src="./static/js/includeHTML.js"></script>
+
+
+
+</body>
+
+</html>
