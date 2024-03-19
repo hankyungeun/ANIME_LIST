@@ -51,7 +51,8 @@ public class AniListDao {
                         rset.getFloat("GRADE"),
                         rset.getDate("START_DATE"),
                         rset.getString("IMAGE_URL"),
-                        rset.getString("VIDEO_URL")                );
+                        rset.getString("VIDEO_URL")
+                );
                 list.add(aniList);
             }
 
@@ -85,7 +86,8 @@ public class AniListDao {
                         rset.getFloat("GRADE"),
                         rset.getDate("START_DATE"),
                         rset.getString("IMAGE_URL"),
-                        rset.getString("VIDEO_URL")                );
+                        rset.getString("VIDEO_URL")
+                );
                 list.add(aniList);
 
             }
@@ -96,6 +98,43 @@ public class AniListDao {
             JDBC.close(rset);
             JDBC.close(pstmt);
         }
-        return list;}
+        return list;
+    }
+
+    public ArrayList<AniList> getSearchAniList(Connection conn, String keyword) {
+        ArrayList<AniList> list = new ArrayList<>();
+        String title = "%" + keyword + "%";
+        PreparedStatement pstmt = null;
+        ResultSet rset = null;
+
+        String sql = prop.getProperty("searchList");
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, title);
+            rset = pstmt.executeQuery();
+
+            while(rset.next()) {			// .next():데이터가 있는지 여부 체크
+                AniList aniList = new AniList(
+                        rset.getString("ANI_PK"),
+                        rset.getString("TITLE"),
+                        rset.getString("GENRE"),
+                        rset.getString("DETAIL"),
+                        rset.getFloat("GRADE"),
+                        rset.getDate("START_DATE"),
+                        rset.getString("IMAGE_URL"),
+                        rset.getString("VIDEO_URL")
+                );
+                list.add(aniList);
+
+            }
+
+        } catch(SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
+        return list;
+    }
 
 }

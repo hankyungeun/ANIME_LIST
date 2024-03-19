@@ -26,4 +26,11 @@
         SELECT * FROM ANI_LIST
     </entry>
 
+    <entry key="searchList">
+        <![CDATA[
+            SELECT * FROM ANI_LIST
+            WHERE TITLE LIKE ?
+        ]]>
+    </entry>
+
 </properties>
