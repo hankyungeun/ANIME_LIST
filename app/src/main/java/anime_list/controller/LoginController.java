@@ -27,8 +27,8 @@ public class LoginController extends HttpServlet{
         
         if (loginUser == null) {
             System.out.println("로그인 실패 !");
-            
-            response.sendRedirect("/main?loginFailed=true");
+
+            response.sendRedirect("/login?loginFailed=true");
             
 		} else {
             
