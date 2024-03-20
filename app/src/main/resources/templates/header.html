@@ -4,34 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
+    <script src="./static/js/login.js"></script>
+    <script th:if="${session.loginUser == null}">
+        loginched();
+    </script>
+     <script th:if="${session.loginUser != null}">
+         update();
+    </script>
 </head>
 
 <body>
-
-    <script th:if="${session.loginUser == null}">
-        const urlParams = new URLSearchParams(window.location.search);
-        const loginFailed = urlParams.get('loginFailed');
-
-        if (loginFailed) {
-            alert("로그인에 실패했습니다. 다시 시도해주세요.");
-        }
-    </script>
-
-    <script th:if="${session.loginUser != null}">
-        
-        const update = urlParams.get('update');
-        const updatefaild = urlParams.get('updatefaild');
-
-        if (update) {
-            alert("회원 정보 수정에 성공했습니다");
-        } else if (updatefaild){
-            alert("회원 정보 수정에 실패했습니다");
-        }
-    </script>
-
-
-
     <header class="header-area header-sticky">
         <div class="container">
             <div class="row">
