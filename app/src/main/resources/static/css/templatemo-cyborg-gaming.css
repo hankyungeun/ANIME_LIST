@@ -223,7 +223,7 @@ section {
 .heading-section h4 em {
   color: #fff;
   font-style: normal;
-  text-decoration: underline;
+  /*text-decoration: underline;*/
 }
 
 /* 
@@ -964,7 +964,7 @@ Gaming Library Style
   text-align: center;
   background-color: black;
   color : white;
-  font-weight: 600;
+  font-weight: 500;
 }
 .select-list{
   border-radius: 12px;
