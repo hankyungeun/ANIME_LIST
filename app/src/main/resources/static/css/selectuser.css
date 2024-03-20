@@ -45,12 +45,11 @@
     color: #e75e8d;
   }
 
-  h3,
-  h4 {
+  h5 {
     color: #e75e8d;
-    margin: 10px 0;
+    margin: 13px 0;
+    font-weight :550 ;
   }
-
 
 
   #update-form {

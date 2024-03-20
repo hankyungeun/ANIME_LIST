@@ -1,7 +1,7 @@
 
 function chId() {
-
   const id = document.getElementById("login-id").value;
+  if(id.length > 4){
   $.ajax({
     type: 'POST',
     url: '/chId',
@@ -15,6 +15,9 @@ function chId() {
       alert("중복된 아이디 입니다");
     },
   });
+}else{
+  alert("5자 이상의 아이디만 사용 가능합니다");
+}
 }
 
 
