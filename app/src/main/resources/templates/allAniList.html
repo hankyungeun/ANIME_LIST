@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="./static/css/templatemo-cyborg-gaming.css">
   <link rel="stylesheet" href="./static/css/owl.css">
   <link rel="stylesheet" href="./static/css/animate.css">
+  <link rel="stylesheet" href="./static/css/part_modal.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 
 </head>
@@ -60,12 +61,14 @@
           </select>
           <div class="row">
             <div class="col-lg-12">
-              <div class="row" id="selected-list">
+              <div class="row test" id="selected-list">
               </div>
             </div>
           </div>
         </div>
         <!-- ***** Filed End ***** -->
+        <div th:include="Modal_Anime :: div.modal" id="modalstyle" hidden></div>
+
       </div>
     </div>
   </div>
@@ -86,6 +89,7 @@
 <script src="./static/js/popup.js"></script>
 <script src="./static/js/custom.js"></script>
 <script src="./static/js/aniList.js"></script>
+<script src="./static/js/detail_info.js"></script>
 
 </body>
 

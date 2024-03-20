@@ -67,7 +67,7 @@ public class DetailModalDao {
         }
         return list;
     }
-
+/*
     public ArrayList<AniList> selectEachListinModal(Connection conn, String aniPk) {
         ArrayList<AniList> list = new ArrayList<>();        
         
@@ -102,28 +102,30 @@ public class DetailModalDao {
         
         return list;
     }
-
+*/
     public ArrayList<Comment> selectCommentinModal(Connection conn, String aniPk) {
         ArrayList<Comment> list = new ArrayList<>();
-        
+
+
         PreparedStatement pstmt = null;
         ResultSet rset = null;
+
 
         // String sql = "Select sss from anilist by "
         String sql = prop.getProperty("each_info_comment");
         try{
             pstmt = conn.prepareStatement(sql);
-            rset = pstmt.executeQuery(sql);
             pstmt.setString(1, aniPk);
+            rset = pstmt.executeQuery();
 
             while(rset.next()) {
                 Comment each_info_comment = new Comment(
-                        rset.getString("ANI_PK"),
-                        rset.getString("COMMENT_PK"),
-                        rset.getString("USER_PK"),
-                        rset.getString("CONTENT"),
-                        rset.getDate("COMMENT_DATE"),
-                        rset.getFloat("INIT_GRADE")        );
+                    rset.getString("COMMENT_PK"),
+                    rset.getString("USER_PK"),
+                    rset.getString("ANI_PK"),
+                    rset.getString("CONTENT"),
+                    rset.getDate("COMMENT_DATE"),
+                    rset.getFloat("INIT_GRADE")        );
                 list.add(each_info_comment);            }
 
         } catch(SQLException e) {
