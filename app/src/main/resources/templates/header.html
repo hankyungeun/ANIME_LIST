@@ -36,10 +36,8 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="/main" class="active">Home</a></li>
-                            <li><a href="/allAniList">Browse</a></li>
-                            <li><a href="details.html">Details</a></li>
-                            <li><a href="streams.html">Streams</a></li>
-                            <li th:if="${session.loginUser == null}"><a href="/login" style=" font-size: 20px;">Login
+                            <li><a href="/allAniList">Season</a></li>
+                            <li th:if="${session.loginUser == null}"><a href="/login">Login
                                     &nbsp;</a></li>
                             <li th:if="${session.loginUser != null}"><a href="/logout">로그아웃</a></li>
                             <li th:if="${session.loginUser != null}"><a href="/selectuser">회원정보 &nbsp;</a></li>
