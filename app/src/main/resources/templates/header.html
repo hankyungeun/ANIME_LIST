@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="./static/js/login.js"></script>
+    <script src="./static/js/header.js"></script>
     <script th:if="${session.loginUser == null}">
         loginched();
     </script>
@@ -35,7 +36,7 @@
                         <!-- ***** Search End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="/main" class="active">Home</a></li>
+                            <li><a href="/main">Home</a></li>
                             <li><a href="/allAniList">Season</a></li>
                             <li th:if="${session.loginUser == null}"><a href="/login">Login
                                     &nbsp;</a></li>
