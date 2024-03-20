@@ -76,7 +76,7 @@ function detailModalAniInfo(aniPk) {
                     <fieldset id="commentWrite">평가 작성하기
                         <div id="comment_info">
                             <div class="write1" id="userId">
-                            <input placeholder="닉네임" />
+                                                        <input placeholder="닉네임" />
                             </div>
                             <div class="write1" id="star-rating">
                             <input type="radio" placeholder="별점" />
@@ -99,9 +99,47 @@ function detailModalAniInfo(aniPk) {
 function writeComment() {
     const commentOpen = document.querySelector("#commentWrite");
     commentOpen.style.visibility = 'visible';
+   
+
+    
 }
 
 function writeCompleteComment() {
+    $.ajax({
+        url: 'DetailInfo/insertComment',
+        type: 'post',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: {
+            aniPk: aniPk,
+            id:id,
+            score: score,
+            comment: comment            
+        },
+        error: function (error, status, msg) {
+            alert("상태코드 " + status + " 에러메시지 " + msg);
+        },
+        success: function (data) { // {aniDetail: { // }, commentList: [{}, {}, {}]}
+            console.log(aniPk);
+            console.log(data);
 
+            var grade = parseFloat(data.aniDetail.grade);
+
+            var imgLink = data.aniDetail.imgUrl;
+            var videoLink = data.aniDetail.videoUrl;
+
+            var imgHtml = '<img src="' + imgLink + '">';
+            var iframeHtml = videoLink ? '<iframe src="' + videoLink + '" frameborder="0" allowfullscreen></iframe>' : '';
+
+            var commentHtml = '';
+            for (var i=0; i< data.commentList.length; i++) {
+                commentHtml +=               
+                `<tr><td class="content_comment" id="comment_day">${data.commentList[i].commentDate}</td>
+                <td class="content_comment" id="comment_id">${data.commentList[i].userPk}</td>
+                <td class="content_comment" id="comment_text">${data.commentList[i].content}</td>
+                <td class="content_comment" id="comment_rate">${data.commentList[i].initGrade}</td></tr>`
+            }            
+        }
+    });
     
 }
