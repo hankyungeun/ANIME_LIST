@@ -41,10 +41,8 @@
                             <li><a href="streams.html">Streams</a></li>
                             <li th:if="${session.loginUser == null}"><a href="/login" style=" font-size: 20px;">Login
                                     &nbsp;</a></li>
-                            <li th:if="${session.loginUser != null}"><a href="/logout"
-                                    style=" font-size: 15px;">로그아웃</a></li>
-                            <li th:if="${session.loginUser != null}"><a href="/selectuser"
-                                    style=" font-size: 20px;">회원정보 &nbsp;</a></li>
+                            <li th:if="${session.loginUser != null}"><a href="/logout">로그아웃</a></li>
+                            <li th:if="${session.loginUser != null}"><a href="/selectuser">회원정보 &nbsp;</a></li>
 
                         </ul>
                         <a class='menu-trigger'>
