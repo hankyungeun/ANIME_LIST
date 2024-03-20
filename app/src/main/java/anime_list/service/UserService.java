@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import anime_list.config.JDBC;
 import anime_list.model.dao.UserDao;
+import anime_list.model.dto.UserDto;
 import anime_list.model.vo.User;
 public class UserService {
 	public int insertUser(User user) {
@@ -50,6 +51,14 @@ public class UserService {
 			return result;
 
         }
+
+        public UserDto idchUser(String userId) {
+            Connection conn = JDBC.getConnection();
+			UserDto userdto = new UserDao().idch(conn,userId);
+			JDBC.close(conn);
+			return userdto;
+        }
+
 
     
 

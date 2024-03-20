@@ -1,12 +1,6 @@
-$(function(){
-    login();
-    
-    
-});
 
 function loginched(){
 
-    console.log("======")
     const urlParams = new URLSearchParams(window.location.search);
     if( typeof session == 'undefined' ){
         
@@ -16,6 +10,8 @@ function loginched(){
             alert("로그인에 실패했습니다. 다시 시도해주세요.");
         }
     }
+
+    
 }
 
 function login(){

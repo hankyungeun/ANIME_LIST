@@ -38,7 +38,7 @@ public class UserController extends HttpServlet {
             response.sendRedirect("/login");
 
         } else {
-            System.out.println("회원 추가에 실해하셨습니다 Failed!!");
+            System.out.println("회원 추가에 실패하셨습니다 Failed!!");
             response.sendRedirect("/newuser");
 
         }

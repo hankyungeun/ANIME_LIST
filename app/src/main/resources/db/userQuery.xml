@@ -26,8 +26,10 @@
     </entry>
 
     <entry key="conId">
-        SELECT * MEMBER
+        SELECT * from MEMBER
         WHERE USER_ID = ?
     </entry>
+
+    
 
 </properties>
