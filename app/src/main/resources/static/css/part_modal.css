@@ -45,6 +45,11 @@
     border-radius : 10px;
 }
 
+.modal_thumbnail img { 
+    max-width: 100%; max-height: 100%; width: auto ; height: auto; }
+
+.modal_thumbnail iframe { width: 100% ; height: 100%; }
+
 .infoShort {     
     margin: 1% 0%;
     display:flex;

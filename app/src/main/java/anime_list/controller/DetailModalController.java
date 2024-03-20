@@ -1,7 +1,6 @@
 package anime_list.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import anime_list.model.dto.DetailModalDto;
 import anime_list.model.vo.AniList;
 import anime_list.model.vo.Comment;
 import anime_list.service.DetailModalService;
@@ -30,47 +30,56 @@ public class DetailModalController extends HttpServlet {
         }
         if(pathInfo.equals("/ani_detail")) {
             String aniPk = request.getParameter("aniPk");
+
             AniList selectAnimation = new DetailModalService().selectAnimation(aniPk);
-            selectAni(response, selectAnimation);
+            // selectAni(response, selectAnimation);
             // ArrayList<AniList> detailAniInfo = new DetailModalService().selectEachListinModal(aniPk);
             // selectEachListinModal(response, detailAniInfo);
-            // ArrayList<Comment> detailCommInfo = new DetailModalService().selectCommentinModal(aniPk);
+            ArrayList<Comment> detailCommInfo = new DetailModalService().selectCommentinModal(aniPk);
             // selectCommentinModal(response, detailCommInfo);
+
+            DetailModalDto detailInfoDTO = new DetailModalDto(selectAnimation, detailCommInfo);
+
+            Gson gson = new Gson();
+            String json = gson.toJson(detailInfoDTO);
+
+            response.getWriter().write(json);
         } else {
             response.sendRedirect(request.getContextPath()+"/error");
         }
     }
-    
-    private void selectAni(HttpServletResponse response, AniList list) throws IOException {
-        if(list == null) {
-            response.getWriter().write("[No data]");
-        } else {
-            PrintWriter out = response.getWriter();
-            Gson gson = new Gson();
-            String json = gson.toJson(list);
-            out.println(json);            
-        }
-    }
-
-    private void selectEachListinModal(HttpServletResponse response, ArrayList<AniList> list) throws IOException {
-        if(list.isEmpty()) {
-            response.getWriter().write("[No data]");
-        } else {
-            PrintWriter out = response.getWriter();
-            Gson gson = new Gson();
-            String json = gson.toJson(list);
-            out.println(json);            
-        }
-    }
-
-    private void selectCommentinModal(HttpServletResponse response, ArrayList<Comment> list) throws IOException {
-        if(list.isEmpty()) {
-            response.getWriter().write("[No data]");
-        } else {
-            PrintWriter out = response.getWriter();
-            Gson gson = new Gson();
-            String json = gson.toJson(list);
-            out.println(json);            
-        }
-    }
 }
+    
+//     private void selectAni(HttpServletResponse response, AniList list) throws IOException {
+//         if(list == null) {
+//             response.getWriter().write("[No data]");
+//         } else {
+//             PrintWriter out = response.getWriter();
+//             Gson gson = new Gson();
+//             String json = gson.toJson(list);
+//             out.println(json);            
+//         }
+//     }
+
+//     private void selectEachListinModal(HttpServletResponse response, ArrayList<AniList> list) throws IOException {
+//         if(list.isEmpty()) {
+//             response.getWriter().write("[No data]");
+//         } else {
+//             PrintWriter out = response.getWriter();
+//             Gson gson = new Gson();
+//             String json = gson.toJson(list);
+//             out.println(json);            
+//         }
+//     }
+
+//     private void selectCommentinModal(HttpServletResponse response, ArrayList<Comment> list) throws IOException {
+//         if(list.isEmpty()) {
+//             response.getWriter().write("[No data]");
+//         } else {
+//             PrintWriter out = response.getWriter();
+//             Gson gson = new Gson();
+//             String json = gson.toJson(list);
+//             out.println(json);            
+//         }
+//     }
+// }

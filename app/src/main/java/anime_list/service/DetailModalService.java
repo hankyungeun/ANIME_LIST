@@ -21,7 +21,7 @@ public class DetailModalService {
         return list;
 
     }
-
+/*
     public ArrayList<AniList> selectEachListinModal(String aniPk) { 
         Connection conn = JDBC.getConnection();
         ArrayList<AniList> list = new DetailModalDao().selectEachListinModal(conn, aniPk);
@@ -29,7 +29,7 @@ public class DetailModalService {
 
         return list;
     }
-
+*/
     public ArrayList<Comment> selectCommentinModal(String aniPk) {
         Connection conn = JDBC.getConnection();
         ArrayList<Comment> list = new DetailModalDao().selectCommentinModal(conn, aniPk);
