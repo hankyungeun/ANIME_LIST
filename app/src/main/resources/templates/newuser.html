@@ -67,20 +67,20 @@ https://templatemo.com/tm-579-cyborg-gaming
         <div style="margin-left:  104px;">
           <input type="text" id="login-id" placeholder="&nbsp;&nbsp;아이디" name="userId" required>
 
-          <button id="loginch-button" onclick="checkdbId()" >체크</button>
-          <h5>아이디는 5자이상 영어/숫자 만 가능합니다.</h5>
+          <button id="loginch-button" onclick="chId()" type="button">중복 체크</button>
+          <h6>아이디는 5 자이상 영어/숫자 만 가능합니다.</h6>
 
 
 
           <input type="password" id="login-pw" onkeyup="checkPw()" placeholder="&nbsp;&nbsp;비밀 번호" name="passwd" >
-          <h5>비밀번호는 8자이상 만 가능합니다.</h5>
+          <h6>비밀번호는 8 자이상 만 가능합니다.</h6>
         </div>
-        <input type="password" id="login-pw2" onkeyup="checkPw2()" placeholder="&nbsp;&nbsp;비밀 번호 확인" name="passwdch" >
+        <input type="password" id="login-pw2" onkeyup="checkPw2()" placeholder="&nbsp;&nbsp;비밀 번호 확인" name="passwdch" style="margin-bottom: 13px;">
         <br>
         <input type="text" id="login-us" placeholder="&nbsp;&nbsp;유저 닉네임" name="name">
 
         <div>
-          <ul style=" color: red;">
+          <ul style=" color: rgb(221, 15, 15);">
             <li id="error"></li>
             <li id="error2"></li>
             <li id="error3"></li>
@@ -128,8 +128,6 @@ https://templatemo.com/tm-579-cyborg-gaming
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
   <script src="./static/js/isotope.min.js"></script>
   <script src="./static/js/owl-carousel.js"></script>
   <script src="./static/js/tabs.js"></script>

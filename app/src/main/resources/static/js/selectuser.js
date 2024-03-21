@@ -2,11 +2,9 @@
 function updatecheckPw() {
     const ch = /^[ㄱ-ㅎㅏ-ㅣ가-힣]+$/;
     const pw = document.getElementById("update-pw").value;
-    console.log(pw);
-    console.log(ch.test(pw));
+
 
     if (ch.test(pw)) {
-        console.log(222);
         document.getElementById("error2").innerHTML = "규정에 맞지 않는 비밀번호입니다";
     } else if (pw.length >= 8) {
         document.getElementById("error2").innerHTML = " ";
@@ -31,7 +29,6 @@ function updatecheckPw2() {
 
 function updatecheckName() {
     const name = document.getElementById("update-us").value;
-    console.log(name);
     if (name != null && name != "") {
         return true;
     } else {
@@ -42,13 +39,11 @@ function updatecheckName() {
 
 function updateuser(event) {
     event.preventDefault();
-    console.log("--------")
     
     if (updatecheckPw() == true && updatecheckPw2() == true && updatecheckName() == true) {
         alert('회원 정보 수정에 성공하셨습니다');
         document.mForm.submit();
         
-        console.log("--------")
         
         
     } else {

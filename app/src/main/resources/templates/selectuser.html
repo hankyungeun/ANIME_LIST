@@ -60,10 +60,10 @@
 
     <div id="update-form">
       <br>
-      <h3>아이디</h3>
+      <h5>아이디</h5>
       <input type="text" value="test" th:value="${session.loginUser.userId}" readonly id="select-id">
 
-      <h3>이름</h3>
+      <h5>이름</h5>
       <input type="text" value="test" th:value="${session.loginUser.name}" readonly id="select-us">
 
       <br>
@@ -84,15 +84,15 @@
           </div>
           <form action="/updateuser" method="POST" name="mForm">
             <div class="modal-body" id="upuser">
-              <h4>아이디</h4>
+              <h5>아이디</h5>
               <input type="text" th:value="${session.loginUser.userId}" readonly id="select-id" name="userId">
-              <h4>변경할 비밀 번호</h4>
+              <h5>변경할 비밀 번호</h5>
               <input type="password" onkeyup="updatecheckPw()" placeholder="변경할 비밀 번호" id="update-pw" name="passwd">
 
-              <h4>변경할 비밀 번호 확인</h4>
+              <h5>변경할 비밀 번호 확인</h5>
               <input type="password" onkeyup="updatecheckPw2()" placeholder="변경할 비밀 번호 확인" id="update-pw2">
 
-              <h4>변경할 이름</h4>
+              <h5>변경할 이름</h5>
               <input type="text" th:value="${session.loginUser.name}" id="update-us" name="name">
             </div>
             <div>
