@@ -113,7 +113,7 @@ public class UserDao {
             result = pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             JDBC.close(pstmt);
         }
         return result;
@@ -149,6 +149,35 @@ public class UserDao {
             JDBC.close(pstmt);
         }
         return u;
+    }
+
+    public UserDto idch(Connection conn, String userId) {
+        UserDto userdto = null;
+
+        PreparedStatement pstmt = null;
+
+        ResultSet rset = null;
+
+        String sql = prop.getProperty("conId");
+
+        
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userId);
+            
+            rset = pstmt.executeQuery();
+            while (rset.next()) {
+                userdto = new UserDto();
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
+
+        return userdto;
     }
 
 }

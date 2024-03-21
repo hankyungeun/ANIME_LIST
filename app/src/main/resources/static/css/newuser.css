@@ -81,9 +81,12 @@
     background-color: #27292a;
   }
 
-  h5 {
+  h6 {
     text-align: left;
     color: #e75e8d;
+    font-weight: 300;
+    font-size: 15px;
+    margin: 13px 0;
   }
 
   #login-form {

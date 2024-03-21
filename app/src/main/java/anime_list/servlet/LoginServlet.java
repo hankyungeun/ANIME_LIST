@@ -21,22 +21,20 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-                response.setContentType("text/html;charset=UTF-8");
-                response.setHeader("Pragma", "no-cache");
-                response.setHeader("Cache-Control", "no-cache");
-                response.setDateHeader("Expires", 1000);
-    
-                request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setDateHeader("Expires", 1000);
+
+        request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession(false);
         if (session != null && session.getAttribute("loginUser") != null) {
             // 로그인 상태일 경우, /main 페이지로 리다이렉트합니다.
             response.sendRedirect(request.getContextPath() + "/main");
         } else {
 
-            User loginUser = (User) session.getAttribute("loginUser");
 
             ServletContext context = getServletContext();
-            context.setAttribute("loginUser", loginUser);
 
             ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(context);
 
@@ -51,28 +49,6 @@ public class LoginServlet extends HttpServlet {
                     request.getLocale());
 
             templateEngine.process("login", ctx, response.getWriter());
-
-            ///////////////////////////////////////////////////////////////////
-            // request.setCharacterEncoding("UTF-8");
-            // response.setContentType("text/html; charset=UTF-8");
-            // PrintWriter out = response.getWriter();
-            //
-            // try {
-            // InputStream inputStream =
-            // getServletContext().getResourceAsStream("/templates/login.html");
-            // InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8");
-            //
-            // char[] buffer = new char[1024];
-            // int bytesRead;
-            // while ((bytesRead = reader.read(buffer)) != -1) {
-            // out.write(buffer, 0, bytesRead);
-            // }
-            //
-            // inputStream.close();
-            // reader.close();
-            // } catch (NullPointerException e) {
-            // response.sendRedirect(request.getContextPath() + "/error");
-            // }
         }
     }
 }
