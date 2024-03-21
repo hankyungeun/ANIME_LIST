@@ -22,7 +22,7 @@
     position:fixed;
     display:none;
     top:50%; /*모달을 화면가운데 놓기위함. */
-
+    left:50%; /*모달을 화면가운데 놓기위함. */
 
     width:75%;  /*모달의 가로크기*/
     height:75%; /*모달의 세로크기 */
@@ -31,12 +31,19 @@
 
     text-align: center;
     justify-content: space-around;
-    background-color: #1f2122; /*모달창 배경색 흰색*/
+    background-color: blue; /*모달창 배경색 흰색*/
     border-radius:15px; /*테두리*/
     box-shadow:0 2px 3px 0 rgba(34,36,38,0.15); /*테두리 그림자*/
 
-    transform:translateY(-50%); /*모듈창열었을때 위치설정 가운데로 */
+    transform:translate(-50%,-50%); /*모듈창열었을때 위치설정 가운데로 */
 }
+
+#modal_left {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+}
+
 .modal_thumbnail {
     position: static;
     width: 96%;
@@ -57,23 +64,46 @@
     width:96%;
 }
 .infoShort > div {
+    border-radius:3px;
     background-color: gray;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:30px;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    color:white;
 }
 
 #releaseDate { 
-    width:50px; height:30px;
+    width:100px;
 }
 
+#titleInfo {
+    display: block;
+    padding: 4px;
+    width:50%; max-width: 300px;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap;    
+}
+
+#titleInfo::-webkit-scrollbar {
+    display:none;
+}
+
+#gstar { color : yellow} 
+
 #rate {
-    width:50px; height:30px;
+    width:50px;
 }
 
 #introduction {
+    flex:1;
     position:static;
+    padding:2px;
     background-color:rgb(46, 45, 41); 
-    color:white;
     width: 96%;
-    height: 35%;
     border-radius: 10px;
     /*-ms-overflow-style: none; /* for Internet Explorer, Edge */
     /*scrollbar-width: none; /* for Firefox */
@@ -81,22 +111,25 @@
     word-wrap: break-word;
 }
 
+#introduction p { color:white; }
+
 #introduction::-webkit-scrollbar {
     display:none;
-}
-
-#modal_left {
-    width: 45%;
 }
 
 #modal_right {
     background-color: gray;
     width: 45%;
+    border-radius: 10px;
 }
 
 #comment {
     height : 40%;
     overflow-y:scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #comment::-webkit-scrollbar {
@@ -104,9 +137,11 @@
 }
 
 #comment_table {
-    width:100%;
-
+    width:96%;   
+    border-radius: 7px;
+    border-collapse:unset;
 }
+
 #comment_table .comment_head {
     background-color: white;
     border-radius : 3px;
@@ -117,10 +152,10 @@
     border-radius : 3px;
 }
 
-#comment_day { border: 1px solid black; width:15%; }
+/* #comment_day { border: 1px solid black; width:15%; }
 #comment_id { border: 1px solid black; width:25%; }
 #comment_text { border: 1px solid black; }
-#comment_rate { border: 1px solid black; width:10%; }
+#comment_rate { border: 1px solid black; width:10%; } */
 
 
 /*댓글 등록 파트 (이동협)*/
@@ -151,11 +186,3 @@
 #comment_context::-webkit-scrollbar {
     display:none;
 }
-
-
-/*
-    CSS TO_DO LIST(02.23~25)
-    1. Modal창 화면 분할 (영상, 댓글, 평점, 방영일자, 제목 등등 항목 별 div 나누기)
-
-    2. div 항목 별 링크로 예상되는 것 들 걸어보기 (a href / link / ...)
-*/
