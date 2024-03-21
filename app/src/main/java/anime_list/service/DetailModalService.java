@@ -30,9 +30,9 @@ public class DetailModalService {
         return list;
     }
 */
-    public ArrayList<Comment> selectCommentinModal(String aniPk, Float grade,String[] comment) {
+    public ArrayList<Comment> selectCommentinModal(String aniPk) {
         Connection conn = JDBC.getConnection();
-        ArrayList<Comment> list = new DetailModalDao().selectCommentinModal(conn, aniPk, grade, comment);
+        ArrayList<Comment> list = new DetailModalDao().selectCommentinModal(conn, aniPk);
         
         
         JDBC.close(conn);

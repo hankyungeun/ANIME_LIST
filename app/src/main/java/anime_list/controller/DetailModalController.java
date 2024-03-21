@@ -46,8 +46,8 @@ public class DetailModalController extends HttpServlet {
             response.getWriter().write(json);
         } else if(pathInfo.equals("/insertComment")) {
             String aniPk = request.getParameter("aniPk");
-
             
+
 
         } else  {
             response.sendRedirect(request.getContextPath()+"/error");

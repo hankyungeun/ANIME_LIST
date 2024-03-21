@@ -103,7 +103,7 @@ public class DetailModalDao {
         return list;
     }
 */
-    public ArrayList<Comment> selectCommentinModal(Connection conn, String aniPk, Float grade, String[] comment) {
+    public ArrayList<Comment> selectCommentinModal(Connection conn, String aniPk) {
         ArrayList<Comment> list = new ArrayList<>();
 
 

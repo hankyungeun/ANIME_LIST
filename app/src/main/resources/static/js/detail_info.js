@@ -115,6 +115,7 @@ function writeCompleteComment() {
             id:id,
             score: score,
             comment: comment            
+            
         },
         error: function (error, status, msg) {
             alert("상태코드 " + status + " 에러메시지 " + msg);
