@@ -49,19 +49,18 @@ function detailModalAniInfo(aniPk) {
 
             // 모달 내용 채우기
             $('.modal_body').css('display', 'flex').css('visibility', 'visible');
-
             if ($('.modal_thumbnail').length === 0) {
                 $('#modal_left').append(
                     `<div class="modal_thumbnail">` +
                     (iframeHtml ? iframeHtml : imgHtml) +`</div>`+ // 유튜브 링크가 있을 경우 iframe, 없을 경우 이미지 표시
-                    `<div class="infoShort"><div id="releaseDate">${data.aniDetail.startDate}"</div>` +
-                    `<div id="titleInfo">${data.aniDetail.title}</div>` +
-                    `<div id="rate"><ul><li><i class="fa fa-star"></i>${grade}</li></ul></div></div>` +
+                    `<div class="infoShort"><div id="releaseDate">${data.aniDetail.startDate}</div>` +
+                    `<div id="titleInfo" title="${data.aniDetail.title}">${data.aniDetail.title}</div>` +
+                    `<div id="rate"><ul><li><i class="fa fa-star" id="gstar"></i>&nbsp;${grade}</li></ul></div></div>` +
                     `<article id="introduction"><p>${data.aniDetail.detail}</p></article>`
                 );
 
                 $('#modal_right').append(
-                    `<fieldset id="comment"><legend><h3>평론</h3></legend>` + 
+                    `<fieldset id="comment"><br><legend><h3>평론</h3></legend>` + 
                     `<table id="comment_table">
                         <tr>
                             <th class="comment_head" id="comment_day">날짜</th>
@@ -76,11 +75,11 @@ function detailModalAniInfo(aniPk) {
                     <fieldset id="commentWrite">평가 작성하기
                         <div id="comment_info">
                             <div class="write1" id="userId">
-                            <input placeholder="닉네임" />
+                                <input placeholder="닉네임" />
                             </div>
                             <div class="write1" id="star-rating">
-                            <input type="radio" placeholder="별점" />
-                            <input id="score" placeholder="평점" />
+                                <input type="radio" placeholder="별점" />
+                                <input id="score" placeholder="평점" />
                             </div>
                         </div>
                         <textarea id="comment_context" placeholder="평가를 남겨주세요"></textarea>
