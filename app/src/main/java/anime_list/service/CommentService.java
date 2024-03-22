@@ -25,4 +25,19 @@ public class CommentService {
         
         return list;
     }
+    public int insertComment(String commentPk, 
+            String userPk,String aniPk,String content,float initGrade){
+                Connection conn = JDBC.getConnection();
+                Comment comment = new Comment();
+                comment.setAniPk(aniPk);
+                comment.setCommentPk(commentPk);
+                comment.setUserPk(userPk);
+                comment.setContent(content);
+                comment.setInitGrade(initGrade);
+
+
+                int result = new CommentDao().insertComment(conn, comment);
+                JDBC.close(conn);
+                return result;
+    }
 }

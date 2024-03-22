@@ -1,23 +1,34 @@
 
 function chId() {
   const id = document.getElementById("login-id").value;
-  if(id.length > 4){
-  $.ajax({
-    type: 'POST',
-    url: '/chId',
-    data: { name: id },
-    dataType: 'json',
-    success: function (data, status, msg) {
-
-      alert("사용 가능한 아이디 입니다.");
-    },
-    error: function (error, status, msg) {
-      alert("중복된 아이디 입니다");
-    },
-  });
-}else{
-  alert("5자 이상의 아이디만 사용 가능합니다");
-}
+  document.getElementById("error").innerHTML = "";
+  const ch = /^[a-z0-9]+$/;
+  if (ch.test(id)) {
+    if (id.length < 5) {
+      alert("5자 이상의 아이디만 사용 가능합니다");
+      document.getElementById("error").innerHTML = "규정에 맞지 않는 아이디입니다";
+    } else {
+      if(id.length > 4){
+        $.ajax({
+          type: 'POST',
+          url: '/chId',
+          data: { name: id },
+          dataType: 'json',
+          success: function (data, status, msg) {
+      
+            alert("사용 가능한 아이디 입니다.");
+          },
+          error: function (error, status, msg) {
+            alert("중복된 아이디 입니다");
+          },
+        });
+      }
+    }
+  } else {
+    alert("규정에 맞지 않는 아이디입니다.");
+    document.getElementById("error").innerHTML = "규정에 맞지 않는 아이디입니다";
+  }
+  0
 }
 
 

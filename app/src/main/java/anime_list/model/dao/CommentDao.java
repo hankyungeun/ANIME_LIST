@@ -66,7 +66,6 @@ public class CommentDao {
     public ArrayList<Comment> selectList(Connection conn, String aniPk){
         ArrayList<Comment> list = new ArrayList<>();
         
-        
         PreparedStatement pstmt = null;
         ResultSet rset= null;
         String sql = prop.getProperty("commentList_anipk");
@@ -93,12 +92,31 @@ public class CommentDao {
             JDBC.close(rset);
             JDBC.close(pstmt);
         }
-        
-        
-
-        
-
         return list;
+    }
+
+    public int insertComment(Connection conn, Comment comment){
+        int result = 0;
+        PreparedStatement pstmt = null;
+		String sql = prop.getProperty("insertComment");
+		
+		try {
+			pstmt = conn.prepareStatement(sql);  
+			pstmt.setString(1, comment.getCommentPk());
+			pstmt.setString(2, comment.getUserPk());
+			pstmt.setString(3, comment.getContent());
+			pstmt.setString(4, comment.getAniPk());
+			pstmt.setFloat(5, comment.getInitGrade());
+			
+			// sql문 실행
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JDBC.close(pstmt);
+		}
+		
+		return result;
     }
 
 }

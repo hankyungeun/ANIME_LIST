@@ -30,6 +30,15 @@
         WHERE USER_ID = ?
     </entry>
 
+    <entry key="shId">
+        SELECT * from MEMBER
+        WHERE passwd = ? AND name =?
+    </entry>
+
+    <entry key="shPw">
+        SELECT * from MEMBER
+        WHERE user_id = ? AND name =?
+    </entry>
     
 
 </properties>

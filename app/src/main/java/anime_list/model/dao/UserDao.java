@@ -81,10 +81,6 @@ public class UserDao {
                         rset.getString("user_id"),
                         rset.getString("passwd"),
                         rset.getString("name"));
-                System.out.println(user.getUserPk());
-                System.out.println(user.getUserId());
-                System.out.println(user.getPasswd());
-                System.out.println(user.getName());
 
             }
 
@@ -180,4 +176,67 @@ public class UserDao {
         return userdto;
     }
 
+    public UserDto idsh(Connection conn, String passwd, String name) {
+        UserDto userdto = null;
+
+        PreparedStatement pstmt = null;
+
+        ResultSet rset = null;
+
+        String sql = prop.getProperty("shId");
+
+        
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, passwd);
+            pstmt.setString(2, name);
+            
+            rset = pstmt.executeQuery();
+            while (rset.next()) {
+                userdto = new UserDto(
+                    rset.getString("user_id")
+                );
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
+
+        return userdto;
+    }
+
+	public UserDto pwsh(Connection conn, String userId, String name) {
+		UserDto userdto = null;
+
+        PreparedStatement pstmt = null;
+
+        ResultSet rset = null;
+
+        String sql = prop.getProperty("shPw");
+
+        
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, userId);
+            pstmt.setString(2, name);
+            
+            rset = pstmt.executeQuery();
+            while (rset.next()) {
+                userdto = new UserDto(
+                    rset.getString("passwd")
+                );
+            }
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        } finally {
+            JDBC.close(rset);
+            JDBC.close(pstmt);
+        }
+
+        return userdto;
+    }
 }
