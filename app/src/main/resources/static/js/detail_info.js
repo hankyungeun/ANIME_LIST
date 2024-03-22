@@ -1,6 +1,7 @@
 // 이미지를 통한 개별 information을 modal창으로 가져오기
 $('.test').on('click', '*', function (e) {
     let closestElement = e.target.closest('.col-lg-3');
+    $("#commentWrite input[name=anipk]").val(closestElement.id);
     detailModalAniInfo(closestElement.id);
 });
 
@@ -64,21 +65,59 @@ function detailModalAniInfo(aniPk) {
 
                 $('#comment_table').append(
                     `<thead>
-                            <tr>
-                                <th class="comment_head">날짜</th>
-                                <th class="comment_head">닉네임</th>
-                                <th class="comment_head">내용</th>
-                                <th class="comment_head">평점</th>
-                            </tr>
-                        </thead>
-                        ${commentHtml}`
+                        <tr>
+                            <th class="comment_head">날짜</th>
+                            <th class="comment_head">닉네임</th>
+                            <th class="comment_head">내용</th>
+                            <th class="comment_head">평점</th>
+                        </tr>
+                    </thead>
+                    ${commentHtml}`
                 );
             }
         }
     });
 }
 
-// function writeComment() {
-//     const commentOpen = document.querySelector("#commentWrite");
-//     commentOpen.style.visibility = 'visible';
-// }
+function showWriteComment() {
+    const commentOpen = document.querySelector("#commentWrite");
+    commentOpen.style.visibility = 'visible';
+}
+
+function writeCompleteComment() {
+    $.ajax({
+        url: 'DetailInfo/insertComment',
+        type: 'POST',
+        data: {
+            aniPk: $("#commentWrite input[name=anipk]").val(),
+            initGrade: $("#score").val(),
+            content: $("#comment_context").val()
+        },
+        error: function (error, status, msg) {
+            alert("상태코드 " + status + " 에러메시지 " + msg);
+        },
+        success: function (data) { // {aniDetail: { // }, commentList: [{}, {}, {}]}
+            // console.log(aniPk);
+            console.log(data);
+
+            if (data !== "error") {
+                // 입력요소 비우기
+                $("#score").val('');
+                $("#comment_context").val('');
+
+
+                var commentHtml = '';
+                for (var i=0; i< data.length; i++) {
+                    commentHtml +=               
+                    `<tr><td class="content_comment">${data[i].commentDate}</td>
+                    <td class="content_comment">${data[i].userPk}</td>
+                    <td class="content_comment">${data[i].content}</td>
+                    <td class="content_comment"><i class="fa fa-star" id="gstar"></i>&nbsp;${data[i].initGrade}</td></tr>`
+                }
+
+                $("#comment_table tbody").html(commentHtml);
+            }            
+        }
+    });
+    
+}

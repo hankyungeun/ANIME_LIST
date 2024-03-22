@@ -33,6 +33,8 @@ public class DetailModalService {
     public ArrayList<Comment> selectCommentinModal(String aniPk) {
         Connection conn = JDBC.getConnection();
         ArrayList<Comment> list = new DetailModalDao().selectCommentinModal(conn, aniPk);
+        
+        
         JDBC.close(conn);
 
         return list;

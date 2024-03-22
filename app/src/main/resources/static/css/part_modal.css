@@ -157,6 +157,7 @@
 
 #write_cmt { font-weight:600; }
 
+/*댓글 등록 파트 (이동협)*/
 #commentWrite { font-size:25px; font-weight:bold; color:palevioletred;
     /*visibility: hidden;*/
 }
@@ -164,10 +165,6 @@
 #comment_info {
     margin-top: 70px;
     display:flex; justify-content: space-between;
-}
-
-#commentWrite .write1 {
-    background-color: white; border-radius:3px; display: flex;
 }
 
 #userId {
@@ -179,7 +176,7 @@
 }
 
 #score {
-    width: 15%
+    width: 100%;
 }
 
 #comment_context {

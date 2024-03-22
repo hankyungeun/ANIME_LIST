@@ -34,17 +34,18 @@
                      </table>
                  </fieldset>
                  <fieldset id="commentWrite">
+                     <input type="hidden" name="anipk">
                      <div id="comment_info">
                          <div class="write1" id="userId">
-                             <input placeholder="닉네임" />
+                             <input name="" placeholder="닉네임" th:value="${session.loginUser && session.loginUser.name}" />
                          </div>
                          <div class="write1" id="star-rating">
-                             <input type="radio" placeholder="별점" />
-                             <input id="score" placeholder="평점" />
+                                <!-- 일단... number로.. -->
+                             <input type="number" id="score" min="1" max="10" placeholder="별점" />
                          </div>
                      </div>
                      <textarea id="comment_context" placeholder="평가를 남겨주세요"></textarea>
-                     <button type="submit" onclick="writeCompleteComment()">댓글 등록</button>
+                     <button type="button" onclick="writeCompleteComment()">댓글 등록</button>
                  </fieldset>
             </div>
         </div>
