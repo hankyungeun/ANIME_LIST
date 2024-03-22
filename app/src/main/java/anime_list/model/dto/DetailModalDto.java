@@ -1,6 +1,5 @@
 package anime_list.model.dto;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import anime_list.model.vo.AniList;

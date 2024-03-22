@@ -5,7 +5,7 @@ $('.test').on('click', '*', function (e) {
 });
 
 $(document).on('click', function (event) {
-    if ($(event.target).closest('#modalstyle').length === 0 && !$(event.target).is('#modalstyle')) {
+    if ($(event.target).closest('.modal_body').length === 0 && !$(event.target).is('.modal_body')) {
         $('#modalstyle').attr("hidden", true);
 
         $('#modal_left').empty();
@@ -27,7 +27,6 @@ function detailModalAniInfo(aniPk) {
             console.log(aniPk);
             console.log(data);
 
-            // var grade = parseFloat(data.aniDetail.grade);
             if (data.aniDetail && data.aniDetail.grade !== undefined) {
                 var grade = parseFloat(data.aniDetail.grade);
                 var imgLink = data.aniDetail.imgUrl;
@@ -53,6 +52,7 @@ function detailModalAniInfo(aniPk) {
             $('#modalstyle').removeAttr("hidden");
 
             // 모달 내용 채우기
+        
             $('.modal_body').css('display', 'flex').css('visibility', 'visible');
             if ($('.modal_thumbnail').length === 0) {
                 $('#modal_left').append(
@@ -65,14 +65,16 @@ function detailModalAniInfo(aniPk) {
                 );
 
                 $('#modal_right').append(
-                    `<fieldset id="comment"><br><legend><h3>평론</h3></legend>` + 
+                    `<fieldset id="comment"><legend><h3>평론</h3></legend>` + 
                     `<table id="comment_table">
-                        <tr>
-                            <th class="comment_head">날짜</th>
-                            <th class="comment_head">닉네임</th>
-                            <th class="comment_head">내용</th>
-                            <th class="comment_head">평점</th>
-                        </tr>
+                        <thead>
+                            <tr>
+                                <th class="comment_head">날짜</th>
+                                <th class="comment_head">닉네임</th>
+                                <th class="comment_head">내용</th>
+                                <th class="comment_head">평점</th>
+                            </tr>
+                        </thead>
                         ${commentHtml}
                     </table>
                     </fieldset>
@@ -96,12 +98,12 @@ function detailModalAniInfo(aniPk) {
     });
 }
 
-function writeComment() {
-    const commentOpen = document.querySelector("#commentWrite");
-    commentOpen.style.visibility = 'visible';
-}
+// function writeComment() {
+//     const commentOpen = document.querySelector("#commentWrite");
+//     commentOpen.style.visibility = 'visible';
+// }
 
-function writeCompleteComment() {
+// function writeCompleteComment() {
 
     
-}
+// }

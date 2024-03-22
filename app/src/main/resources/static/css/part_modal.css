@@ -1,11 +1,6 @@
-#introIcon{
-    width:20vw; height:30vh;
-    border: 1px dashed gray;
-    background-color: beige;
-}
 
-#modal_main {
-    position:absolute;
+#modalstyle {
+    position:fixed;
     /* display:none; */
     
     justify-content: center;
@@ -15,8 +10,10 @@
     width:100%;
     height:100%;
    
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.5);
 }
+
+#modalstyle legend { float: none;}
 
 .modal_body{
     position:fixed;
@@ -25,7 +22,7 @@
     left:50%; /*모달을 화면가운데 놓기위함. */
 
     width:75%;  /*모달의 가로크기*/
-    height:75%; /*모달의 세로크기 */
+    height:80%; /*모달의 세로크기 */
 
     padding:20px;  
 
@@ -125,11 +122,11 @@
 }
 
 #comment {
-    height : 40%;
+    margin : 3% 0%;
+    max-height : 60%;
     overflow-y:scroll;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -145,6 +142,8 @@
     color:white;
     font-family: 'Poppins', sans-serif;
 }
+
+#comment_table thead { position:sticky; top: -1px; }
 
 #comment_table .comment_head, .content_comment {
     background-color: #1f2122;

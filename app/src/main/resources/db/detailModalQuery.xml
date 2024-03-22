@@ -15,7 +15,11 @@
     </entry>
 
     <entry key="each_info_comment">
-        SELECT * FROM COMMENTS 
+        <!-- SELECT * FROM COMMENTS 
+            WHERE ANI_PK = ? 
+            ORDER BY COMMENT_DATE DESC -->
+        SELECT COMMENT_PK, NAME, CONTENT, ANI_PK, COMMENT_DATE, INIT_GRADE 
+            FROM COMMENTS JOIN MEMBER USING (USER_PK)
             WHERE ANI_PK = ? 
             ORDER BY COMMENT_DATE DESC
     </entry>
