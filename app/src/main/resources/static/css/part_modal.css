@@ -167,10 +167,6 @@
     display:flex; justify-content: space-between;
 }
 
-#commentWrite .write1 {
-    background-color: white; border-radius:3px; display: flex;
-}
-
 #userId {
     width: 25%;
 }
@@ -180,7 +176,7 @@
 }
 
 #score {
-    width: 15%
+    width: 100%;
 }
 
 #comment_context {

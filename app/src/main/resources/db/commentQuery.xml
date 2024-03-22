@@ -10,4 +10,9 @@
     <entry key="commentList_anipk">
         SELECT * FROM COMMENTS where ani_pk =?
     </entry>
+
+    <entry key="insertComment">
+        INSERT INTO COMMENTS (COMMENT_PK, USER_PK, CONTENT, ANI_PK, COMMENT_DATE, INIT_GRADE)
+        VALUES (?,?,?,?, SYSDATE,?)
+    </entry>
 </properties>
