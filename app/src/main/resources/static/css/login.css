@@ -69,3 +69,37 @@
     align-items: center;
 
 }
+
+#modal-h1 {
+    color: #e75e8d;
+  }
+
+h5 {
+    color: #e75e8d;
+    margin: 13px 0;
+    font-weight :450 ;
+  }
+
+#idch-button {
+    background-color: #27292a;
+    border: none;
+    color: #e75e8d;
+  }
+
+  .ch {
+    background-color: #27292a;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #e75e8d;
+
+  }
+
+  #idsh-pw,#idsh-us,#pash-name,#pwsh-id{
+    height: 45px;
+    width: 450px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #e75e8d;
+
+  }
+
