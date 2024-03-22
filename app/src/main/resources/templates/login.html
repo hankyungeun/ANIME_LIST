@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="./static/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
   <link rel="stylesheet" href="./static/css/login.css">
-
+  
   <!--
 
 TemplateMo 579 Cyborg Gaming
@@ -30,6 +30,8 @@ TemplateMo 579 Cyborg Gaming
 https://templatemo.com/tm-579-cyborg-gaming
 
 -->
+ 
+
 </head>
 
 <body>
@@ -57,42 +59,145 @@ https://templatemo.com/tm-579-cyborg-gaming
   <div style="margin: 10%;"></div>
   <div id="login">
     <form action="/loginUser" method="POST" id="login-form">
-    <div style="height: 30px;"></div>
-    <div>
-      <label style="font-size: 50px; color: #e75e8d;">로그인</label>
+      <div style="height: 30px;"></div>
+      <div>
+        <label style="font-size: 50px; color: #e75e8d;">로그인</label>
+      </div>
+
+      <div id="login-form">
+        <br>
+        <input type="text" id="login-id" placeholder="&nbsp;&nbsp;아이디" name="userId">
+        <br>
+        <input type="password" id="login-pw" placeholder="&nbsp;&nbsp;비밀 번호" name="passwd">
+
+        <br>
+        <button id="login-button" type="submit">로그인</button>
+
+
+        <div>
+          <br>
+          <!-- <input type="checkbox"> -->
+
+          <!-- <label for="" style="color: #e75e8d;">아이디 저장</label> -->
+
+
+
+        </div>
+
+        <div style=" display:flex;">
+          <button type="button" data-bs-toggle="modal" data-bs-target="#idsh-modal" id="idch-button">아이디 찾기
+            |</button>
+          <a href="" type="button" data-bs-toggle="modal" data-bs-target="#pwsh-modal" id="idch-button"> 비밀번호 찾기 |</a>
+          <a href="./newuser" style="color: #e75e8d;"> 회원가입</a>
+        </div><br>
+        <div th:if="${session.userdto != null}" style="color: #e75e8d;">Id:
+       <input type="text" th:value="${session.userdto.userId}" readonly  style="border-radius: 5px;">
+        </div>
+        
+      </div>
+    </form>
+
+    <div class="modal fade" id="idsh-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style=" background-color: #27292a;">
+          <div class="modal-header">
+
+            <h1 id="modal-h1">아이디 찾기</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+            <div class="modal-body" id="upuser">
+              <h5>찾을 비밀번호의 유저네임을 입력하십시오.</h5>
+              <input type="text" placeholder="유저네임" id="idsh-us" name="name">
+              <h5>찾을 아이디의 비밀번호</h5>  
+              <input type="text" placeholder="유저비밀번호" id="idsh-pw" name="name">  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="ch" data-bs-dismiss="modal">Close</button>
+              <button class="ch" type="button" onclick="indId()" data-bs-toggle="modal" data-bs-target="#Id-modal">찾기</button>
+            </div>
+        </div>
+      </div>
     </div>
 
-    <div id="login-form">
-      <br>
-      <input type="text" id="login-id" placeholder="&nbsp;&nbsp;아이디" name="userId">
-      <br>
-      <input type="password" id="login-pw" placeholder="&nbsp;&nbsp;비밀 번호" name="passwd">
 
-      <br>
-      <button id="login-button" type="submit" >로그인</button>
+    <div class="modal fade" id="pwsh-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style=" background-color: #27292a;">
+          <div class="modal-header">
+
+            <h1 id="modal-h1">비밀번호 찾기</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+            <div class="modal-body" id="upuser">
+              <h5>찾을 비밀번호의 유저네임을 입력하십시오.</h5>
+              <input type="text" placeholder="유저네임" id="pash-name" name="name">
+              <h5>찾을 비밀번호의 아이디</h5>
+              <input type="text" placeholder="유저아이디" id="pwsh-id" name="userId">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="ch" data-bs-dismiss="modal">Close</button>
+              <button class="ch" type="button" onclick="findPassword()" data-bs-toggle="modal" data-bs-target="#Pw-modal">찾기</button>
+            </div>
+          
+            
+
+            <script>
+              const findPassword = () => {
+                $.ajax({
+                  url: 'pwsh',  
+                  type: 'post',
+                  data : {
+                    name: $('#pash-name').val(),
+                    userId: $('#pwsh-id').val()
+                  },
+                  success: function (data,status){
+                    alert(data);
+                    console.log(data, status);
+                  },
+                  error: function (error,status){
+                    alert(data);
+                  }
+                });
+              }
+
+              const indId = () => {
+                $.ajax({
+                  url: 'idsh',
+                  type:'post',
+                  data : {
+                    name: $('#idsh-us').val(),
+                    passwd: $('#idsh-pw').val()
+                  },
+                  success: function (data,status){
+                    alert(data);
+                    console.log(data, status,);
+                  },
+                  error: function (error,status){
+                    alert(data);
+                  }
+                  
+                });
+
+              }
+            </script>
+   
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
   
-      <div>
-        <br>
-        <input type="checkbox">
-
-        <label for="" style="color: #e75e8d;">아이디 저장</label>
-        <br><br>
 
 
-      </div>
+  
 
-      <div>
-        <a href="" style="color: #e75e8d;">아이디 찾기 |</a>
-        <a href="" style="color: #e75e8d;">비밀번호 찾기 |</a>
-        <a href="./newuser" style="color: #e75e8d;"> 회원가입</a>
 
-      </div>
-      
-    </div>
 
-    </form>
-  </div>
+
 
 
   <footer include-html="./templates/footer.html"></footer>
@@ -100,14 +205,14 @@ https://templatemo.com/tm-579-cyborg-gaming
 
   <!-- Scripts -->
   <!-- Bootstrap core JavaScript -->
-
+  <script src="./lib/jquery/jquery.min.js"></script>
+  <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
   <script src="./static/js/isotope.min.js"></script>
   <script src="./static/js/owl-carousel.js"></script>
   <script src="./static/js/tabs.js"></script>
   <script src="./static/js/popup.js"></script>
   <script src="./static/js/custom.js"></script>
   <script src="./static/js/includeHTML.js"></script>
-
 </body>
 
 </html>

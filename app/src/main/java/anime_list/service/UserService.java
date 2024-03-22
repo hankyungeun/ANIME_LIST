@@ -59,6 +59,20 @@ public class UserService {
 			return userdto;
         }
 
+        public UserDto idshUser(String passwd, String name) {
+            Connection conn = JDBC.getConnection();
+			UserDto userdto = new UserDao().idsh(conn,passwd,name);
+			JDBC.close(conn);
+			return userdto;
+        }
+
+        public UserDto pwshUser(String userId, String name) {
+			Connection conn = JDBC.getConnection();
+			UserDto userdto = new UserDao().pwsh(conn,userId,name);
+			JDBC.close(conn);
+			return userdto;
+        }
+
 
     
 

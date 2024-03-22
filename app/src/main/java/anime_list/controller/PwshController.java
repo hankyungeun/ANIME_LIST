@@ -1,36 +1,40 @@
 package anime_list.controller;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import anime_list.model.dto.UserDto;
 import anime_list.service.UserService;
 
-
-
-@WebServlet("/chId")
-public class IdchController extends HttpServlet {
+    
+@WebServlet("/pwsh")
+public class PwshController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("UTF-8");
-        String userId = request.getParameter("name");
-         
-        System.out.println(userId);
-        response.setContentType("application/json");
+        response.setContentType("text/plain; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
-        UserDto userdto = new UserService().idchUser(userId);
+        HttpSession session = request.getSession();
+        String userId = request.getParameter("userId");
+        String name = request.getParameter("name");
+         
+
+        // response.setContentType("application/json;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        UserDto userPw = new UserService().pwshUser(userId,name);
         
-        if(userdto != null){
-            response.getWriter().print("");
+        if(userPw == null){
+            request.getSession().setAttribute("Msg", "FAILL");
+            response.getWriter().write("Failed");
         }else{
-            response.getWriter().print(userdto);
+            session.setAttribute("userPw",userPw);
+            response.getWriter().write("UserPassword = " + userPw.getUserId());
         }
         
     }
@@ -41,5 +45,5 @@ public class IdchController extends HttpServlet {
  
         System.out.println("doPost 메소드 실행!");
         doGet(request, response);
+            }
     }
-}
