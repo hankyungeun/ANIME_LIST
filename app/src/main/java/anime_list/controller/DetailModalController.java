@@ -38,9 +38,8 @@ public class DetailModalController extends HttpServlet {
             // selectEachListinModal(response, detailAniInfo);
             ArrayList<Comment> detailCommInfo = new DetailModalService().selectCommentinModal(aniPk);
             // selectCommentinModal(response, detailCommInfo);
-
             
-            Gson gson = new GsonBuilder().setDateFormat("MM.dd.yyyy").create();
+            Gson gson = new GsonBuilder().setDateFormat("yyyy.MM.dd").create();
             // Gson을 통해서 setDateFormat형식을 지정하여, 들어오는 DB 데이터에서 DATE 형태만 변경해줌
 
             DetailModalDto detailInfoDTO = new DetailModalDto(selectAnimation, detailCommInfo);

@@ -17,8 +17,6 @@ import anime_list.model.vo.AniList;
 import anime_list.model.vo.Comment;
 
 
-
-
 public class DetailModalDao {
     private Properties prop = new Properties();
 
@@ -125,7 +123,7 @@ public class DetailModalDao {
             while(rset.next()) {
                 Comment each_info_comment = new Comment(
                     rset.getString("COMMENT_PK"),
-                    rset.getString("USER_PK"),
+                    rset.getString("NAME"),
                     rset.getString("ANI_PK"),
                     rset.getString("CONTENT"),
                     rset.getDate("COMMENT_DATE"),
@@ -141,4 +139,5 @@ public class DetailModalDao {
         
         return list;
     }
+
 }
