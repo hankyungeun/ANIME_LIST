@@ -47,6 +47,9 @@
     height : 54%;
     background-color: #1f2122;
     border-radius : 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal_thumbnail img { 
