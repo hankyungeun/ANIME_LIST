@@ -52,6 +52,8 @@ public class DetailModalController extends HttpServlet {
         }
     }
 }
+
+
     
 //     private void selectAni(HttpServletResponse response, AniList list) throws IOException {
 //         if(list == null) {

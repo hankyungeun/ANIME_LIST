@@ -48,13 +48,17 @@ public class DetailModalDao {
         
             rset = pstmt.executeQuery();
 
+            float avgGrade = 0;
+
             while(rset.next()) {
+                avgGrade = rset.getFloat("AVG(INIT_GRADE)");
+                System.out.println(avgGrade);
                 list = new AniList(
                     rset.getString("ANI_PK"),
                     rset.getString("TITLE"),
                     rset.getString("GENRE"),
                     rset.getString("DETAIL"),
-                    rset.getFloat("GRADE"),
+                    avgGrade,
                     rset.getDate("START_DATE"),
                     rset.getString("IMAGE_URL"),
                     rset.getString("VIDEO_URL"));
