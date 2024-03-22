@@ -1,11 +1,6 @@
-#introIcon{
-    width:20vw; height:30vh;
-    border: 1px dashed gray;
-    background-color: beige;
-}
 
-#modal_main {
-    position:absolute;
+#modalstyle {
+    position:fixed;
     /* display:none; */
     
     justify-content: center;
@@ -15,8 +10,10 @@
     width:100%;
     height:100%;
    
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.5);
 }
+
+#modalstyle legend { float: none;}
 
 .modal_body{
     position:fixed;
@@ -25,13 +22,13 @@
     left:50%; /*모달을 화면가운데 놓기위함. */
 
     width:75%;  /*모달의 가로크기*/
-    height:75%; /*모달의 세로크기 */
+    height:80%; /*모달의 세로크기 */
 
     padding:20px;  
 
     text-align: center;
     justify-content: space-around;
-    background-color: blue; /*모달창 배경색 흰색*/
+    background-color: #1f2122; /*모달창 배경색 흰색*/
     border-radius:15px; /*테두리*/
     box-shadow:0 2px 3px 0 rgba(34,36,38,0.15); /*테두리 그림자*/
 
@@ -48,7 +45,7 @@
     position: static;
     width: 96%;
     height : 54%;
-    background-color: gray;
+    background-color: #1f2122;
     border-radius : 10px;
 }
 
@@ -101,7 +98,7 @@
 #introduction {
     flex:1;
     position:static;
-    padding:2px;
+    padding: 10px;
     background-color:rgb(46, 45, 41); 
     width: 96%;
     border-radius: 10px;
@@ -109,9 +106,10 @@
     /*scrollbar-width: none; /* for Firefox */
     overflow-y:scroll;
     word-wrap: break-word;
+    text-align: left;
 }
 
-#introduction p { color:white; }
+#introduction p { font-weight: 600; color:white; }
 
 #introduction::-webkit-scrollbar {
     display:none;
@@ -124,11 +122,11 @@
 }
 
 #comment {
-    height : 40%;
+    margin : 3% 0%;
+    max-height : 60%;
     overflow-y:scroll;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -140,28 +138,32 @@
     width:96%;   
     border-radius: 7px;
     border-collapse:unset;
+    background-color:#1f2122;
+    color:white;
+    font-family: 'Poppins', sans-serif;
 }
 
-#comment_table .comment_head {
-    background-color: white;
-    border-radius : 3px;
+#comment_table thead { position:sticky; top: -1px; }
+
+#comment_table .comment_head, .content_comment {
+    background-color: #1f2122;
 }
 
-#comment_table .content_comment {
-    background-color: white;
-    border-radius : 3px;
-}
+.comment_head:first-child, .comment_head:nth-child(2)
+.content_comment:first-child, .content_comment:nth-child(2) { width:15%; }
 
-/* #comment_day { border: 1px solid black; width:15%; }
-#comment_id { border: 1px solid black; width:25%; }
-#comment_text { border: 1px solid black; }
-#comment_rate { border: 1px solid black; width:10%; } */
+.comment_head:last-child,
+.content_comment:last-child { width:10%; }
 
+#write_cmt { font-weight:600; }
 
 /*댓글 등록 파트 (이동협)*/
-#commentWrite { font-size:25px; font-weight:bold; color:palevioletred; visibility: hidden;}
+#commentWrite { font-size:25px; font-weight:bold; color:palevioletred;
+    /*visibility: hidden;*/
+}
 
 #comment_info {
+    margin-top: 70px;
     display:flex; justify-content: space-between;
 }
 
@@ -176,9 +178,11 @@
 #star-rating {
     width:20%; justify-content:end;
 }
+
 #score {
     width: 15%
 }
+
 #comment_context {
     width:99%; height:5em; 
     overflow-y:scroll; word-wrap: break-word;

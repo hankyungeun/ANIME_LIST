@@ -17,8 +17,6 @@ import anime_list.model.vo.AniList;
 import anime_list.model.vo.Comment;
 
 
-
-
 public class DetailModalDao {
     private Properties prop = new Properties();
 
@@ -48,13 +46,17 @@ public class DetailModalDao {
         
             rset = pstmt.executeQuery();
 
+            float avgGrade = 0;
+
             while(rset.next()) {
+                avgGrade = rset.getFloat("AVG(INIT_GRADE)");
+                System.out.println(avgGrade);
                 list = new AniList(
                     rset.getString("ANI_PK"),
                     rset.getString("TITLE"),
                     rset.getString("GENRE"),
                     rset.getString("DETAIL"),
-                    rset.getFloat("GRADE"),
+                    avgGrade,
                     rset.getDate("START_DATE"),
                     rset.getString("IMAGE_URL"),
                     rset.getString("VIDEO_URL"));
@@ -121,7 +123,7 @@ public class DetailModalDao {
             while(rset.next()) {
                 Comment each_info_comment = new Comment(
                     rset.getString("COMMENT_PK"),
-                    rset.getString("USER_PK"),
+                    rset.getString("NAME"),
                     rset.getString("ANI_PK"),
                     rset.getString("CONTENT"),
                     rset.getDate("COMMENT_DATE"),
@@ -137,4 +139,5 @@ public class DetailModalDao {
         
         return list;
     }
+
 }
