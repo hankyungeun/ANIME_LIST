@@ -9,7 +9,7 @@ $(document).on('click', function (event) {
         $('#modalstyle').attr("hidden", true);
 
         $('#modal_left').empty();
-        $('#modal_right').empty();
+        $('#comment_table').empty();
     }
 });
 
@@ -24,8 +24,6 @@ function detailModalAniInfo(aniPk) {
             alert("상태코드 " + status + " 에러메시지 " + msg);
         },
         success: function (data) { // {aniDetail: { // }, commentList: [{}, {}, {}]}
-            console.log(aniPk);
-            console.log(data);
 
             if (data.aniDetail && data.aniDetail.grade !== undefined) {
                 var grade = parseFloat(data.aniDetail.grade);
@@ -64,10 +62,8 @@ function detailModalAniInfo(aniPk) {
                     `<article id="introduction"><p>${data.aniDetail.detail}</p></article>`
                 );
 
-                $('#modal_right').append(
-                    `<fieldset id="comment"><legend><h3>평론</h3></legend>` + 
-                    `<table id="comment_table">
-                        <thead>
+                $('#comment_table').append(
+                    `<thead>
                             <tr>
                                 <th class="comment_head">날짜</th>
                                 <th class="comment_head">닉네임</th>
@@ -75,23 +71,7 @@ function detailModalAniInfo(aniPk) {
                                 <th class="comment_head">평점</th>
                             </tr>
                         </thead>
-                        ${commentHtml}
-                    </table>
-                    </fieldset>
-                    <button class="btn btn-light" id="write_cmt" onclick="writeComment()">댓글 쓰기</button>
-                    <fieldset id="commentWrite">평가 작성하기
-                        <div id="comment_info">
-                            <div class="write1" id="userId">
-                                <input placeholder="닉네임" />
-                            </div>
-                            <div class="write1" id="star-rating">
-                                <input type="radio" placeholder="별점" />
-                                <input id="score" placeholder="평점" />
-                            </div>
-                        </div>
-                        <textarea id="comment_context" placeholder="평가를 남겨주세요"></textarea>
-                        <button type="submit" onclick="writeCompleteComment()">댓글 등록</button>
-                    </fieldset>`
+                        ${commentHtml}`
                 );
             }
         }
@@ -101,9 +81,4 @@ function detailModalAniInfo(aniPk) {
 // function writeComment() {
 //     const commentOpen = document.querySelector("#commentWrite");
 //     commentOpen.style.visibility = 'visible';
-// }
-
-// function writeCompleteComment() {
-
-    
 // }
