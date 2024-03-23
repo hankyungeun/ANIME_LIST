@@ -43,7 +43,7 @@
                      <input type="hidden" name="anipk">
                      <div id="comment_info">
                          <div class="write1" id="userId">
-                             <input name="" placeholder="닉네임" th:value="${session.loginUser && session.loginUser.name}" />
+                             <div clas="user_name" th:text="${session.loginUser.name}"></div>
                          </div>
                          <div class="write1" id="star-rating">
                                 <!-- 일단... number로.. -->
