@@ -163,12 +163,11 @@
 #write_cmt { font-weight:600; }
 
 /*댓글 등록 파트 (이동협)*/
-#commentWrite { font-size:25px; font-weight:bold; color:palevioletred;
+#commentWrite {font-weight:bold; color:palevioletred;
     /*visibility: hidden;*/
 }
 
 #comment_info {
-    margin-top: 70px;
     display:flex; justify-content: space-between;
 }
 
@@ -190,4 +189,8 @@
 }
 #comment_context::-webkit-scrollbar {
     display:none;
+}
+
+.write1 .user_name{
+    font-size: 18px;
 }

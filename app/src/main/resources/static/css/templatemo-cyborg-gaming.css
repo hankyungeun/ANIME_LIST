@@ -356,7 +356,7 @@ Header Style
   top: 15px;
   left: 0;
   right: 0;
-  z-index: 100;
+  /*z-index: 100;*/
   -webkit-transition: all .5s ease 0s;
   -moz-transition: all .5s ease 0s;
   -o-transition: all .5s ease 0s;
