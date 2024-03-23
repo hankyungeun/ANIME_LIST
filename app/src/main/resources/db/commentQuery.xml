@@ -15,4 +15,10 @@
         INSERT INTO COMMENTS (COMMENT_PK, USER_PK, CONTENT, ANI_PK, COMMENT_DATE, INIT_GRADE)
         VALUES (?,?,?,?, SYSDATE,?)
     </entry>
+
+    <entry key="updateGrade">
+        UPDATE ANI_LIST
+        SET GRADE = ROUND((SELECT AVG(INIT_GRADE) FROM COMMENTS WHERE ANI_PK = ?), 1)
+        WHERE ANI_PK = ?
+    </entry>
 </properties>

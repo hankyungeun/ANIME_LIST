@@ -50,7 +50,6 @@ public class DetailModalDao {
 
             while(rset.next()) {
                 avgGrade = rset.getFloat("AVG(INIT_GRADE)");
-                System.out.println(avgGrade);
                 list = new AniList(
                     rset.getString("ANI_PK"),
                     rset.getString("TITLE"),
@@ -127,8 +126,10 @@ public class DetailModalDao {
                     rset.getString("ANI_PK"),
                     rset.getString("CONTENT"),
                     rset.getDate("COMMENT_DATE"),
-                    rset.getFloat("INIT_GRADE")        );
-                list.add(each_info_comment);            }
+                    rset.getFloat("INIT_GRADE")
+                );
+                list.add(each_info_comment);
+            }
 
         } catch(SQLException e) {
             e.printStackTrace();

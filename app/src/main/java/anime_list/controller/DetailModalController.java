@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import anime_list.model.dao.CommentDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -74,6 +75,10 @@ public class DetailModalController extends HttpServlet {
 
                 response.setContentType("application/json; charset=UTF-8");
                 response.getWriter().write(gson.toJson(detailCommInfo));
+
+                // 댓글 입력 성공 시 해당aniPk의 평점을 업데이트
+                new CommentService().updateGrade(aniPk);
+
             } else {
                 response.getWriter().write("error");
             }            

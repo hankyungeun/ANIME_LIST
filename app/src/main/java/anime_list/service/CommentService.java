@@ -35,9 +35,15 @@ public class CommentService {
                 comment.setContent(content);
                 comment.setInitGrade(initGrade);
 
-
                 int result = new CommentDao().insertComment(conn, comment);
                 JDBC.close(conn);
                 return result;
+    }
+
+    public void updateGrade(String aniPk){
+        Connection conn = JDBC.getConnection();
+        int result = new CommentDao().updateGrade(conn, aniPk);
+
+        JDBC.close(conn);
     }
 }
