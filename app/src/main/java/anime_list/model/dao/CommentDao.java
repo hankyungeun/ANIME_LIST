@@ -118,5 +118,23 @@ public class CommentDao {
 		
 		return result;
     }
+    public int updateGrade(Connection conn, String aniPk) {
+        int result = 0;
+        PreparedStatement pstmt = null;
+        String sql = this.prop.getProperty("updateGrade");
+
+        try {
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, aniPk);
+            pstmt.setString(2, aniPk);
+            result = pstmt.executeUpdate();
+        } catch (SQLException var10) {
+            var10.printStackTrace();
+        } finally {
+            JDBC.close(pstmt);
+        }
+
+        return result;
+    }
 
 }
