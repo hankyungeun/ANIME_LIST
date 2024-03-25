@@ -29,7 +29,6 @@ function detailModalAniInfo(aniPk) {
 
             if (data.aniDetail && data.aniDetail.grade !== undefined) {
 
-                console.log(data.aniDetail.grade);
                 var imgLink = data.aniDetail.imgUrl;
                 var videoLink = data.aniDetail.videoUrl;
 
@@ -41,7 +40,7 @@ function detailModalAniInfo(aniPk) {
                     commentHtml +=               
                     `<tr><td class="content_comment">${data.commentList[i].commentDate}</td>
                     <td class="content_comment">${data.commentList[i].userPk}</td>
-                    <td class="content_comment">${data.commentList[i].content}</td>
+                    <td class="content_comment" title="${data.commentList[i].content}" onclick="">${data.commentList[i].content}</td>
                     <td class="content_comment"><i class="fa fa-star" id="gstar"></i>&nbsp;${data.commentList[i].initGrade}</td></tr>`
                 }
             } else {
