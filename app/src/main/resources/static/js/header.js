@@ -11,7 +11,6 @@ function changeHeaderColor(){
             // 각 링크의 href 속성 값을 가져옵니다.
             var linkUrl = link.getAttribute('href');
 
-            console.log(linkUrl);
             // 현재 URL과 링크의 href 속성 값을 비교하여 'active' 클래스를 추가합니다.
             if (currentUrl === linkUrl) {
                 link.classList.add('active');

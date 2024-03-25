@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>모달창연습</title>
-    <link rel=stylesheet href="../static/css/part_modal.css">
+    <link rel=stylesheet href="./static/css/part_modal.css">
 </head>
 
 <body>
@@ -34,8 +34,9 @@
                      </table>
                  </fieldset>
                 <div th:if="${session.loginUser == null}">
-                    <input id="logoutComment"placeholder="댓글을 남기려면 로그인을 해주세요" readonly>
-                    <button>
+                    <input id="logout_comment" placeholder="댓글을 남기려면 로그인을 해주세요" readonly>
+                    <br>
+                    <button id="go_login">
                         <a href="/login">로그인 하러 가기</a>
                     </button>
                 </div>
@@ -47,11 +48,22 @@
                          </div>
                          <div class="write1" id="star-rating">
                                 <!-- 일단... number로.. -->
-                             <input type="number" id="score" min="1" max="10" placeholder="별점" />
+                             <select id="score">
+                                 <option value="1" selected>1</option>
+                                 <option value="2">2</option>
+                                 <option value="3">3</option>
+                                 <option value="4">4</option>
+                                 <option value="5">5</option>
+                                 <option value="6">6</option>
+                                 <option value="7">7</option>
+                                 <option value="8">8</option>
+                                 <option value="9">9</option>
+                                 <option value="10">10</option>
+                             </select>
                          </div>
                      </div>
-                     <textarea id="comment_context" placeholder="평가를 남겨주세요"></textarea>
-                     <button type="button" onclick="writeCompleteComment()">댓글 등록</button>
+                     <textarea rows="1" id="comment_context" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"' placeholder="평가를 남겨주세요"></textarea>
+                     <button type="button" onclick="writeCompleteComment()" id="comment_submit">댓글 등록</button>
                  </fieldset>
             </div>
         </div>
