@@ -90,9 +90,7 @@ https://templatemo.com/tm-579-cyborg-gaming
           <a href="" type="button" data-bs-toggle="modal" data-bs-target="#pwsh-modal" id="idch-button"> 비밀번호 찾기 |</a>
           <a href="./newuser" style="color: #e75e8d;"> 회원가입</a>
         </div><br>
-        <div th:if="${session.userdto != null}" style="color: #e75e8d;">Id:
-       <input type="text" th:value="${session.userdto.userId}" readonly  style="border-radius: 5px;">
-        </div>
+        
         
       </div>
     </form>
@@ -140,49 +138,6 @@ https://templatemo.com/tm-579-cyborg-gaming
               <button type="button" class="ch" data-bs-dismiss="modal">Close</button>
               <button class="ch" type="button" onclick="findPassword()" data-bs-toggle="modal" data-bs-target="#Pw-modal">찾기</button>
             </div>
-          
-            
-
-            <script>
-              const findPassword = () => {
-                $.ajax({
-                  url: 'pwsh',  
-                  type: 'post',
-                  data : {
-                    name: $('#pash-name').val(),
-                    userId: $('#pwsh-id').val()
-                  },
-                  success: function (data,status){
-                    alert(data);
-                    console.log(data, status);
-                  },
-                  error: function (error,status){
-                    alert(data);
-                  }
-                });
-              }
-
-              const indId = () => {
-                $.ajax({
-                  url: 'idsh',
-                  type:'post',
-                  data : {
-                    name: $('#idsh-us').val(),
-                    passwd: $('#idsh-pw').val()
-                  },
-                  success: function (data,status){
-                    alert(data);
-                    console.log(data, status,);
-                  },
-                  error: function (error,status){
-                    alert(data);
-                  }
-                  
-                });
-
-              }
-            </script>
-   
         </div>
       </div>
     </div>
