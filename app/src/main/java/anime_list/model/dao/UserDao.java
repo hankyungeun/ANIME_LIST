@@ -75,7 +75,6 @@ public class UserDao {
             rset = pstmt.executeQuery();
 
             while (rset.next()) {
-                System.out.println("==============");
                 user = new User(
                         rset.getString("user_Pk"),
                         rset.getString("user_id"),
