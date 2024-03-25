@@ -8,6 +8,7 @@ $('.test').on('click', '*', function (e) {
 $(document).on('click', function (event) {
     if ($(event.target).closest('.modal_body').length === 0 && !$(event.target).is('.modal_body')) {
         $('#modalstyle').attr("hidden", true);
+        $('body').css('overflow', 'auto');
 
         $('#modal_left').empty();
         $('#comment_table').empty();
@@ -27,7 +28,8 @@ function detailModalAniInfo(aniPk) {
         success: function (data) { // {aniDetail: { // }, commentList: [{}, {}, {}]}
 
             if (data.aniDetail && data.aniDetail.grade !== undefined) {
-                var grade = parseFloat(data.aniDetail.grade);
+
+                console.log(data.aniDetail.grade);
                 var imgLink = data.aniDetail.imgUrl;
                 var videoLink = data.aniDetail.videoUrl;
 
@@ -47,11 +49,11 @@ function detailModalAniInfo(aniPk) {
                 console.error("aniDetail 또는 grade가 없습니다.");
             }
             
-            // 모달 열기
+            // 모달 열기 & 'body'파트 스크롤 방지
             $('#modalstyle').removeAttr("hidden");
+            $('body').css('overflow', 'hidden');
 
             // 모달 내용 채우기
-        
             $('.modal_body').css('display', 'flex').css('visibility', 'visible');
             if ($('.modal_thumbnail').length === 0) {
                 $('#modal_left').append(
@@ -59,7 +61,7 @@ function detailModalAniInfo(aniPk) {
                     (iframeHtml ? iframeHtml : imgHtml) +`</div>`+ // 유튜브 링크가 있을 경우 iframe, 없을 경우 이미지 표시
                     `<div class="infoShort"><div id="releaseDate">${data.aniDetail.startDate}</div>` +
                     `<div id="titleInfo" title="${data.aniDetail.title}">${data.aniDetail.title}</div>` +
-                    `<div id="rate"><ul><li><i class="fa fa-star" id="gstar"></i>&nbsp;${grade}</li></ul></div></div>` +
+                    `<div id="rate"><ul><li><i class="fa fa-star" id="gstar"></i>&nbsp;${data.aniDetail.grade}</li></ul></div></div>` +
                     `<article id="introduction"><p>${data.aniDetail.detail}</p></article>`
                 );
 
