@@ -17,6 +17,7 @@ function chId() {
           success: function (data, status, msg) {
       
             alert("사용 가능한 아이디 입니다.");
+          
           },
           error: function (error, status, msg) {
             alert("중복된 아이디 입니다");
@@ -91,12 +92,29 @@ function checkName() {
   }
 }
 
-function newuser(event) {
-  event.preventDefault();
+function newuser() {
+  const id = document.getElementById("login-id").value;
   if (checkId() == true && checkPw() == true && checkPw2() == true && checkName() == true) {
-    document.mForm.submit();
-
-
+    if(id.length > 4){
+      $.ajax({
+        type: 'POST',
+        url: '/insertUesr',
+        data: { 
+          userId: $("#login-id").val(),
+          passwd: $("#login-pw").val(),
+          name: $("#login-us").val() },
+      
+        dataType: 'json',
+        success: function (data, status, msg) {
+          
+          alert("회원가입에 성공했습니다");
+          location.href = '/login';
+        },
+        error: function (error, status, msg) {
+          alert("중복된 아이디 입니다");
+        },
+      });
+    }
   } else {
 
     if (checkId() == null) {
@@ -115,9 +133,7 @@ function newuser(event) {
       document.getElementById("login-us").focus();
       alert("잘못된 이름입니다");
 
-    } else {
-      alert("잘못된 입력입니다");
-    }
+    } 
 
 
   }

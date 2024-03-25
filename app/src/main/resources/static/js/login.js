@@ -68,3 +68,41 @@ function update(){
     }
 }
 
+
+function findPassword() {
+    $.ajax({
+      url: 'pwsh',  
+      type: 'post',
+      data : {
+        name: $('#pash-name').val(),
+        userId: $('#pwsh-id').val()
+      },
+      success: function (data,status){
+        alert(data);
+        console.log(data, status);
+      },
+      error: function (error,status){
+        alert(data);
+      }
+    });
+  }
+
+  function indId(){
+    $.ajax({
+      url: 'idsh',
+      type:'post',
+      data : {
+        name: $('#idsh-us').val(),
+        passwd: $('#idsh-pw').val()
+      },
+      success: function (data,status){
+        alert(data);
+        console.log(data, status,);
+      },
+      error: function (error,status){
+        alert(data);
+      }
+      
+    });
+
+  }
