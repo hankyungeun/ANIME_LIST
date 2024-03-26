@@ -54,6 +54,10 @@ function detailModalAniInfo(aniPk) {
 
             // 모달 내용 채우기
             $('.modal_body').css('display', 'flex').css('visibility', 'visible');
+
+            $('#modal_left').html('');
+            $('#comment_table').html('');
+
             if ($('.modal_thumbnail').length === 0) {
                 $('#modal_left').append(
                     `<div class="modal_thumbnail">` +
@@ -76,6 +80,8 @@ function detailModalAniInfo(aniPk) {
                     ${commentHtml}`
                 );
             }
+
+            $('#'+aniPk+' ul li').html('<i class="fa fa-star"></i>'+data.aniDetail.grade);
         }
     });
 }
@@ -98,7 +104,6 @@ function writeCompleteComment() {
             alert("상태코드 " + status + " 에러메시지 " + msg);
         },
         success: function (data) { // {aniDetail: { // }, commentList: [{}, {}, {}]}
-            // console.log(aniPk);
             console.log(data);
 
             if (data !== "error") {
@@ -118,6 +123,9 @@ function writeCompleteComment() {
 
                 $("#comment_table tbody").html(commentHtml);
             }            
+
+            detailModalAniInfo(data[0].aniPk);
+
         }
     });
     
