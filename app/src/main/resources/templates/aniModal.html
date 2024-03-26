@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모달창연습</title>
-    <link rel=stylesheet href="./static/css/part_modal.css">
+    <title>Anime Modal Window</title>
+    <link rel=stylesheet href="../static/css/animodal.css">
 </head>
 
 <body>
@@ -19,18 +19,6 @@
                         <h3>평론</h3>
                     </legend>
                     <table id="comment_table">
-                        <!--   <tr>
-                             <th class="comment_head" id="comment_day">날짜</th>
-                             <th class="comment_head" id="comment_id">닉네임</th>
-                             <th class="comment_head" id="comment_text">내용</th>
-                             <th class="comment_head" id="comment_rate">평점</th>
-                         </tr>
-                         <tr>
-                             <td class="content_comment" id="comment_day"></td>
-                             <td class="content_comment" id="comment_id"></td>
-                             <td class="content_comment" id="comment_text"></td>
-                             <td class="content_comment" id="comment_rate"></td>
-                         </tr> -->
                      </table>
                  </fieldset>
                 <div th:if="${session.loginUser == null}">
@@ -68,6 +56,6 @@
             </div>
         </div>
     </div>
-    <script src = "./static/js/detail_info.js"></script>
+    <script src = "./static/js/aniModalInfo.js"></script>
 </body>
 </html>
