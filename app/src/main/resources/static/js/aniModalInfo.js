@@ -98,9 +98,6 @@ function writeCompleteComment() {
             alert("상태코드 " + status + " 에러메시지 " + msg);
         },
         success: function (data) { // {aniDetail: { // }, commentList: [{}, {}, {}]}
-            // console.log(aniPk);
-            console.log(data);
-
             if (data !== "error") {
                 // 입력요소 비우기
                 $("#score").val('');
@@ -117,6 +114,16 @@ function writeCompleteComment() {
                 }
 
                 $("#comment_table tbody").html(commentHtml);
+
+                var currentUrl = window.location.pathname;
+                console.log(currentUrl);
+                if(currentUrl === '/main'){
+                    getMainListGrade();
+                } else if(currentUrl === '/allAniList'){
+                    var year = document.querySelector('.select-btn[name="year"]').value;
+                    var quarter = document.querySelector('.select-btn[name="quarter"]').value;
+                    allAniList(year, quarter);
+                }
             }            
         }
     });
