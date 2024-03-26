@@ -38,7 +38,7 @@ function latestAniList(){
                     `<div id="${item.aniPk}" class=\"col-lg-3 col-sm-6\"><div class=\"item\">`+
                     `<img src="${item.imgUrl}" alt="noImage">`+
                     `<div><div class="ani_title">${item.title}</div></div>`+
-                    `<ul><li><i class="fa fa-star"></i> ${grade}</li></ul></div>`
+                    `<ul><li class="ani_grade"><i class="fa fa-star"></i> ${grade}</li></ul></div>`
                 )
             })
         }
