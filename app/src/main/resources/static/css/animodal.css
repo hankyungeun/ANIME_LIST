@@ -114,7 +114,7 @@
     text-align: left;
 }
 
-#introduction p { font-weight: 600; color:white; }
+#introduction p { font-weight: 600; color:white; font-size: 18px}
 
 #introduction::-webkit-scrollbar {
     display:none;
@@ -173,8 +173,9 @@
 #write_cmt { font-weight:600; }
 
 /*댓글 등록 파트 (이동협)*/
-#commentWrite {font-weight:bold; color:palevioletred;
-    /*visibility: hidden;*/
+#commentWrite {
+    /*font-weight:bold;*/
+    /*color:palevioletred;*/
 }
 
 #comment_info {
@@ -214,9 +215,20 @@
 }
 
 .write1 .user_name{
-    font-size: 18px;
+    margin-left: 20px;
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    color:palevioletred
 }
-
+#star-rating{
+    margin-right: 20px;
+}
+#score{
+    background-color: black;
+    color: white;
+    padding-right: 20px;
+}
 #logout_comment{
     width: 95%;
     background-color: transparent; /* 배경을 투명하게 설정 */
@@ -252,4 +264,9 @@
     color: palevioletred;
 }
 
-
+.count_length{
+    text-align: right; !important;
+    color: white; !important;
+    margin-right: 20px;
+    font-size: 18px;
+}

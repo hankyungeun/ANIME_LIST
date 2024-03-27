@@ -32,10 +32,9 @@
                      <input type="hidden" name="anipk">
                      <div id="comment_info">
                          <div class="write1" id="userId">
-                             <div clas="user_name" th:text="${session.loginUser.name}"></div>
+                             <div class="user_name" th:text="${session.loginUser.name}"></div>
                          </div>
                          <div class="write1" id="star-rating">
-                                <!-- 일단... number로.. -->
                              <select id="score">
                                  <option value="1" selected>1</option>
                                  <option value="2">2</option>
@@ -50,7 +49,11 @@
                              </select>
                          </div>
                      </div>
-                     <textarea rows="1" id="comment_context" oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"' placeholder="평가를 남겨주세요"></textarea>
+                     <textarea rows="1" id="comment_context" oninput='resizeTextarea(); checkLength();' placeholder="평가를 남겨주세요"></textarea>
+                    <br>
+                    <div class="count_length">
+                        글자 수 : <b id="changeLength"></b>/250
+                    </div>
                      <button type="button" onclick="writeCompleteComment()" id="comment_submit">댓글 등록</button>
                  </fieldset>
             </div>

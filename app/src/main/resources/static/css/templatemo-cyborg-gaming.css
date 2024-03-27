@@ -806,6 +806,12 @@ Most Popular Style
 --------------------------------------------- 
 */
 
+.dataNone{
+  color: white;
+  text-align: center;
+  font-size: 40px;
+}
+
 .most-popular {
   margin-top: 60px;
   padding: 30px;
