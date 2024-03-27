@@ -57,6 +57,12 @@ function allAniList(year, quarter){
             alert("상태코드 " + status + "에러메시지" + msg);
         },
         success: function (data) {
+            if(data.length === 0){
+                $('#selected-list').append(
+                    `<div class="dataNone">등록된<br>
+                        <b>데이터가 없습니다.</b></div>`
+                )
+            }
             $(data).each(function (index, item) {
                 var grade = parseFloat(item.grade);
                 $('#selected-list').append(
@@ -88,6 +94,12 @@ function searchAniList(searchKeyword) {
 
 function displayAniList(data) {
     $('#searched-list').empty();
+    if(data.length === 0){
+        $('#searched-list').append(
+            `<div class="dataNone">
+             <b>검색된 데이터가 없습니다.</b></div>`
+        )
+    }
     $(data).each(function(index, item) {
         var grade = parseFloat(item.grade);
         $('#searched-list').append(
