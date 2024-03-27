@@ -136,3 +136,23 @@ function writeCompleteComment() {
         }
     });
 }
+
+// 글자 입력 시 textarea 늘리는 함수
+function resizeTextarea() {
+    var textarea = document.getElementById('comment_context');
+    textarea.style.height = "";
+    textarea.style.height = textarea.scrollHeight + "px";
+}
+
+// 300자 이상 댓글 등록 막는 함수
+function checkLength() {
+    var comment = document.getElementById('comment_context').value;
+    document.getElementById('changeLength').innerHTML = comment.length;
+    var maxLength = 250;
+    if (comment.length > maxLength) {
+        comment = comment.substring(0, maxLength);
+        document.getElementById('comment_context').value = comment;
+        document.getElementById('changeLength').innerHTML = 250;
+        alert('댓글은 250자를 초과할 수 없습니다.')
+    }
+}
