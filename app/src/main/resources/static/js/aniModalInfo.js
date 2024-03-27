@@ -92,6 +92,15 @@ function showWriteComment() {
 }
 
 function writeCompleteComment() {
+    if ($('#comment_context').val() === '') {
+        alert('댓글 내용을 입력해주세요');
+        return false;
+    }
+    if ($('#score').val() === null) {
+        alert('평점을 입력해주세요');
+        return false;
+    }
+
     $.ajax({
         url: 'DetailInfo/insertComment',
         type: 'POST',
@@ -126,5 +135,4 @@ function writeCompleteComment() {
 
         }
     });
-    
 }
