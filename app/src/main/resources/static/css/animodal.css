@@ -79,15 +79,22 @@
 /*    width:100px;*/
 /*}*/
 
+/* 제목 애니메이션 효과 */
+.track {position: absolute;
+    white-space: nowrap;will-change: transform;animation: marquee 15s linear infinite; }
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
 #titleInfo {
     display: block;
     /*padding: 4px;*/
-    width:50%;
-    max-width: 300px;
-    text-overflow:ellipsis;
-    overflow: hidden;
+    width:65%;
+    /*text-overflow:ellipsis;*/
+    overflow-x: hidden; overflow-y: hidden;
     white-space: nowrap;
     font-size: 24px;
+    position: relative;
 }
 
 #titleInfo::-webkit-scrollbar {

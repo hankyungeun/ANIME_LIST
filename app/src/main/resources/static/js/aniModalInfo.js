@@ -63,7 +63,7 @@ function detailModalAniInfo(aniPk) {
                     `<div class="modal_thumbnail">` +
                     (iframeHtml ? iframeHtml : imgHtml) +`</div>`+ // 유튜브 링크가 있을 경우 iframe, 없을 경우 이미지 표시
                     `<div class="infoShort"><div id="releaseDate">${data.aniDetail.startDate}</div>` +
-                    `<div id="titleInfo" title="${data.aniDetail.title}">${data.aniDetail.title}</div>` +
+                    `<div id="titleInfo" title="${data.aniDetail.title}"><div class="title">${data.aniDetail.title}</div></div>` +
                     `<div id="rate"><ul><li><i class="fa fa-star" id="gstar"></i>&nbsp;${data.aniDetail.grade}</li></ul></div></div>` +
                     `<article id="introduction"><p>${data.aniDetail.detail}</p></article>`
                 );
@@ -82,6 +82,7 @@ function detailModalAniInfo(aniPk) {
             }
 
             $('#'+aniPk+' ul li').html('<i class="fa fa-star"></i>'+data.aniDetail.grade);
+            textAnimation();
         }
     });
 }
@@ -144,7 +145,7 @@ function resizeTextarea() {
     textarea.style.height = textarea.scrollHeight + "px";
 }
 
-// 300자 이상 댓글 등록 막는 함수
+// 250자 이상 댓글 등록 막는 함수
 function checkLength() {
     var comment = document.getElementById('comment_context').value;
     document.getElementById('changeLength').innerHTML = comment.length;
@@ -155,4 +156,14 @@ function checkLength() {
         document.getElementById('changeLength').innerHTML = 250;
         alert('댓글은 250자를 초과할 수 없습니다.')
     }
+}
+
+// 제목이 긴 <div class="title>에 'track'클래스 추가
+function textAnimation(){
+    var titles = document.querySelectorAll('.title');
+    titles.forEach(function(title) {
+        if (title.scrollWidth > title.clientWidth) {
+            title.classList.add('track');
+        }
+    });
 }
