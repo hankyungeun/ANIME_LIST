@@ -121,7 +121,7 @@
     text-align: left;
 }
 
-#introduction p { font-weight: 600; color:white; font-size: 20px; line-height: 2}
+#introduction p { font-weight: 600; color:white; font-size: 16px; line-height: 2}
 
 #introduction::-webkit-scrollbar {
     display:none;
